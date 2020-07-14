@@ -27,4 +27,7 @@
         </div>
       </div>
     </footer>
+      <script src="<c:url value="/resources/js/skel.min.js"/>"></script>
+      <script src="<c:url value="/resources/js/skel-panels.min.js"/>"></script>
+      <script src="<c:url value="/resources/js/init.js"/>"></script>
    
