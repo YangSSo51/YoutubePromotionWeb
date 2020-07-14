@@ -5,7 +5,9 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.kpu.myweb.domain.UserVO;
+import org.kpu.myweb.domain.YoutuberVO;
 import org.kpu.myweb.service.UserService;
+import org.kpu.myweb.service.YoutuberService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +27,9 @@ public class MemberController {
 
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private YoutuberService youtuberSerivce;
+	
 	
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 
@@ -56,7 +61,7 @@ public class MemberController {
 		logger.info(" /register URL GET method called. then forward login.jsp.");
 		return "login";
 	}
-	
+	/*
 	@RequestMapping(value = {"/login"}, method = RequestMethod.POST)
 	public ModelAndView loginMemberPost( @ModelAttribute("user") UserVO vo,HttpSession session) throws Exception {
 		boolean result = userService.login(vo, session);
@@ -69,8 +74,22 @@ public class MemberController {
 			mav.addObject("mgs","failure");
 		}
 		return mav;
-	}
+	}*/
     
+	@RequestMapping(value = {"/login"}, method = RequestMethod.POST)
+	public ModelAndView loginMemberPost( @ModelAttribute("youtuber") YoutuberVO vo,HttpSession session) throws Exception {
+		//boolean result = userService.login(vo, session);
+		boolean result = youtuberSerivce.login(vo,session);
+		ModelAndView mav = new ModelAndView();
+		if(result == true) {
+			mav.setViewName("home");
+			mav.addObject("msg","success");
+		}else {
+			mav.setViewName("redirect:/member/login");
+			mav.addObject("mgs","failure");
+		}
+		return mav;
+	}
 	@RequestMapping(value= {"/logout"},method=RequestMethod.GET)
 	public ModelAndView logout(HttpSession session) throws Exception {
 		userService.logout(session);

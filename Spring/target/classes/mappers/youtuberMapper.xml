@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.kpu.myweb.mapper.youtuberMapper">
+  
+ 	<select id="getTime" resultType="string">
+ 		select now()
+ 	</select>
+ 	
+     <insert id="insert"> 
+   		insert into youtuber_auth (id, url, passwd, name, image, category) values
+ 		(#{id}, #{url}, #{passwd}, #{name}, #{image}, #{category})
+     </insert> 
+     
+ 	 <select id="login" resultType="String">
+ 	 	select url from youtuber_auth
+ 	 	where url=#{url} AND passwd=#{passwd}
+ 	 </select>
+ 	 
+ 	 <select id="viewYoutuber" resultType="org.kpu.myweb.domain.YoutuberVO">
+ 	 	select * from youtuber_auth
+ 	 	where url=#{url} AND passwd=#{passwd}
+ 	 </select>
+ 	
+     <select id="selectByid" resultType="YoutuberVO">
+ 		select * from youtuber_auth where id = #{id}
+     </select>
+ 	
+     <select id="selectAll" resultType="org.kpu.myweb.domain.YoutuberVO">
+     <![CDATA[
+ 		select * from youtuber_auth
+      ]]> 
+     </select>
+ 	
+     <update id="update">
+	 	update youtuber_auth set id =#{id}, url=#{url}, passwd =#{passwd}, name =#{name},image=#{image},category=#{category}} 
+		 where id = #{id}
+    </update>
+ 
+    <delete id="delete">
+		delete from youtuber_auth where id = #{id}
+    </delete>
+
+	
+</mapper>  

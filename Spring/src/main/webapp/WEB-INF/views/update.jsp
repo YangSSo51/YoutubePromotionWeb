@@ -52,7 +52,7 @@
               </div>
               <div class="form-group">
                 <label for="job-title">ID</label>
-                <input name="id" type="text" class="form-control" id="recipe-title" value=<%=id %>>
+                <input name="id" type="text" class="form-control" id="recipe-title" value=<%=url %>>
               </div>
               <div class="form-group">
                 <label for="job-title">Url</label>

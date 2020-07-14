@@ -4,11 +4,11 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		$("loginBtn").click(function()){
-		var id = $("#id").val();"
+		var url = $("#url").val();"
 		var passwd = $("#passwd").val();
-		if(id==""){
+		if(url==""){
 			alert("아이디를 입력하세요.");
-			$("#id").focus();
+			$("#url").focus();
 			return;
 			}
 		if(passwd==""){
@@ -23,7 +23,6 @@
 </script>
 
 <body>
-     <section class="section-hero overlay inner-page bg-image" style="background-image: url('http://localhost:8080/myweb/post/getImage?name=home.jpg');" id="home-section">
       <div class="container">
         <div class="row">
           <div class="col-md-7">
@@ -35,9 +34,8 @@
           </div>
         </div>
       </div>
-    </section>
     <%
-    	if(id==null){
+    	if(url==null){
     %>
 
     <section class="site-section">
@@ -50,8 +48,8 @@
             <form class="p-4 border rounded" name=form1 action="http://localhost:8080/myweb/member/login/" method="post">
               <div class="row form-group">
                 <div class="col-md-12 mb-3 mb-md-0">
-                  <label class="text-black" for="fname">Id</label>
-                  <input type="text" name="id" id="fname" class="form-control" placeholder="Email address">
+                  <label class="text-black" for="fname">url</label>
+                  <input type="text" name="url" id="fname" class="form-control" placeholder="Email address">
                 </div>
               </div>
               <div class="row form-group">
@@ -98,22 +96,4 @@
 
 <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
-<script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-analytics.js"></script>
-
-<script>
-  // Your web app's Firebase configuration
-  var firebaseConfig = {
-    apiKey: "AIzaSyAq5gs9S1B90xpxoL1kzLWqFgSid78yOTM",
-    authDomain: "promotion-49860.firebaseapp.com",
-    databaseURL: "https://promotion-49860.firebaseio.com",
-    projectId: "promotion-49860",
-    storageBucket: "promotion-49860.appspot.com",
-    messagingSenderId: "574843460802",
-    appId: "1:574843460802:web:40ed22e4c0f9a0814def5b",
-    measurementId: "G-SGJFKTSQV6"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  firebase.analytics();
-</script>
 </html>
