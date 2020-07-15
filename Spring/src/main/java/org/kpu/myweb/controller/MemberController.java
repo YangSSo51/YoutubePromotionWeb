@@ -59,7 +59,7 @@ public class MemberController {
 	@RequestMapping(value = {"/login"}, method = RequestMethod.GET)
 	public String loginMemberGet() throws Exception {
 		logger.info(" /register URL GET method called. then forward login.jsp.");
-		return "login";
+		return "youtuber/login";
 	}
 	/*
 	@RequestMapping(value = {"/login"}, method = RequestMethod.POST)
@@ -86,7 +86,7 @@ public class MemberController {
 			mav.addObject("msg","success");
 		}else {
 			mav.setViewName("redirect:/member/login");
-			mav.addObject("mgs","failure");
+			mav.addObject("msg","failure");
 		}
 		return mav;
 	}
