@@ -5,7 +5,6 @@ import java.util.List;
 import org.kpu.myweb.domain.UserVO;
 
 public interface UserDAO {
-
 	public void add(UserVO user) throws Exception;
 	public List<UserVO> readList() throws Exception;
 	public UserVO read(String id) throws Exception;

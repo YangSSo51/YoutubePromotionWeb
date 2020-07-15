@@ -93,4 +93,27 @@
      	<%@ include file="footer.jsp"%>
 	
 </body>
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyAq5gs9S1B90xpxoL1kzLWqFgSid78yOTM",
+    authDomain: "promotion-49860.firebaseapp.com",
+    databaseURL: "https://promotion-49860.firebaseio.com",
+    projectId: "promotion-49860",
+    storageBucket: "promotion-49860.appspot.com",
+    messagingSenderId: "574843460802",
+    appId: "1:574843460802:web:40ed22e4c0f9a0814def5b",
+    measurementId: "G-SGJFKTSQV6"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
 </html>

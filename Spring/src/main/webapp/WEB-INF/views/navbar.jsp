@@ -1,106 +1,83 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" language="java" %>
 <% String id = (String)session.getAttribute("id"); %>
-<style>
 
-	.site-section {
-	    padding-top: 7rem;
-	    padding-bottom: 7rem;
-	    position: relative;
-	    z-index: 2;
-	}	
-</style>
 <head>
-	<meta charset="UTF-8">
-	<title>Home</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
-    <meta name="author" content="Free-Template.co" />
-    <link rel="shortcut icon" href="<c:url value="ftco-32x32.png"/>">
-    
-    <link rel="stylesheet" href="<c:url value="/resources/css/custom-bs.css"/>">
-    <link rel="stylesheet" href="<c:url value="/resources/css/jquery.fancybox.min.css"/>">
-    <link rel="stylesheet" href="<c:url value="/resources/css/bootstrap-select.min.css"/>">
-    <link rel="stylesheet" href="<c:url value="/resources/fonts/icomoon/style.css"/>">
-    <link rel="stylesheet" href="<c:url value="/resources/fonts/line-icons/style.css"/>">
-    <link rel="stylesheet" href="<c:url value="/resources/css/owl.carousel.min.css"/>">
-    <link rel="stylesheet" href="<c:url value="/resources/css/animate.min.css"/>">
+   <meta charset="UTF-8">
+         <title>오아영</title>
+      <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+      <meta name="description" content="" />
+      <meta name="keywords" content="" />
+      <!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
 
-    <!-- MAIN CSS -->
-    <link rel="stylesheet" href="<c:url value="/resources/css/style.css"/>">    
-</head>
-  <body id="top">
+	  <script type="text/javascript" src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+      <link rel="stylesheet" href="<c:url value="/resources/css/custom-bs.css"/>">
+      <link rel="stylesheet" href="<c:url value="/resources/css/skel-noscript.css"/>" />
+      <link rel="stylesheet" href="<c:url value="/resources/css/style.css"/>" />
+      <link rel="stylesheet" href="<c:url value="/resources/css/style-desktop.css"/>" />
+      
+      <!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+      <!--[if lte IE 9]><link rel="stylesheet" href="css/ie/v9.css" /><![endif]-->
+      
+      <style>
+         #nav2 > ul > li > a.button{
+            margin-left: 0.7em;
+            padding: 0.80em 1.2em;
+            display: block;
+            font-size : 30px;
+            background : #ABD5FB;
+            margin-top : 0;
+            color : #fff;   
+         }
+         #nav2 > ul > li
+         {
+            float: left;
+         }
+         .center{
+            text-align : center;
+         }
+         div.box header h2 {
+                font-size: 1.6em;
+            text-align : center;
+         }   
+         header.youtube_desc h2{
+            font-size: 1.6em;
+            padding-top:4.0em;
+         }
+         
+      </style>
+   </head>
+   <body class="homepage">
 
-<!--  
-  <div id="overlayer"></div>
-  <div class="loader">
-    <div class="spinner-border text-primary" role="status">
-      <span class="sr-only">Loading...</span>
-    </div>
-  </div>
--->
-
-<div class="site-wrap">
-
-    <div class="site-mobile-menu site-navbar-target">
-      <div class="site-mobile-menu-header">
-        <div class="site-mobile-menu-close mt-3">
-          <span class="icon-close2 js-menu-toggle"></span>
-        </div>
+   <!-- Header -->
+      <div id="header">
+         <div class="container">
+               
+            <!-- Logo -->
+               <div id="logo">
+                  <h1><a href="#"><img src="<c:url value="/resources/images/logo.png"/>" alt="" width="250px"></a></h1>
+               </div>
+         </div>
+         <div class="container">
+            <!-- Nav -->
+               <nav id="nav">
+                  <ul>
+                     <li class="active"><a href="index.html">Homepage</a></li>
+                     <li><a href="left-sidebar.html">News</a></li>
+                     <li><a href="right-sidebar.html">Services</a></li>
+                     <li><a href="no-sidebar.html">Apply</a></li>
+                  </ul>
+                  
+               </nav>
+         </div>
+               <nav id="nav2" style='margin-right:3em'>
+                  <ul>   
+                     <li><a href="#" class="button" style='background-color : #FF97B6 !important'>유튜버</a></li>
+                     <li><a href="#" class="button">기업</a></li>
+                  </ul>
+                  
+               </nav>
       </div>
-      <div class="site-mobile-menu-body"></div>
-    </div> <!-- .site-mobile-menu -->
-    
-
-    <!-- NAVBAR -->
-    <header class="site-navbar mt-3">
-      <div class="container-fluid">
-        <div class="row align-items-center">
-          <div class="site-logo col-6"><a href="/myweb">AskRecipe</a></div>
-
-          <nav class="mx-auto site-navigation">
-            <ul class="site-menu js-clone-nav d-none d-xl-block ml-0 pl-0">
-              <li><a href="/myweb" class="nav-link active">Home</a></li>
-              <li><a href="/myweb/post/list">Recipes</a></li>
-              <li><a href="/myweb/post/postRecipe">Post</a></li>
-              <li class="d-lg-none"><a href="/myweb/post/postRecipe"><span class="mr-2">+</span> Post a Recipe</a></li>
-              <%
-              	if(id==null){
-              %>
-              <li class="d-lg-none"><a href="/myweb/member/login">Login</a></li>
-              <%
-              	}else{
-              %>
-              <li class="d-lg-none"><a href="/myweb/member/logout">LogOut</a></li>
-              <% 
-              	}
-              %>
-            </ul>
-          </nav>
-          
-          <div class="right-cta-menu text-right d-flex aligin-items-center col-6">
-            <div class="ml-auto">
-              <a href="/myweb/post/postRecipe" class="btn btn-outline-white border-width-2 d-none d-lg-inline-block"><span class="mr-2 icon-add"></span>Post a Recipe</a>
-              <%
-              	if(id==null){
-              %>
-              <a href="/myweb/member/login" class="btn btn-primary border-width-2 d-none d-lg-inline-block"><span class="mr-2 icon-lock_outline"></span>Login</a>
-             <%
-              	}else{
-              %>
-              <a href="/myweb/member/logout" class="btn btn-primary border-width-2 d-none d-lg-inline-block"><span class="mr-2 icon-lock_outline"></span>Logout</a>
-              
-              <% 
-              	}
-              %>
-            </div>
-            <a href="#" class="site-menu-toggle js-menu-toggle d-inline-block d-xl-none mt-lg-2 ml-3"><span class="icon-menu h3 m-0 p-0 mt-2"></span></a>
-          </div>
-
-        </div>
-      </div>
-    </header>
-</div>
-</body>
+   </body>
+   
     
