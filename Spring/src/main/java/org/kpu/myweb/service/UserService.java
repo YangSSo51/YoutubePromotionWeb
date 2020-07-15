@@ -7,7 +7,6 @@ import javax.servlet.http.HttpSession;
 import org.kpu.myweb.domain.UserVO;
 
 public interface UserService {
-	
 	public UserVO readUser(String id) throws Exception;
 	public List<UserVO> readUserList() throws Exception;
 	public void addUser(UserVO user) throws Exception;
