@@ -13,7 +13,7 @@ public class EnterpriseDAOImpl implements EnterpriseDAO{
 	
 	@Autowired
 	private SqlSession sqlSession;
-	private static final String namespace = "org.kpu.myweb.mapper.EnterpriseMapper";
+	private static final String namespace = "org.kpu.myweb.mapper.enterpriseMapper";
 
 	public EnterpriseVO read(int id) throws Exception {
 		EnterpriseVO vo = sqlSession.selectOne(namespace+".selectByid", id);

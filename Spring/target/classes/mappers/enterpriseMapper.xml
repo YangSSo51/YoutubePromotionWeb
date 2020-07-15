@@ -17,12 +17,12 @@
      
  	 <select id="login" resultType="String">
  	 	select name from enterprise_auth
- 	 	where id=#{id} AND passwd=#{passwd}
+ 	 	where enterNo=#{enterNo} AND passwd=#{passwd}
  	 </select>
  	 
  	 <select id="viewUser" resultType="org.kpu.myweb.domain.EnterpriseVO">
  	 	select * from enterprise_auth
- 	 	where id=#{id} AND passwd=#{passwd}
+ 	 	where enterNo=#{enterNo} AND passwd=#{passwd}
  	 </select>
  	
      <select id="selectByid" resultType="EnterpriseVO">

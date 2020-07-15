@@ -10,7 +10,7 @@ public interface EnterpriseService {
 	public void addUser(EnterpriseVO user) throws Exception;
 	public void deleteUser(int id) throws Exception; 
 	public void updateUser(EnterpriseVO user) throws Exception;
-	public boolean login(EnterpriseVO vo,HttpSession session) throws Exception;
-	public EnterpriseVO viewUser(EnterpriseVO vo) throws Exception;
+	public boolean login(EnterpriseVO user,HttpSession session) throws Exception;
+	public EnterpriseVO viewUser(EnterpriseVO user) throws Exception;
 	public void logout(HttpSession session) throws Exception;
 }

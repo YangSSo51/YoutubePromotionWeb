@@ -1,6 +1,7 @@
 package org.kpu.myweb.service;
 
 import java.util.List;
+import java.util.logging.*;
 
 import javax.servlet.http.HttpSession;
 
@@ -48,7 +49,7 @@ public class EnterpriseServiceImpl implements EnterpriseService {
 		boolean result= EnterpriseDAO.login(user);
 		if(result) {
 			EnterpriseVO user2 = viewUser(user);
-			session.setAttribute("id", user2.getId());
+			session.setAttribute("enterNo", user2.getEnterNo());
 			session.setAttribute("name", user2.getName());
 		}
 		return result;
