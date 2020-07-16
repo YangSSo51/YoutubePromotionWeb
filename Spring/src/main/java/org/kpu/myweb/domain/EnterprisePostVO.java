@@ -7,7 +7,8 @@ public class EnterprisePostVO {
 	String date; // format (yyyy-MM-dd HH:mm:ss)
 	String category;
 	String description;
-	int recuitDnt;
+	String image;
+	int recuitCnt;
 	int viewCnt;
 	
 	public int getId() {
@@ -46,11 +47,17 @@ public class EnterprisePostVO {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public int getRecuitDnt() {
-		return recuitDnt;
+	public String getImage() {
+		return image;
 	}
-	public void setRecuitDnt(int recuitDnt) {
-		this.recuitDnt = recuitDnt;
+	public void setImage(String image) {
+		this.image = image;
+	}
+	public int getRecuitCnt() {
+		return recuitCnt;
+	}
+	public void setRecuitCnt(int recuitCnt) {
+		this.recuitCnt = recuitCnt;
 	}
 	public int getViewCnt() {
 		return viewCnt;

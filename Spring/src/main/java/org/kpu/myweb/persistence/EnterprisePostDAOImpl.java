@@ -14,16 +14,16 @@ public class EnterprisePostDAOImpl implements EnterprisePostDAO{
 	@Autowired
 	private SqlSession sqlSession;
 	
-	private static final String namespace = "org.kpu.myweb.mapper.recipeMapper";
+	private static final String namespace = "org.kpu.myweb.mapper.enterprisePostMapper";
 
 	public void add(EnterprisePostVO vo) throws Exception {
 		sqlSession.insert(namespace + ".insert", vo);
 	}
 	
 	public List<EnterprisePostVO> readList() throws Exception {
-		List<EnterprisePostVO> recipelist = new ArrayList<EnterprisePostVO>();
-		recipelist = sqlSession.selectList(namespace + ".selectAll");
-		return recipelist;
+		List<EnterprisePostVO> postlist = new ArrayList<EnterprisePostVO>();
+		postlist = sqlSession.selectList(namespace + ".selectAll");
+		return postlist;
 	}
 
 	public EnterprisePostVO read(int id) throws Exception {
@@ -44,5 +44,9 @@ public class EnterprisePostDAOImpl implements EnterprisePostDAO{
 	public void updateViewCnt(int id) throws Exception{
 		sqlSession.update(namespace+".updateViewCnt", id);
 	}
-
+	public List<EnterprisePostVO> search(String title) throws Exception{
+		List<EnterprisePostVO> postlist = new ArrayList<EnterprisePostVO>();
+		postlist = sqlSession.selectList(namespace + ".search", title);
+		return postlist;
+	}
 }

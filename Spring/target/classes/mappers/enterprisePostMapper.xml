@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.kpu.myweb.mapper.enterprisePostMapper">
+  
+ 	<select id="getTime" resultType="string">
+ 		select now()
+ 	</select>
+ 	
+     <insert id="insert"> 
+   		insert into enterprise_post (enterID,title,date,category,description,recuitCnt) values
+ 		(#{enterID},#{title},#{date},#{category},#{description},#{recuitCnt})
+     </insert> 
+
+ 	 
+ 	 <select id="search" resultType="org.kpu.myweb.domain.EnterprisePostVO"> 	 
+ 	 	select * from enterprise_post where title like concat('%',#{title},'%')
+ 	 </select>
+ 	
+     <select id="selectById" resultType="EnterprisePostVO">
+ 		select * from enterprise_post where id= #{id}
+     </select>
+ 	
+     <select id="selectAll" resultType="org.kpu.myweb.domain.EnterprisePostVO">
+     <![CDATA[
+ 		select * from enterprise_post
+      ]]> 
+     </select>
+ 	
+     <update id="update">
+	 	update enterprise_post set title=#{title},date=#{date},category=#{category},description=#{description},recuitCnt=#{recuitCnt} 
+		 where id=#{id}
+    </update>
+ 
+    <delete id="delete">
+		delete from enterprise_post where id=#{id}
+    </delete>
+
+	<update id="updateViewCnt">
+		update enterprise_post
+		set viewCnt = viewCnt+1
+		where id=#{id}
+	</update>
+</mapper>  

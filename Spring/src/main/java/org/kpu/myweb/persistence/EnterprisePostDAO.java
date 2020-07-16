@@ -11,4 +11,5 @@ public interface EnterprisePostDAO {
 	public void delete(int id) throws Exception;
 	public void update(EnterprisePostVO vo) throws Exception;
 	public void updateViewCnt(int id) throws Exception;
+	public List<EnterprisePostVO> search(String title) throws Exception;
 }

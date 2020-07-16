@@ -51,6 +51,7 @@ public class EnterpriseServiceImpl implements EnterpriseService {
 			EnterpriseVO user2 = viewUser(user);
 			session.setAttribute("enterNo", user2.getEnterNo());
 			session.setAttribute("name", user2.getName());
+			session.setAttribute("enterID", user2.getId());
 		}
 		return result;
 	}
