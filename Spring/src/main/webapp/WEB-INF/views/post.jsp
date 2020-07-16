@@ -54,7 +54,6 @@
                 <label class="btn btn-primary btn-md btn-file">
                   Browse File<input type="file" hidden>
                 </label>
- 
               </div>
 
               <div class="form-group">

@@ -37,6 +37,7 @@ public class YoutuberServiceImpl implements YoutuberService {
 	
 	public void updateYoutuber(YoutuberVO youtuber) throws Exception {
 		YoutuberDAO.update(youtuber);
+		System.out.println("Service"+youtuber.getUrl());
 	}
 	
 	public YoutuberVO viewYoutuber(YoutuberVO youtuber) throws Exception {

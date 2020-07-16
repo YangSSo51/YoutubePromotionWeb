@@ -39,6 +39,7 @@ public class YoutuberDAOImpl implements YoutuberDAO {
 
 	public void update(YoutuberVO youtuber) throws Exception {
 		// TODO Auto-generated method stub
+		System.out.println("DAO"+youtuber.getUrl());
 	    sqlSession.update(namespace + ".update", youtuber);
 	}
 	
