@@ -11,8 +11,8 @@
  	</select>
  	
      <insert id="insert"> 
-   		insert into youtuber_auth (id, url, passwd, name, image, category) values
- 		(#{id}, #{url}, #{passwd}, #{name}, #{image}, #{category})
+   		insert into youtuber_auth ( url, passwd, name, image, category) values
+ 		( #{url}, #{passwd}, #{name}, #{image}, #{category})
      </insert> 
      
  	 <select id="login" resultType="String">
@@ -36,8 +36,8 @@
      </select>
  	
      <update id="update">
-	 	update youtuber_auth set id =#{id}, url=#{url}, passwd =#{passwd}, name =#{name},image=#{image},category=#{category}} 
-		 where id = #{id}
+	 	update youtuber_auth set url=#{url},passwd=#{passwd},name=#{name},image=#{image},category=#{category} 
+		 where id=#{id}
     </update>
  
     <delete id="delete">

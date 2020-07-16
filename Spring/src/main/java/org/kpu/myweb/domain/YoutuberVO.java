@@ -6,7 +6,8 @@ public class YoutuberVO {
 	String url;
 	String image;
 	String passwd;
-	
+	String category;
+
 	public int getId() {
 		return id;
 	}
@@ -38,4 +39,10 @@ public class YoutuberVO {
 		this.passwd = passwd;
 	}
 	
+	public String getCategory() {
+		return category;
+	}
+	public void setCategory(String category) {
+		this.category = category;
+	}
 }
