@@ -3,7 +3,6 @@ package org.kpu.myweb.service;
 import java.util.List;
 
 import org.kpu.myweb.domain.EnterprisePostVO;
-import org.kpu.myweb.domain.SearchVO;
 import org.kpu.myweb.persistence.EnterprisePostDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
