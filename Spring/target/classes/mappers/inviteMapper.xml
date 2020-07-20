@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.kpu.myweb.mapper.inviteMapper">
+  
+ 	<select id="getTime" resultType="string">
+ 		select now()
+ 	</select>
+ 	
+     <insert id="insert"> 
+   		insert into invite (postID,enterID, youtuberID, phoneNo) values
+ 		(#{postID}, #{enterID}, #{youtuberID}, "010-0000-0000")
+     </insert> 
+ 	
+     <select id="selectById" resultType="InviteVO">
+ 		select * from invite where id= #{id}
+     </select>
+ 	
+     <select id="selectAll" resultType="org.kpu.myweb.domain.InviteVO">
+     <![CDATA[
+ 		select * from invite
+      ]]> 
+     </select>
+ 	
+     <update id="update">
+	 	update invite set result=#{result}
+		 where id=#{id}
+    </update>
+ 
+    <delete id="delete">
+		delete from invite where id=#{id}
+    </delete>
+</mapper>  

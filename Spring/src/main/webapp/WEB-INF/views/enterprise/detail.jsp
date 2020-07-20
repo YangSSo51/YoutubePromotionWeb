@@ -1,7 +1,8 @@
 <%@ include file="../navbar.jsp"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
-<link rel="stylesheet" href="<c:url value="/resources/css/style.css"/>">    
+<link rel="stylesheet" href="<c:url value="/resources/css/style.css"/>">   
+
 <body>
     <!-- HOME -->
     <section class="section-hero overlay inner-page bg-image" style="background-image: url('http://localhost:8080/myweb/post/getImage?name=home.jpg');" id="home-section">
@@ -64,6 +65,9 @@
               <div class="col-6">
                 <a href="/myweb/enterprise/delete?id=${EnterprisePost.id}" class="btn btn-block btn-primary btn-md">Delete</a>
               </div>
+              <div class="col-6">
+				<input type="button" value="팝업창 호출" onclick="showYoutuber();"/>
+              </div>
             </div>
 
           </div>
@@ -112,6 +116,12 @@
 
 
 	<%@ include file="../footer.jsp"%>
+	<script language="javascript">
+		function showYoutuber(){
+			window.open("./invite/?id=${EnterprisePost.id}", "showYoutuber", "width=400, height=300, left=100, top=50");
+		}
+	</script>
+	
 <script type="text/javascript">
   //<![CDATA[
     // // 사용할 앱의 JavaScript 키를 설정해 주세요.

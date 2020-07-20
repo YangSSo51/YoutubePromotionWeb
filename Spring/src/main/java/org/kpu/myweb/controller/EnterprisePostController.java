@@ -141,5 +141,4 @@ public class EnterprisePostController {
         model.addAttribute("EnterprisePost", EnterprisePost);
         return "/enterprise/detail";
     }
-	
 }
