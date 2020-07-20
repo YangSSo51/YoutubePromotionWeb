@@ -7,7 +7,6 @@ import java.util.List;
 
 import org.apache.commons.io.IOUtils;
 import org.kpu.myweb.domain.EnterprisePostVO;
-import org.kpu.myweb.domain.SearchVO;
 import org.kpu.myweb.service.EnterprisePostService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

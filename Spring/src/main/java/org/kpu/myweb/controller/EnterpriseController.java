@@ -29,7 +29,7 @@ public class EnterpriseController {
 	private EnterpriseService enterpriseService;
 	
 	
-	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
+	private static final Logger logger = LoggerFactory.getLogger(EnterpriseController.class);
 
     
 	@RequestMapping(value = {"/register"}, method = RequestMethod.GET)
