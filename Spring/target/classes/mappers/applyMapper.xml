@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.kpu.myweb.mapper.applyMapper">
+  
+ 	<select id="getTime" resultType="string">
+ 		select now()
+ 	</select>
+ 	
+     <insert id="insert"> 
+   		insert into apply (category,date,location,comment,youtuberID,postID,result) values
+ 		(#{category}, #{date}, #{location},#{comment},#{youtuberID},#{postID}, 0)
+     </insert> 
+ 	
+     <select id="selectById" resultType="applyVO">
+ 		select * from apply where id= #{id}
+     </select>
+ 	
+     <select id="selectAll" resultType="org.kpu.myweb.domain.ApplyVO">
+     <![CDATA[
+ 		select * from apply
+      ]]> 
+     </select>
+ 	
+     <update id="update">
+	 	update apply set result=#{result}
+		 where id=#{id}
+    </update>
+ 
+    <delete id="delete">
+		delete from apply where id=#{id}
+    </delete>
+</mapper>  
