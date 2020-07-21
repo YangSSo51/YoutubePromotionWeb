@@ -66,7 +66,9 @@
                 <a href="/myweb/enterprise/delete?id=${EnterprisePost.id}" class="btn btn-block btn-primary btn-md">Delete</a>
               </div>
               <div class="col-6">
-				<input type="button" value="팝업창 호출" onclick="showYoutuber();"/>
+				<input type="button" value="íìì°½ í¸ì¶" onclick="showYoutuber();"/>
+				<input type="button" value="신청하기" onclick="showApply();"/>
+			
               </div>
             </div>
 
@@ -121,18 +123,23 @@
 			window.open("./invite/?id=${EnterprisePost.id}", "showYoutuber", "width=400, height=300, left=100, top=50");
 		}
 	</script>
+		<script language="javascript">
+		function showApply(){
+			window.open("../youtuber/apply/?id=${EnterprisePost.id}", "showApply", "width=400, height=800, left=100, top=50");
+		}
+	</script>
 	
 <script type="text/javascript">
   //<![CDATA[
-    // // 사용할 앱의 JavaScript 키를 설정해 주세요.
+    // // ì¬ì©í  ì±ì JavaScript í¤ë¥¼ ì¤ì í´ ì£¼ì¸ì.
     Kakao.init('da6041ce783f51ed6ff2481a1fa4210c');
-    // // 카카오링크 버튼을 생성합니다. 처음 한번만 호출하면 됩니다.
+    // // ì¹´ì¹´ì¤ë§í¬ ë²í¼ì ìì±í©ëë¤. ì²ì íë²ë§ í¸ì¶íë©´ ë©ëë¤.
     Kakao.Link.createDefaultButton({
       container: '#kakao-link-btn',
       objectType: 'feed',
       content: {
-        title: '제목',
-        description: '내용, 주로 해시태그',
+        title: 'ì ëª©',
+        description: 'ë´ì©, ì£¼ë¡ í´ìíê·¸',
         imageUrl: 'http://localhost:8080/myweb/post/getImage?name=p123-01.jpg',
         link: {
           webUrl:'http://localhost:8080',
