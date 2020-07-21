@@ -10,5 +10,6 @@ public interface InviteService {
 	public void addInvite(InviteVO vo) throws Exception;
 	public void deleteInvite(int id) throws Exception; 
 	public void updateInvite(InviteVO vo) throws Exception;
+	public boolean checkOverlap(List<InviteVO> list, InviteVO vo) throws Exception; // 리스트 내 중복 체크
 }
 

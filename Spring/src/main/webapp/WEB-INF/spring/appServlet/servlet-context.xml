@@ -24,8 +24,6 @@
 	</beans:bean>
 	
 	<context:component-scan base-package="org.kpu.myweb.controller" />
-	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 
-	<beans:bean id="logAspect" class="org.kpu.aop.LogAdvice"/>
 	
 </beans:beans>
