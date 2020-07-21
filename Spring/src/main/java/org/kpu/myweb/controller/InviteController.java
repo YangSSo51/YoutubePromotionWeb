@@ -7,7 +7,9 @@ import java.util.List;
 
 import org.apache.commons.io.IOUtils;
 import org.kpu.myweb.domain.InviteVO;
+import org.kpu.myweb.domain.YoutuberVO;
 import org.kpu.myweb.service.InviteService;
+import org.kpu.myweb.service.YoutuberService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,24 +34,31 @@ public class InviteController {
 	
 	@Autowired
     private InviteService service;
+	@Autowired
+	private YoutuberService youtuberservice;
 
 	private static final Logger logger = LoggerFactory.getLogger(InviteController.class);
     
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-    public String readYoutuber(@RequestParam("id") int id,Model model) throws Exception {
+    public String readYoutuberList(@RequestParam("id") int id,Model model) throws Exception {
+		List<YoutuberVO> youtuber = youtuberservice.readYoutuberList();
 		model.addAttribute("postID", id);
+		model.addAttribute("Youtuber", youtuber);
 		logger.info(" /read?id=kang URL called. then readMemebr method executed.");
         return "/enterprise/popup";
     }
 	
 	@RequestMapping(value = {"/"}, method = RequestMethod.POST)
 	public String signupMemberPost(@ModelAttribute("Invite") InviteVO vo) throws Exception {
-		service.addInvite(vo);
+		List<InviteVO> Invite = service.readInviteList();
+		if(service.checkOverlap(Invite, vo)){
+			service.addInvite(vo);
+			return "enterprise/popup_finish";
+		}
 		logger.info(" /register URL GET method called. then forward post.jsp.");
-		return "/enterprise/list";
+		return "enterprise/popup_fail";
 	}
-	
 	
 	@RequestMapping(value = {"/list"}, method = RequestMethod.GET)
 	public String InviteListGet(@ModelAttribute("Invite") InviteVO vo,Model model) throws Exception {
@@ -81,5 +90,6 @@ public class InviteController {
 		logger.info(" /register URL GET method called. then forward detail.jsp.");
 		return "redirect:/enterprise/list";
 	}
+	
 	
 }

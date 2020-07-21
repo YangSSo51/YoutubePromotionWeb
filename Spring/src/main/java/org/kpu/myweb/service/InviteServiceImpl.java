@@ -34,5 +34,11 @@ public class InviteServiceImpl implements InviteService{
 	public void updateInvite(InviteVO vo) throws Exception {
 		InviteDAO.update(vo);
 	}
-
+	public boolean checkOverlap(List<InviteVO> list, InviteVO vo) throws Exception{
+		for(int i = 0; i < list.size(); i++) {
+			if(list.get(i).getPostID() == vo.getPostID() && list.get(i).getYoutuberID() == vo.getYoutuberID())
+				return false;
+		}
+		return true;
+	}
 }
