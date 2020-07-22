@@ -9,6 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<h1>유튜버 리스트</h1>
 	<form method="post" acition="http://localhost:8080/myweb/enterprise/invite/post">
 		<c:forEach items="${Youtuber}" var="YoutuberVO">
 		<div>

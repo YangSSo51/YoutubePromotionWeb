@@ -10,6 +10,7 @@
 			
 			<h4>이름 ${youtuber.name }</h4>
 			<h4>채널링크 ${youtuber.url }</h4>
+			<h4>채널링크 ${youtuber.category }</h4>
 			
 			<a href="<c:url value="/youtuber/update?id=${id}" />" class="button">수정하기</a>
 			<a href="<c:url value="/youtuber/delete?id=${id}" />" class="button">회원탈퇴하기</a>
@@ -18,9 +19,4 @@
 		</div>
 	<!-- /Main -->
 <%@ include file="../footer.jsp"%>
-<!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-app.js"></script>
-
-<!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
 </html>

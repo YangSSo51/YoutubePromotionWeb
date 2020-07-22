@@ -4,6 +4,11 @@
 
 <body>
     <!-- HOME -->
+<!-- Main -->
+<div id="page">
+		
+	<!-- Main -->
+	<div id="main" class="container">
     <section class="section-hero overlay inner-page bg-image" style="background-image: url('http://localhost:8080/myweb/post/getImage?name=home.jpg');" id="home-section">
       <div class="container">
         <div class="row">
@@ -92,7 +97,8 @@
         </div>
       </div>
     </section>
-
+</div>
+</div>
 
 	<%@ include file="../footer.jsp"%>
 	
