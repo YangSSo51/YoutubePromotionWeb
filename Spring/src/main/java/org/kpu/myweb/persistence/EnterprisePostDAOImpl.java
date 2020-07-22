@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.kpu.myweb.domain.EnterprisePostVO;
+import org.kpu.myweb.domain.EnterpriseVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -47,6 +48,11 @@ public class EnterprisePostDAOImpl implements EnterprisePostDAO{
 	public List<EnterprisePostVO> search(String title) throws Exception{
 		List<EnterprisePostVO> postlist = new ArrayList<EnterprisePostVO>();
 		postlist = sqlSession.selectList(namespace + ".search", title);
+		return postlist;
+	}
+	public List<EnterprisePostVO> readMyPost(int enterid) throws Exception{
+		List<EnterprisePostVO> postlist = new ArrayList<EnterprisePostVO>();
+		postlist = sqlSession.selectList(namespace+".selectByEnterId", enterid);
 		return postlist;
 	}
 }

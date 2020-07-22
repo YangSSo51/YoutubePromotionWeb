@@ -2,6 +2,7 @@ package org.kpu.myweb.persistence;
 
 import java.util.List;
 import org.kpu.myweb.domain.EnterprisePostVO;
+import org.kpu.myweb.domain.EnterpriseVO;
 
 
 public interface EnterprisePostDAO {
@@ -12,4 +13,5 @@ public interface EnterprisePostDAO {
 	public void update(EnterprisePostVO vo) throws Exception;
 	public void updateViewCnt(int id) throws Exception;
 	public List<EnterprisePostVO> search(String title) throws Exception;
+	public List<EnterprisePostVO> readMyPost(int enterid) throws Exception;
 }

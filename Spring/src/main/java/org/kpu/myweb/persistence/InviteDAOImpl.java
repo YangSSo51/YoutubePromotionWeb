@@ -40,4 +40,9 @@ public class InviteDAOImpl  implements InviteDAO{
 		// TODO Auto-generated method stub
 	    sqlSession.update(namespace + ".update", vo);
 	}
+	public List<InviteVO> readListByYoutuberID(int youtuberID) throws Exception{
+		List<InviteVO> youtuberlist = new ArrayList<InviteVO>();
+		youtuberlist = sqlSession.selectList(namespace + ".selectByYoutuberID", youtuberID);
+		return youtuberlist;
+	}
 }

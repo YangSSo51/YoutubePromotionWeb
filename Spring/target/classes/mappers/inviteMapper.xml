@@ -33,4 +33,8 @@
     <delete id="delete">
 		delete from invite where id=#{id}
     </delete>
+    
+    <select id="selectByYoutuberID" resultType="InviteVO">
+    	select * from invite where youtuberID= #{youtuberID} AND result != 2
+    </select>
 </mapper>  

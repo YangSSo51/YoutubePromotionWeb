@@ -70,6 +70,17 @@ public class EnterprisePostController {
 		return "/enterprise/list";
 	}
 	
+	@RequestMapping(value = {"/mylist"}, method = RequestMethod.GET)
+	public String MyPostListGet(@ModelAttribute("EnterprisePost") EnterprisePostVO vo,Model model) throws Exception {
+		int enterid = 1;
+		List<EnterprisePostVO> EnterprisePost = service.readMyEnterprisePost(enterid);
+		model.addAttribute("EnterprisePost",EnterprisePost);
+		model.addAttribute("count",0);
+		model.addAttribute("size",EnterprisePost.size());
+		logger.info(" /register URL GET method called. then forward mylist.jsp.");
+		return "/enterprise/my_postlist";
+	}
+	
 	@RequestMapping(value = {"/search"}, method = RequestMethod.POST)
 	public String EnterprisePostSearchPost(@RequestParam String title, Model model) throws Exception {		
 		List<EnterprisePostVO> postlist = service.searchEnterprisePost(title);

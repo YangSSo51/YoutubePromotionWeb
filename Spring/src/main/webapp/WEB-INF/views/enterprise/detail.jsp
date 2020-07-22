@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../navbar.jsp"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
@@ -66,8 +67,8 @@
                 <a href="/myweb/enterprise/delete?id=${EnterprisePost.id}" class="btn btn-block btn-primary btn-md">Delete</a>
               </div>
               <div class="col-6">
-				<input type="button" value="íìì°½ í¸ì¶" onclick="showYoutuber();"/>
-				<input type="button" value="신청하기" onclick="showApply();"/>
+				<input type="button" value="초대하기" onclick="showYoutuber();"/>
+				<input type="button" value="신청하기" onclick="showApply();"/>
 			
               </div>
             </div>

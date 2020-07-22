@@ -3,13 +3,17 @@ package org.kpu.myweb.controller;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.apache.commons.io.IOUtils;
 import org.kpu.myweb.domain.InviteVO;
 import org.kpu.myweb.domain.YoutuberVO;
+import org.kpu.myweb.domain.EnterprisePostVO;
 import org.kpu.myweb.service.InviteService;
 import org.kpu.myweb.service.YoutuberService;
+import org.kpu.myweb.service.EnterprisePostService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +40,8 @@ public class InviteController {
     private InviteService service;
 	@Autowired
 	private YoutuberService youtuberservice;
+	@Autowired
+	private EnterprisePostService postservice;
 
 	private static final Logger logger = LoggerFactory.getLogger(InviteController.class);
     
@@ -60,15 +66,33 @@ public class InviteController {
 		return "enterprise/popup_fail";
 	}
 	
-	@RequestMapping(value = {"/list"}, method = RequestMethod.GET)
-	public String InviteListGet(@ModelAttribute("Invite") InviteVO vo,Model model) throws Exception {
-		List<InviteVO> Invite = service.readInviteList();
-		model.addAttribute("Invite",Invite);
+	@RequestMapping(value = {"/youtuberlist"}, method = RequestMethod.GET)
+	public String InviteListGet(@ModelAttribute("postList") EnterprisePostVO vo, Model model) throws Exception {
+		int youtuberID = 1; // 임시
+		
+		List<InviteVO> Invite = service.readListByYoutuberID(youtuberID);
+		List<EnterprisePostVO> postList = new ArrayList<EnterprisePostVO>();
+		EnterprisePostVO temp;
+		for(int i=0; i < Invite.size(); i++) {
+			temp = postservice.readEnterprisePost(Invite.get(i).getPostID());
+			postList.add(temp);
+		}
+		model.addAttribute("Invite_post",postList);
 		model.addAttribute("count",0);
-		model.addAttribute("size",Invite.size());
+		model.addAttribute("size",postList.size());
 		logger.info(" /register URL GET method called. then forward list.jsp.");
-		return "/enterprise/list";
+		
+		return "/youtuber/invite_status";
 	}
+	
+
+	@RequestMapping(value = "/choice", method = RequestMethod.GET)
+    public String choiceInvite(@RequestParam("id") int id,Model model) throws Exception {
+		EnterprisePostVO post = postservice.readEnterprisePost(id);
+		model.addAttribute("EnterprisePost", post);
+		logger.info(" /read?id=kang URL called. then readMemebr method executed.");
+        return "/youtuber/invite_popup";
+    }
 	
     @RequestMapping(value = "/update", method = RequestMethod.GET)
     public String updateInviteGet(@RequestParam("id") int id, Model model) throws Exception {
@@ -78,9 +102,9 @@ public class InviteController {
     }
     
     @RequestMapping(value = "/update", method = RequestMethod.POST)
-    public String updateInvitePost(MultipartHttpServletRequest mtf,@ModelAttribute("title") InviteVO vo) throws Exception {
+    public String updateInvitePost(@ModelAttribute("Invite") InviteVO vo, Model model) throws Exception {
+    	vo.setResult(2); // 거절
     	service.updateInvite(vo);
-		logger.info(vo.toString());
         return "redirect:/enterprise/list";
     }
 

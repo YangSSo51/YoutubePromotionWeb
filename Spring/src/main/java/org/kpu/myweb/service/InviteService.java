@@ -11,5 +11,6 @@ public interface InviteService {
 	public void deleteInvite(int id) throws Exception; 
 	public void updateInvite(InviteVO vo) throws Exception;
 	public boolean checkOverlap(List<InviteVO> list, InviteVO vo) throws Exception; // 리스트 내 중복 체크
+	public List<InviteVO> readListByYoutuberID(int youtuberID) throws Exception;
 }
 
