@@ -13,13 +13,18 @@
      <!-- HOME -->
     <!-- <section class="home-section section-hero overlay bg-image" style="background-image: url('http://localhost:8080/myweb/post/getImage?name=home.jpg');" id="home-section">
 	-->
+<!-- Main -->
+<div id="page">
+		
+	<!-- Main -->
+	<div id="main" class="container">
 	<section>
       <div class="container">
         <div class="row align-items-center justify-content-center">
           <div class="col-md-12">
             <div class="mb-5 text-center">
               <h1 class="text-white font-weight-bold">Search Post!</h1>
-              <p>Masitneun bab muggo sheepda...</p>
+         
             </div>
            <form class="search-jobs-form" name=form1 action="http://localhost:8080/myweb/enterprise/search" method="post">
               <div class="row mb-5">
@@ -88,8 +93,8 @@
 
       </div>
     </section>
-
-	<%@ include file="../footer.jsp"%>
+	</div>
+	</div>
 	
 </body>
 </html>

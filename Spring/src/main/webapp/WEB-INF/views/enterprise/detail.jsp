@@ -1,11 +1,17 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../navbar.jsp"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 <link rel="stylesheet" href="<c:url value="/resources/css/style.css"/>">   
 
 <body>
     <!-- HOME -->
+    	<!-- Main -->
+<div id="page">
+		
+	<!-- Main -->
+	<div id="main" class="container">
     <section class="section-hero overlay inner-page bg-image" style="background-image: url('http://localhost:8080/myweb/post/getImage?name=home.jpg');" id="home-section">
       <div class="container">
         <div class="row">
@@ -49,7 +55,7 @@
      		  <p>${EnterprisePost.recuitCnt}</p>
             </div>
             <div class="mb-5">
-              <h3 class="h5 d-flex align-items-center mb-4 text-primary"><span class="icon-align-left mr-3"></span>Recipe</h3>
+              <h3 class="h5 d-flex align-items-center mb-4 text-primary"><span class="icon-align-left mr-3"></span></h3>
               <ul class="list-unstyled m-0 p-0">  
           		<c:forEach items="${detail}" var="detail">
                 <li class="d-flex align-items-start mb-2"><span class="icon-check_circle mr-2 text-muted"></span><span><c:out value="${detail}"/></span></li>
@@ -67,8 +73,10 @@
                 <a href="/myweb/enterprise/delete?id=${EnterprisePost.id}" class="btn btn-block btn-primary btn-md">Delete</a>
               </div>
               <div class="col-6">
+
 				<input type="button" value="초대하기" onclick="showYoutuber();"/>
 				<input type="button" value="신청하기" onclick="showApply();"/>
+
 			
               </div>
             </div>
@@ -115,10 +123,10 @@
       </div>
 
     </section>
+</div>
+</div>
 
 
-
-	<%@ include file="../footer.jsp"%>
 	<script language="javascript">
 		function showYoutuber(){
 			window.open("./invite/?id=${EnterprisePost.id}", "showYoutuber", "width=400, height=300, left=100, top=50");

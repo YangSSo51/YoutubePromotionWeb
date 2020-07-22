@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>팝업창 입니다</h1>
+	<h1>신청하기</h1>
 	<form method="post" acition="http://localhost:8080/myweb/youtuber/apply/post">
 		<div>
 			<span class="label-input100">category</span>

@@ -58,7 +58,7 @@ public class ApplyController {
 		model.addAttribute("count",0);
 		model.addAttribute("size",Apply.size());
 		logger.info(" /register URL GET method called. then forward list.jsp.");
-		return "/enterprise/list";
+		return "youtuber/applyList";
 	}
 	
     @RequestMapping(value = "/update", method = RequestMethod.GET)

@@ -144,11 +144,4 @@ public class EnterprisePostController {
 		return "/enterprise/detail";
 	}
 	    
-	@RequestMapping(value = "/read", method = RequestMethod.GET)
-    public String readMember(@RequestParam("id") int id, Model model) throws Exception {
-    	EnterprisePostVO EnterprisePost = service.readEnterprisePost(id);
-		logger.info(" /read?id=kang URL called. then readMemebr method executed.");
-        model.addAttribute("EnterprisePost", EnterprisePost);
-        return "/enterprise/detail";
-    }
 }
