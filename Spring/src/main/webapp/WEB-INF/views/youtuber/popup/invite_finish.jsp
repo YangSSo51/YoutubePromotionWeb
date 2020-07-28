@@ -4,10 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Invite</title>
+<title>Insert title here</title>
 </head>
 <body>
-	
-	<input type="text" name="phoneNo" placeholder="연락처를 " />
-	
+	처리가 완료 되었습니당
 </body>
+</html>

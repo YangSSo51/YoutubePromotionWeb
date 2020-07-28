@@ -59,10 +59,10 @@
               <div class="form-group">
                 <label for="company-website-tw d-block">Upload Featured Image</label> <br>
                 <label class="btn btn-primary btn-md btn-file">
-                  Browse File<input type="file" name="file"/>
-                  <input type="text" name="filename" value="${Enterprise.image}" hidden/>
+                  Image File
+                  <input type="file" name="file"/>
+                  <input type="text" name="filename" hidden/>
                 </label>
- 
               </div>
 
               <div class="form-group">

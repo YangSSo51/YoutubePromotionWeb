@@ -7,7 +7,7 @@
 			<!-- Main -->
 			<div id="main" class="container">
 			<c:forEach items="${Apply}" var="Apply">
-				<h3><c:out value="${Apply.result }"/></h3>				
+				<h3><c:out value="${Apply.result}"/></h3>				
 			</c:forEach>
 			</div>
 			<!-- Main -->

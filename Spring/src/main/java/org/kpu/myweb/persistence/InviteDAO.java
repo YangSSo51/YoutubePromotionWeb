@@ -11,4 +11,5 @@ public interface InviteDAO {
 	public void delete(int id) throws Exception;
 	public void update(InviteVO invite) throws Exception;
 	public List<InviteVO> readListByYoutuberID(int youtuberID) throws Exception;
+	public List<InviteVO> readListByPostID(int postID) throws Exception;
 }

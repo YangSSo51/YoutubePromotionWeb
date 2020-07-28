@@ -40,7 +40,7 @@ public class ApplyController {
     public String readYoutuber(@RequestParam("id") int id,Model model) throws Exception {
 		model.addAttribute("id", id);
 		logger.info(" /read?id=kang URL called. then readMemebr method executed.");
-        return "/youtuber/popup";
+        return "/youtuber/popup/popup";
     }
 	
 	@RequestMapping(value = {"/"}, method = RequestMethod.POST)
@@ -81,5 +81,4 @@ public class ApplyController {
 		logger.info(" /register URL GET method called. then forward detail.jsp.");
 		return "redirect:/enterprise/list";
 	}
-	
 }

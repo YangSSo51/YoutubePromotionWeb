@@ -45,4 +45,9 @@ public class InviteDAOImpl  implements InviteDAO{
 		youtuberlist = sqlSession.selectList(namespace + ".selectByYoutuberID", youtuberID);
 		return youtuberlist;
 	}
+	public List<InviteVO> readListByPostID(int postID) throws Exception{
+		List<InviteVO> postlist = new ArrayList<InviteVO>();
+		postlist = sqlSession.selectList(namespace + ".selectByPostID", postID);
+		return postlist;
+	}
 }

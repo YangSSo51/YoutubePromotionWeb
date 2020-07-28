@@ -44,4 +44,7 @@ public class InviteServiceImpl implements InviteService{
 	public List<InviteVO> readListByYoutuberID(int youtuberID) throws Exception{
 		return InviteDAO.readListByYoutuberID(youtuberID);
 	}
+	public List<InviteVO> readListByPostID(int postID) throws Exception{
+		return InviteDAO.readListByPostID(postID);
+	}
 }

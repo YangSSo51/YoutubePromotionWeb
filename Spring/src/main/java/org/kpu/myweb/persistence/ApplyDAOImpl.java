@@ -21,9 +21,9 @@ public class ApplyDAOImpl  implements ApplyDAO{
 	}
 	
 	public List<ApplyVO> readList() throws Exception {
-		List<ApplyVO> postlist = new ArrayList<ApplyVO>();
-		postlist = sqlSession.selectList(namespace + ".selectAll");
-		return postlist;
+		List<ApplyVO> applylist = new ArrayList<ApplyVO>();
+		applylist = sqlSession.selectList(namespace + ".selectAll");
+		return applylist;
 	}
 
 	public ApplyVO read(int id) throws Exception {
@@ -39,5 +39,11 @@ public class ApplyDAOImpl  implements ApplyDAO{
 	public void update(ApplyVO vo) throws Exception {
 		// TODO Auto-generated method stub
 	    sqlSession.update(namespace + ".update", vo);
+	}
+	
+	public List<ApplyVO> readListByPostID(int id) throws Exception {
+		List<ApplyVO> applylist = new ArrayList<ApplyVO>();
+		applylist = sqlSession.selectList(namespace + ".selectByPostId", id);
+		return applylist;
 	}
 }

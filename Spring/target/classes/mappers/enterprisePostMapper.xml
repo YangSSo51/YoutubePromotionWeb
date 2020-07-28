@@ -11,8 +11,8 @@
  	</select>
  	
      <insert id="insert"> 
-   		insert into enterprise_post (enterID,title,date,category,description,recuitCnt) values
- 		(#{enterID},#{title},#{date},#{category},#{description},#{recuitCnt})
+   		insert into enterprise_post (enterID,title,date,category,description,recuitCnt,image) values
+ 		(#{enterID},#{title},#{date},#{category},#{description},#{recuitCnt},#{image})
      </insert> 
 
  	 
@@ -37,7 +37,7 @@
      </select>
  	
      <update id="update">
-	 	update enterprise_post set title=#{title},date=#{date},category=#{category},description=#{description},recuitCnt=#{recuitCnt} 
+	 	update enterprise_post set title=#{title},date=#{date},category=#{category},description=#{description},recuitCnt=#{recuitCnt},image=#{image}
 		 where id=#{id}
     </update>
  

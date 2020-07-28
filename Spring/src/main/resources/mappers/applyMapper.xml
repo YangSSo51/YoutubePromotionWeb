@@ -33,4 +33,8 @@
     <delete id="delete">
 		delete from apply where id=#{id}
     </delete>
+    
+     <select id="selectByPostId" resultType="applyVO">
+ 		select * from apply where postID= #{postID}
+     </select>
 </mapper>  

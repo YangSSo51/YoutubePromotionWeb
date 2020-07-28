@@ -26,8 +26,7 @@
      </select>
  	
      <update id="update">
-	 	update invite set result=#{result}
-		 where id=#{id}
+	 	update invite set result=#{result}, phoneNo=#{phoneNo} where id=#{id}
     </update>
  
     <delete id="delete">
@@ -35,6 +34,10 @@
     </delete>
     
     <select id="selectByYoutuberID" resultType="InviteVO">
-    	select * from invite where youtuberID= #{youtuberID} AND result != 2
+    	select * from invite where youtuberID= #{youtuberID} AND result = 0
+    </select>
+    
+    <select id="selectByPostID" resultType="InviteVO">
+    	select * from invite where postID= #{postID}
     </select>
 </mapper>  

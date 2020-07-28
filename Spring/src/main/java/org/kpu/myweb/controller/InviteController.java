@@ -45,14 +45,14 @@ public class InviteController {
 
 	private static final Logger logger = LoggerFactory.getLogger(InviteController.class);
     
-	
+	/* 기업 초대 등록 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
     public String readYoutuberList(@RequestParam("id") int id,Model model) throws Exception {
 		List<YoutuberVO> youtuber = youtuberservice.readYoutuberList();
 		model.addAttribute("postID", id);
 		model.addAttribute("Youtuber", youtuber);
 		logger.info(" /read?id=kang URL called. then readMemebr method executed.");
-        return "/enterprise/popup";
+        return "/enterprise/popup/popup";
     }
 	
 	@RequestMapping(value = {"/"}, method = RequestMethod.POST)
@@ -60,12 +60,38 @@ public class InviteController {
 		List<InviteVO> Invite = service.readInviteList();
 		if(service.checkOverlap(Invite, vo)){
 			service.addInvite(vo);
-			return "enterprise/popup_finish";
+			return "enterprise/popup/popup_finish";
 		}
 		logger.info(" /register URL GET method called. then forward post.jsp.");
-		return "enterprise/popup_fail";
+		return "enterprise/popup/popup_fail";
 	}
 	
+	/* 기업 초대 삭제 */
+	@RequestMapping(value = {"/delete"}, method = RequestMethod.GET)
+	public String InviteDelete(@RequestParam("id") int id) throws Exception {
+		service.deleteInvite(id);
+		logger.info(" /register URL GET method called. then forward detail.jsp.");
+		return "redirect:/enterprise/list";
+	}
+	
+	/* 기업 공고별 초대 현황 */
+	@RequestMapping(value = "/invitelist", method = RequestMethod.GET)
+    public String myInviteList(@RequestParam("id") int id,Model model) throws Exception {
+		List<InviteVO> Invite = service.readListByPostID(id);
+		ArrayList<YoutuberVO> Youtuber = new ArrayList<YoutuberVO>();
+		ArrayList<String> result = new ArrayList<String>();	
+		YoutuberVO temp;
+		
+		for(int i=0; i<Invite.size(); i++) {
+			temp = youtuberservice.readYoutuber(Invite.get(i).getYoutuberID());
+			Youtuber.add(temp);
+		}
+		model.addAttribute("Invite", Invite);
+		model.addAttribute("Youtuber", Youtuber);
+        return "/enterprise/invite_status";
+    }
+	
+	/* 유튜버 초대 목록 확인 */
 	@RequestMapping(value = {"/youtuberlist"}, method = RequestMethod.GET)
 	public String InviteListGet(@ModelAttribute("postList") EnterprisePostVO vo, Model model) throws Exception {
 		int youtuberID = 1; // 임시
@@ -77,7 +103,8 @@ public class InviteController {
 			temp = postservice.readEnterprisePost(Invite.get(i).getPostID());
 			postList.add(temp);
 		}
-		model.addAttribute("Invite_post",postList);
+		model.addAttribute("postList",postList);
+		model.addAttribute("Invite", Invite);
 		model.addAttribute("count",0);
 		model.addAttribute("size",postList.size());
 		logger.info(" /register URL GET method called. then forward list.jsp.");
@@ -85,35 +112,38 @@ public class InviteController {
 		return "/youtuber/invite_status";
 	}
 	
-
+	/* 유튜버 초대 선택 */
 	@RequestMapping(value = "/choice", method = RequestMethod.GET)
-    public String choiceInvite(@RequestParam("id") int id,Model model) throws Exception {
+    public String choiceInvite(@RequestParam("id") int id, @RequestParam("inviteid") int inviteid, Model model) throws Exception {
 		EnterprisePostVO post = postservice.readEnterprisePost(id);
 		model.addAttribute("EnterprisePost", post);
+		model.addAttribute("inviteid", inviteid);
 		logger.info(" /read?id=kang URL called. then readMemebr method executed.");
-        return "/youtuber/invite_popup";
+        return "/youtuber/popup/invite_popup";
     }
 	
-    @RequestMapping(value = "/update", method = RequestMethod.GET)
-    public String updateInviteGet(@RequestParam("id") int id, Model model) throws Exception {
-    	InviteVO Invite = service.readInvite(id);
-        model.addAttribute("Invite",Invite);
-        return "/enterprise/update";
+	@RequestMapping(value = "/accept", method = RequestMethod.GET)
+    public String acceptInvite(@RequestParam("inviteid") int inviteid,Model model) throws Exception {
+		model.addAttribute("inviteid", inviteid);
+        return "/youtuber/popup/invite_popup2";
     }
-    
-    @RequestMapping(value = "/update", method = RequestMethod.POST)
-    public String updateInvitePost(@ModelAttribute("Invite") InviteVO vo, Model model) throws Exception {
-    	vo.setResult(2); // 거절
-    	service.updateInvite(vo);
-        return "redirect:/enterprise/list";
+	
+	
+	@RequestMapping(value = "/accept", method = RequestMethod.POST)
+    public String InsertInviteInfo(@ModelAttribute("Invite") InviteVO vo) throws Exception {
+		InviteVO invite = service.readInvite(vo.getId());
+		invite.setPhoneNo(vo.getPhoneNo());
+		invite.setResult(1); // 수락
+		service.updateInvite(invite);
+        return "/youtuber/popup/invite_finish";
+    }
+	
+	@RequestMapping(value = "/reject", method = RequestMethod.GET)
+    public String rejectInvite(@RequestParam("inviteid") int inviteid,Model model) throws Exception {
+		InviteVO invite = service.readInvite(inviteid);
+		invite.setResult(2); // 거절
+		service.updateInvite(invite);
+        return "/youtuber/popup/invite_finish";
     }
 
-	@RequestMapping(value = {"/delete"}, method = RequestMethod.GET)
-	public String InviteDelete(@RequestParam("id") int id) throws Exception {
-		service.deleteInvite(id);
-		logger.info(" /register URL GET method called. then forward detail.jsp.");
-		return "redirect:/enterprise/list";
-	}
-	
-	
 }

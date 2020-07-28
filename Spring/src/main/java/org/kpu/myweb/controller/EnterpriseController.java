@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.kpu.myweb.domain.ApplyVO;
 import org.kpu.myweb.domain.EnterpriseVO;
 import org.kpu.myweb.service.EnterpriseService;
 
@@ -61,7 +62,5 @@ public class EnterpriseController {
 		mav.addObject("msg","logout");
 		return mav;
 	}
-	
 
-   
 }

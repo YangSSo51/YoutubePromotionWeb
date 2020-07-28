@@ -34,5 +34,7 @@ public class ApplyServiceImpl implements ApplyService{
 	public void updateApply(ApplyVO vo) throws Exception {
 		ApplyDAO.update(vo);
 	}
-
+	public List<ApplyVO> readListByPostID(int id) throws Exception{
+		return ApplyDAO.readListByPostID(id);
+	}
 }

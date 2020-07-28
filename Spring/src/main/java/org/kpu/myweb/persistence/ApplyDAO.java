@@ -10,4 +10,5 @@ public interface ApplyDAO {
 	public ApplyVO read(int id) throws Exception;
 	public void delete(int id) throws Exception;
 	public void update(ApplyVO apply) throws Exception;
+	public List<ApplyVO> readListByPostID(int id) throws Exception;
 }

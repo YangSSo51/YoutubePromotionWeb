@@ -10,7 +10,7 @@
 </head>
 <body>
 	<h1>유튜버 리스트</h1>
-	<form method="post" acition="http://localhost:8080/myweb/enterprise/invite/post">
+	<form method="post" acition="http://localhost:8080/myweb/enterprise/invite/">
 		<c:forEach items="${Youtuber}" var="YoutuberVO">
 		<div>
 		<label><input type="checkbox" name="youtuberID" value=${YoutuberVO.id}>${YoutuberVO.name}</label>

@@ -10,4 +10,5 @@ public interface ApplyService {
 	public void addApply(ApplyVO vo) throws Exception;
 	public void deleteApply(int id) throws Exception; 
 	public void updateApply(ApplyVO vo) throws Exception;
+	public List<ApplyVO> readListByPostID(int id) throws Exception;
 }

@@ -6,4 +6,4 @@
  * Framework: Spring
  * 언어: Java, JavaScript
  * 기타: HTML, CSS
- * DB: Firebase 
+ * DB: MySQL
