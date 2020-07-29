@@ -37,7 +37,7 @@
      </select>
  	
      <update id="update">
-	 	update enterprise_post set title=#{title},date=#{date},category=#{category},description=#{description},recuitCnt=#{recuitCnt},image=#{image}
+	 	update enterprise_post set title=#{title},date=#{date},category=#{category},description=#{description},recuitCnt=#{recuitCnt},image=#{image},applyCnt=#{applyCnt}
 		 where id=#{id}
     </update>
  
@@ -50,4 +50,8 @@
 		set viewCnt = viewCnt+1
 		where id=#{id}
 	</update>
+	
+	<select id="selectByCategory" resultType="org.kpu.myweb.domain.EnterprisePostVO">
+		select * from enterprise_post where category=#{category}
+	</select>
 </mapper>  

@@ -9,8 +9,10 @@ import java.util.List;
 import org.apache.commons.io.IOUtils;
 import org.kpu.myweb.domain.ApplyVO;
 import org.kpu.myweb.domain.EnterprisePostVO;
+import org.kpu.myweb.domain.EnterpriseVO;
 import org.kpu.myweb.domain.YoutuberVO;
 import org.kpu.myweb.service.EnterprisePostService;
+import org.kpu.myweb.service.EnterpriseService;
 import org.kpu.myweb.service.YoutuberService;
 import org.kpu.myweb.service.ApplyService;
 import org.slf4j.Logger;
@@ -37,6 +39,8 @@ public class EnterprisePostController {
 	
 	@Autowired
     private EnterprisePostService service;
+	@Autowired
+    private EnterpriseService enterservice;
 	@Autowired
 	private ApplyService applyservice;
 	@Autowired
@@ -74,7 +78,6 @@ public class EnterprisePostController {
 	public String EnterprisePostListGet(@ModelAttribute("EnterprisePost") EnterprisePostVO vo,Model model) throws Exception {
 		List<EnterprisePostVO> EnterprisePost = service.readEnterprisePostList();
 		model.addAttribute("EnterprisePost",EnterprisePost);
-		model.addAttribute("count",0);
 		model.addAttribute("size",EnterprisePost.size());
 		logger.info(" /register URL GET method called. then forward list.jsp.");
 		return "/enterprise/list";
@@ -120,9 +123,14 @@ public class EnterprisePostController {
 	@RequestMapping(value = {"/detail"}, method = RequestMethod.GET)
 	public String EnterprisePostDetailById(@RequestParam("id") int id,Model model) throws Exception {
 		EnterprisePostVO EnterprisePost = service.readEnterprisePost(id);
+		EnterpriseVO vo = enterservice.readUser(EnterprisePost.getEnterID());
+		List<YoutuberVO> youtuber = youtuberservice.readYoutuberList();
+
 		model.addAttribute("EnterprisePost",EnterprisePost);
 		String[] detail = EnterprisePost.getDescription().split("\r\n");
 		model.addAttribute("detail",detail);
+		model.addAttribute("name", vo.getName());
+		model.addAttribute("Youtuber", youtuber);
 		logger.info(" /register URL GET method called. then forward detail.jsp.");
 		return "/enterprise/detail";
 	}
@@ -153,14 +161,21 @@ public class EnterprisePostController {
 	public String EnterprisePostSearchPost(@RequestParam String title, Model model) throws Exception {		
 		List<EnterprisePostVO> postlist = service.searchEnterprisePost(title);
 		model.addAttribute("EnterprisePost",postlist);
-		//int count=0;
-		//if(vo.getSearch1()!="") count++;
-		//model.addAttribute("count",count);
 		model.addAttribute("size",postlist.size());
 
 		return "/enterprise/list";
 	}
 	
+	/* 공고 카테고리별 검색 */
+	@RequestMapping(value = {"/search"}, method = RequestMethod.GET)
+	public String EnterprisePostSearchCategory(@RequestParam String category, Model model) throws Exception {		
+		List<EnterprisePostVO> postlist = service.searchByCategory(category);
+		model.addAttribute("EnterprisePost",postlist);
+		model.addAttribute("size",postlist.size());
+
+		return "/enterprise/list";
+	}
+
 	/* 기업 공고별 지원 현황 확인 */
 	@RequestMapping(value = {"/apply/list"}, method = RequestMethod.GET)
 	public String ApplyListGet(@RequestParam int id, Model model) throws Exception {
@@ -181,8 +196,14 @@ public class EnterprisePostController {
 	@RequestMapping(value = "/apply/accept", method = RequestMethod.GET)
     public String acceptApply(@RequestParam("id") int id,Model model) throws Exception {
 		ApplyVO Apply = applyservice.readApply(id); // applyid로 가져온 VO
+		EnterprisePostVO post = service.readEnterprisePost(Apply.getPostID());
+		int applycnt = post.getApplyCnt() + 1;
+		
 		Apply.setResult(1); // 수락
+		post.setApplyCnt(applycnt); // 지원자 수 증가
 		applyservice.updateApply(Apply);
+		service.updateEnterprisePost(post);
+		logger.info(" apply Cnt : " + applycnt);
         return "redirect:/enterprise/apply/list?id=" + Apply.getPostID();
     }
 	

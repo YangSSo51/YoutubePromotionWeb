@@ -5,6 +5,45 @@
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 <link rel="stylesheet" href="<c:url value="/resources/css/style.css"/>">   
 
+<style>
+#modal {
+  display:none;
+  position:relative;
+  width:100%;
+  height:100%;
+  z-index:1;
+}
+
+#modal h2 {
+  margin:0;   
+}
+
+#modal button {
+  display:inline-block;
+  width:100px;
+  margin-left:calc(100% - 100px - 10px);
+}
+
+#modal .modal_content {
+  width:300px;
+  margin:100px auto;
+  padding:20px 10px;
+  background:#fff;
+  border:2px solid #666;
+}
+
+#modal .modal_layer {
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0, 0, 0, 0.5);
+  z-index:-1;
+}   
+</style>
+
+
 <body>
     <!-- HOME -->
     	<!-- Main -->
@@ -18,9 +57,8 @@
           <div class="col-md-7">
             <h1 class="text-white font-weight-bold">Product Designer</h1>
             <div class="custom-breadcrumbs">
-              <a href="/myweb/">Home</a> <span class="mx-2 slash">/</span>
-              <a href="/myweb/post/list/">Recipes</a> <span class="mx-2 slash">/</span>
-              <span class="text-white"><strong>${EnterprisePost.title }</strong></span>
+              <span class="text-white"><strong>${EnterprisePost.title}</strong></span>
+              <h3>작성자 : ${name}</h3>
             </div>
           </div>
         </div>
@@ -48,6 +86,7 @@
 			<img src="//developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png" />
 			</a>
 			-->
+			
           	</div>
           	
             <div class="mb-5">
@@ -63,8 +102,7 @@
               </ul>
             </div>
             
-            
-            
+      
             <div class="row mb-5">
               <div class="col-6">
                 <a href="/myweb/enterprise/update?id=${EnterprisePost.id}" class="btn btn-block btn-light btn-md"></span>Update</a>
@@ -75,9 +113,53 @@
               <div class="col-6">
 
 				<input type="button" value="초대하기" onclick="showYoutuber();"/>
-				<input type="button" value="신청하기" onclick="showApply();"/>
+				<input type="button" value="신청하기" onclick="showApply();"/>				
+				
+				<!-- Modal -->
+				<div id="root">
+   					<button type="button" id="modal_opne_btn">모달 창 열기</button>
+				</div>
 
+				<div id="modal">
+    				<div class="modal_content">
+
+        				<button type="button" id="modal_close_btn">모달 창 닫기</button>
+
+
+						<!-- content1 : 유튜버 목록  -->
+						<div class="content1">
+							<form method="post" action="http://localhost:8080/myweb/enterprise/invite/">
+								<c:forEach items="${Youtuber}" var="YoutuberVO">
+								<div>
+									<label><input type="checkbox" name="youtuberID" value=${YoutuberVO.id}>${YoutuberVO.name}</label>
+								</div>
+								</c:forEach>
+								<div>
+									<input name="enterID" type="hidden" class="form-control" value=${EnterprisePost.id}>
+									<input name="postID" type="hidden" class="form-control" value=${EnterprisePost.id}>
 			
+									<input type="submit" value="Submit">
+								</div>
+			
+							</form>
+						</div>	
+						
+						<!-- content2 : 초대 성공  -->
+						<div class="content2">
+							<p>초대가 완료되었습니다</p>
+						</div>	
+						
+						<!-- content3 : 초대 실패  -->
+						<div class="content3">
+							<p>이미 진행중인 초대입니다</p>
+						</div>	
+						
+    				</div>
+   
+    				<div class="modal_layer"></div>
+				</div>
+
+				
               </div>
             </div>
 
@@ -85,57 +167,29 @@
         </div>
       </div>
     </section>
-
-
-    <section class="bg-light pt-5 testimony-full">
-        
-        <div class="owl-carousel single-carousel">
-
-        
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-6 align-self-center text-center text-lg-left">
-                <blockquote>
-                  <p>&ldquo;Soluta quasi cum delectus eum facilis recusandae nesciunt molestias accusantium libero dolores repellat id in dolorem laborum ad modi qui at quas dolorum voluptatem voluptatum repudiandae.&rdquo;</p>
-                  <p><cite> &mdash; Corey Woods, @Dribbble</cite></p>
-                </blockquote>
-              </div>
-              <div class="col-lg-6 align-self-end text-center text-lg-right">
-                <img src="images/person_transparent_2.png" alt="Image" class="img-fluid mb-0">
-              </div>
-            </div>
-          </div>
-
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-6 align-self-center text-center text-lg-left">
-                <blockquote>
-                  <p>&ldquo;Soluta quasi cum delectus eum facilis recusandae nesciunt molestias accusantium libero dolores repellat id in dolorem laborum ad modi qui at quas dolorum voluptatem voluptatum repudiandae.&rdquo;</p>
-                  <p><cite> &mdash; Chris Peters, @Google</cite></p>
-                </blockquote>
-              </div>
-              <div class="col-lg-6 align-self-end text-center text-lg-right">
-                <img src="images/person_transparent.png" alt="Image" class="img-fluid mb-0">
-              </div>
-            </div>
-          </div>
-
-      </div>
-
-    </section>
 </div>
 </div>
-
 
 	<script language="javascript">
+	
+		// Popup
 		function showYoutuber(){
 			window.open("./invite/?id=${EnterprisePost.id}", "showYoutuber", "width=400, height=300, left=100, top=50");
 		}
-	</script>
-		<script language="javascript">
 		function showApply(){
 			window.open("../youtuber/apply/?id=${EnterprisePost.id}", "showApply", "width=400, height=800, left=100, top=50");
 		}
+
+		// Modal 
+		document.getElementById("modal_opne_btn").onclick = function() {
+        	document.getElementById("modal").style.display="block";
+    	}
+   
+    	document.getElementById("modal_close_btn").onclick = function() {
+        	document.getElementById("modal").style.display="none";
+    	}
+		   
+
 	</script>
 	
 <script type="text/javascript">

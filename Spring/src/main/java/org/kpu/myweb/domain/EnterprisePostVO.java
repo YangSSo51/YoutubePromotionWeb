@@ -10,6 +10,7 @@ public class EnterprisePostVO {
 	String image;
 	int recuitCnt;
 	int viewCnt;
+	int applyCnt;
 	
 	public int getId() {
 		return id;
@@ -64,5 +65,11 @@ public class EnterprisePostVO {
 	}
 	public void setViewCnt(int viewCnt) {
 		this.viewCnt = viewCnt;
+	}
+	public int getApplyCnt() {
+		return applyCnt;
+	}
+	public void setApplyCnt(int applyCnt) {
+		this.applyCnt = applyCnt;
 	}
 }

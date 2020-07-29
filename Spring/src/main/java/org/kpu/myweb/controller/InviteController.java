@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.apache.commons.io.IOUtils;
 import org.kpu.myweb.domain.InviteVO;
 import org.kpu.myweb.domain.YoutuberVO;
@@ -93,9 +95,8 @@ public class InviteController {
 	
 	/* 유튜버 초대 목록 확인 */
 	@RequestMapping(value = {"/youtuberlist"}, method = RequestMethod.GET)
-	public String InviteListGet(@ModelAttribute("postList") EnterprisePostVO vo, Model model) throws Exception {
-		int youtuberID = 1; // 임시
-		
+	public String InviteListGet(@ModelAttribute("postList") EnterprisePostVO vo, Model model, HttpSession session) throws Exception{
+		int youtuberID = (Integer)session.getAttribute("id"); // 세션에서 받아온 youtuberID
 		List<InviteVO> Invite = service.readListByYoutuberID(youtuberID);
 		List<EnterprisePostVO> postList = new ArrayList<EnterprisePostVO>();
 		EnterprisePostVO temp;

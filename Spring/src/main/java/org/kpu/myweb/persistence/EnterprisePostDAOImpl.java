@@ -55,4 +55,9 @@ public class EnterprisePostDAOImpl implements EnterprisePostDAO{
 		postlist = sqlSession.selectList(namespace+".selectByEnterId", enterid);
 		return postlist;
 	}
+	public List<EnterprisePostVO> searchByCategory(String category) throws Exception{
+		List<EnterprisePostVO> postlist = new ArrayList<EnterprisePostVO>();
+		postlist = sqlSession.selectList(namespace+".selectByCategory", category);
+		return postlist;
+	}
 }

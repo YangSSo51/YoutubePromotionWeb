@@ -13,5 +13,6 @@ public interface EnterprisePostService {
 	public void deleteEnterprisePost(int id) throws Exception; 
 	public void updateEnterprisePost(EnterprisePostVO vo) throws Exception;
 	public List<EnterprisePostVO> searchEnterprisePost(String title) throws Exception;
+	public List<EnterprisePostVO> searchByCategory(String category) throws Exception;
 	public List<EnterprisePostVO> readMyEnterprisePost(int enterid) throws Exception;
 }

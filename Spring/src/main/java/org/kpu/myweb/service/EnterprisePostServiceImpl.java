@@ -39,6 +39,9 @@ public class EnterprisePostServiceImpl implements EnterprisePostService{
 	public List<EnterprisePostVO> searchEnterprisePost(String title) throws Exception{
 		return enterprisePostDAO.search(title);
 	}
+	public List<EnterprisePostVO> searchByCategory(String category) throws Exception{
+		return enterprisePostDAO.searchByCategory(category);
+	}
 	public List<EnterprisePostVO> readMyEnterprisePost(int enterid) throws Exception{
 		return enterprisePostDAO.readMyPost(enterid);
 	}
