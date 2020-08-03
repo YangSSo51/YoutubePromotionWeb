@@ -1,105 +1,89 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="../navbar.jsp"%>
-<link rel="stylesheet" href="<c:url value="/resources/css/style.css"/>">    
+<%@ include file="../navbar.jsp"%>  
 
 <body>
-    <!-- HOME -->
-<!-- Main -->
-<div id="page">
-		
-	<!-- Main -->
-	<div id="main" class="container">
-    <section class="section-hero overlay inner-page bg-image" style="background-image: url('http://localhost:8080/myweb/post/getImage?name=home.jpg');" id="home-section">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-7">
-            <h1 class="text-white font-weight-bold">Update Post</h1>
-            <div class="custom-breadcrumbs">
-              <a href="#">Home</a> <span class="mx-2 slash">/</span>
-              <a href="#">Job</a> <span class="mx-2 slash">/</span>
-              <span class="text-white"><strong>Update Post</strong></span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    
-    <section class="site-section">
-      <div class="container">
-
-        <div class="row align-items-center mb-5">
-          <div class="col-lg-8 mb-4 mb-lg-0">
-            <div class="d-flex align-items-center">
-              <div>
-                <h2>Update Post</h2>
+      <section>
+            <h2 class="text-center">공고 수정하기</h2>
+            <form class="post-form" action="http://localhost:8080/myweb/enterprise/update/" method="post" enctype="multipart/form-data">
+              <table>
+                <tr>
+               <input name="id" type="hidden" value="${EnterprisePost.id}">
+                  <td>
+                    <div class="form-text">
+                      	제목
+                    </div>
+                  </td>
+                  <td>
+                    <input class="form-input" type="text" name="title" placeholder="제목" autofocus value="${EnterprisePost.title}">
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="form-text">
+                    	  모집기간
+                    </div>
+                  </td>
+                  <td>
+                   <!-- date하나 더 추가됨(기간이라) -->
+                    <table class="date_table">
+                      <td><input class="form-input" type="date" name="date" id="date" value="${EnterprisePost.date} }"></td>
+                      <td style="padding: 0 0 18px 20px">~<td>
+                      <td><input class="form-input" type="date" name="date" id="date"></td>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="form-text">
+                   	 이미지
+                  </div>
+                  </td>
+                  <td>
+                    <label class="filebtn">
+                      Browse File
+	                  <input type="file" name="file" hidden/>
+	                  <input type="text" name="filename" value="${EnterprisePost.image}" hidden/>
+                    </label>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="form-text">
+                    	 모집인원
+                    </div>
+                  </td>
+                  <td>
+                    <input class="form-input" type="text" name="recuitCnt" id="recuitCnt" value="${EnterprisePost.recuitCnt}">
+                    	명
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="form-text">
+                    	 카테고리
+                    </div>
+                  </td>
+                  <td>
+                    <input class="form-input" type="text" name="category" id="recuitCnt" value="${EnterprisePost.category}">
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="form-text">
+                     	 설명
+                    </div>
+                  </td>
+                  <td>
+                    <textarea name="description" rows="15" cols="90" id="web"></textarea>
+                    <textarea name="description" rows="10" cols="34" id="mobile"></textarea>
+                  </td>
+                </tr>
+              </table>
+              <div class="button_group">
+                <a href="#"><button class="button" type="submit" name="button" id="write">수정하기</button></a>
               </div>
-            </div>
-          </div>
-          <div class="col-lg-4">
-          </div>
-        </div>
-        <div class="row mb-5">
-          <div class="col-lg-12">
-            <form class="p-4 p-md-5 border rounded" name=form1 action="http://localhost:8080/myweb/enterprise/update/" method="post" enctype="multipart/form-data">
-              <h3 class="text-black mb-5 border-bottom pb-2">Recipe Details</h3>
-              <div class="form-group">
-                <label for="company-website-tw d-block">Upload Featured Image</label> <br>
-                <label class="btn btn-primary btn-md btn-file">
-                  Browse File<input type="file" name="file"/>
-                  <input type="text" name="filename" value="${recipe.filename}" hidden/>
-                </label>
-              </div>
-
-              <div class="form-group">
-                <label for="job-title">Title</label>
-                <input name="title" type="text" class="form-control" id="recipe-title" value="${EnterprisePost.title}">
-              </div>
-              <div class="form-group">
-                <label for="job-title">Date</label>
-                <input name="date" type="text" class="form-control" id="recipe-title" value="${EnterprisePost.date} }">>
-              </div>
-              <div class="form-group">
-                <label for="job-title">Category</label>
-                <input name="category" type="text" class="form-control" id="recipe-title" value="${EnterprisePost.category}">
-              </div>
-              <div class="form-group">
-                <label for="job-description">description</label>
-               <input name="description" type="text" class="form-control" id="recipe-title" value="${EnterprisePost.description}">
-              </div>
-              <div class="form-group">
-                <label for="job-description">recuitCnt</label>
-               <input name="recuitCnt" type="text" class="form-control" id="recipe-title" value="${EnterprisePost.recuitCnt}">
-              </div>
-               <div class="form-group">
-               <input name="id" type="hidden" class="form-control" id="recipe-title" value="${EnterprisePost.id}">
-              </div>
-               <div class="row form-group">
-                <div class="col-md-12">
-                  <input type="submit" name="submit" value="save" class="btn px-4 btn-primary text-white">
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-        <div class="row align-items-center mb-5">
-          
-          <div class="col-lg-4 ml-auto">
-            <div class="row">
-              <div class="col-6">
-                <a href="#" class="btn btn-block btn-light btn-md"><span class="icon-open_in_new mr-2"></span>Preview</a>
-              </div>
-              <div class="col-6">
-                <a  class="btn btn-block btn-primary btn-md">Save</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-</div>
-</div>
-
+             </form>
+        </section>
 	<%@ include file="../footer.jsp"%>
 	
 </body>

@@ -1,61 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="navbar.jsp"%>
-<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
-
-<body>
-<div id="page">
-	<div class="container">
-	<h2>고객문의</h2>
-	<h3>QR코드</h3>
-	<a href='http://m.site.naver.com/0Cmwa'><img src='https://qrcodethumb-phinf.pstatic.net/20200715_237/1594796812025dshC5_PNG/0Cmwa.png'/></a>
-	<h3>홈 URL : https://pf.kakao.com/_AxoUxmxb</h3>
-	<!--  
-    <a href="javascript:;" id="kakao-link-btn"> 
-		<img src="//developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png" />
-	</a>
-	-->
-	
-	</div>    
-</div>
-</body>
-<script type="text/javascript">
-  //<![CDATA[
-    // // ì¬ì©í  ì±ì JavaScript í¤ë¥¼ ì¤ì í´ ì£¼ì¸ì.
-    Kakao.init('da6041ce783f51ed6ff2481a1fa4210c');
-    // // ì¹´ì¹´ì¤ë§í¬ ë²í¼ì ìì±í©ëë¤. ì²ì íë²ë§ í¸ì¶íë©´ ë©ëë¤.
-    Kakao.Link.createDefaultButton({
-      container: '#kakao-link-btn',
-      objectType: 'feed',
-      content: {
-        title: '카카오톡 문의하기',
-        description: '오아영에게 질문하세요',
-        imageUrl: 'http://localhost:8080/myweb/post/getImage?name=p123-01.jpg',
-        link: {
-          webUrl:'http://localhost:8080',
-          mobileWebUrl: 'http://localhost:8080'
-        }
-      },
-      social: {
-        likeCount: 286,
-        commentCount: 45,
-        sharedCount: 845
-      },
-      buttons: [
-        {
-          title: 'Open!',
-          link: {
-            mobileWebUrl: 'http://localhost:8080',
-            webUrl:'http://localhost:8080'
-          }
-        }  
-      ]
-    });
-  //]]>
-</script>
-<%@ include file="footer.jsp"%>
-<!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-app.js"></script>
-
-<!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-</html>
+        <section>
+            <h3>고객문의</h3>
+            <hr>
+            <h6>1:1문의</h6>
+            <div class="box">
+              <div class="content">
+                <p>"궁금한 것이 있으시면 카카오채널에 문의해주세요.</p>
+                <p>빠른 소통이 가능합니다"<p>
+                <div class="small">
+                  <p>평일 09:00~18:00 | 주말 및 공휴일 휴무
+                  <p>점심시간 12:00~13:00
+                </div>
+              </div>
+            </div>
+            <div class="qrcode">
+              <p>QR코드</p>
+              <a href='http://m.site.naver.com/0Cmwa'><img src='https://qrcodethumb-phinf.pstatic.net/20200715_237/1594796812025dshC5_PNG/0Cmwa.png'/></a>
+              <div class="url">
+                홈 URL : http://pf.kakao.com/_AxoUxmxb
+              </div>
+            </div>
+        </section>
+        <%@ include file="footer.jsp"%>

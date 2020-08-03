@@ -1,0 +1,547 @@
+@media screen and (max-width: 414px), screen and (max-height: 414px) and (orientation: landscape) {
+  @charset "UTF-8";
+  @import url('https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@100;400&family=Nanum+Gothic:wght@400;700;800&family=Roboto:wght@300;500&display=swap');
+
+  body{
+  	font-family: 'Noto Sans KR','Nanum Gothic','Roboto',sans-serif;
+  }
+
+  a{
+  	text-decoration: none;
+  	color: #000;
+  }
+
+  header{
+  	overflow:hidden;
+  	padding: 10px;
+  }
+  .logo{
+    width: 200px;
+    float: none;
+    display: block;
+    margin: 50px auto 0 auto;
+    text-align: center;
+  }
+
+  .logo img{
+  	width: 150px;
+  }
+  nav{
+		display: none;
+		position: absolute;
+		top: 40px;
+		left:0;
+		bottom: 0;
+		z-index: 10;
+		width: 130px;
+		margin:0;
+		background-color: #fff;
+	}
+	nav a{
+		display: block;
+		padding: 20px 10px;
+		font-size: 20px;
+		border-bottom: 1px solid #FF97B6;
+	}
+	.gnb_menu{
+		position: absolute;
+		top: 12px;
+		left:12px;
+		display: block;
+		width: 40px;
+		height: 25px;
+		font-size: 1px;
+		color: transparent;
+		background: linear-gradient(#c0c0c0 50%, transparent 50%);
+		background-size: 100% 10px;
+	}
+
+  footer{
+  	height: 200px;
+  	vertical-align: middle;
+  	line-height: 200px;
+  	text-align:center;
+  	background-color:#353535;
+  	font-size: 14px;
+  	color:#fff;
+  }
+
+  section{
+  	overflow: hidden;
+  	max-width: 350px;
+  	margin: 100px auto;
+  }
+
+  .text-center{
+    font-size: 20px;
+  }
+
+  /*form 디자인*/
+  .login-form{
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  .login-form .form-text{
+    text-align: left;
+    margin-bottom: 15px;
+  }
+
+  .login-form .form-input{
+    width: 300px;
+  	height:30px;
+    margin-bottom: 20px;
+  	border: none;
+  	border-bottom: 1px solid #c0c0c0;
+  }
+
+  .login-form .form-input:focus{
+  	border: none;
+  	border-bottom: 2px solid #FF97B6;
+  	outline: none;
+  }
+
+  button{
+    background-color: #FF97B6;
+    width: 300px;
+    height: 40px;
+    margin: 10px auto;
+    color: #fff;
+    border-radius: 20px;
+    border: none;
+  }
+
+  button:focus{
+  	border: none;
+  	cursor:pointer;
+  	outline: 0 none;
+  }
+
+  button:hover{
+  	cursor:pointer;
+  	background-color: salmon;
+  }
+
+  /*post*/
+  .post-form{
+    max-width: 350px;
+    margin: 0 auto;
+  }
+
+  .post-form td{
+  	padding-left: 10px;
+  	vertical-align: middle;
+  }
+  .post-form .form-text{
+    text-align: left;
+    margin-bottom: 15px;
+    width: 60px;
+  }
+
+  .post-form .form-input{
+    width: 230px;
+  	height:30px;
+    margin-bottom: 20px;
+  	border: none;
+  	border-bottom: 1px solid #c0c0c0;
+  }
+
+  #recuitCnt{
+  	width: 80px;
+  }
+
+  .post-form textarea{
+  	border: none;
+  	border: 1px solid #c0c0c0;
+  }
+  .post-form textarea:focus{
+  	outline: none;
+  }
+  .post-form .form-input:focus{
+  	outline: none;
+  }
+
+  .form-input[type="date"]{
+    width: 30%;
+  }
+
+  .date_table td{
+  	padding-left: 10px;
+  }
+
+
+  /*question page*/
+  h3{
+  	font-weight: bold;
+  	font-size: 20px;
+  }
+  h6{
+  		font-size: 13px;
+  		color: #3D3D3D;
+  }
+  hr{
+  	max-width: 1200px;
+  	border-bottom: none;
+  }
+  .box{
+  	margin: 35px 10px;
+  	padding:25px;
+  	border: 1px solid #dbdbdb;
+  	text-align: center;
+  	font-weight: bold;
+  }
+  .box p{
+  	padding: 4px;
+  }
+
+  .small{
+  	margin-top: 5px;
+  	font-size: 13px;
+  	font-weight:200;
+  }
+
+  .qrcode{
+  	text-align: center;
+  	font-weight: bold;
+  }
+
+  .url{
+  	margin-top: 20px;
+  }
+
+  /*profile page*/
+
+  .image{
+  	float:none;
+  	display:inherit;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .box img{
+  	width: 150px;
+  	height: 150px;
+  	border-radius: 50%;
+  }
+  .image .chanel{
+  	font-size: 20px;
+  	margin-top: 20px;
+  }
+
+  .box content{
+  	width: 60%;
+  }
+
+  .youtuber_table{
+  	padding-top: 20px;
+  	border-left: 4px solid #FF97B6;
+  	text-align: left;
+  }
+
+  .youtuber_table td{
+  	vertical-align: middle;
+  	padding-left: 20px;
+  	width: 150px;
+  	height: 50px;
+
+  }
+  .youtuber_table .content{
+  	margin: 20px;
+  	font-weight: 100;
+  }
+
+  .box .title{
+  	font-size: 14px;
+  	font-weight: bold;
+  }
+  .button_group{
+  		margin: -25px auto;
+      padding-right: 10px;
+      float: none;
+
+  }
+  .button_group .button{
+  	margin-left: 10px;
+  	width: 100px;
+  }
+
+  div #out{
+  	background-color: #c0c0c0;
+  }
+
+  /*update page*/
+  .filebtn{
+  	background-color: #FF97B6;
+    width: 100px;
+    height: 40px;
+    margin-top: -5px;
+  	margin-bottom: 20px;
+    color: #fff;
+    border-radius: 5px;
+    border: none;
+  }
+
+  /*list page*/
+  .list{
+  	margin: 50px 0 0 0;
+  	overflow:hidden;
+  }
+  .list li{
+  	float:left;
+  	width: 50%;
+  }
+  .inner{
+  	display:block;
+  	margin: 10px 10px;
+  	border:1px solid #dbdbdb;
+  }
+  .thumb img{
+  	width: 100%;
+  	height: 120px;
+  	vertical-align: top;
+  }
+
+  .desc{
+  	margin-top: 3px;
+  	padding: 10px;
+  	text-align:left;
+  }
+
+  .desc .title{
+  	font-size: 14px;
+  	color:#000;
+  	overflow:hidden;
+  	white-space: nowrap;
+  	text-overflow: ellipsis;
+  	font-weight: 400;
+  	line-height: 1.2;
+  }
+
+  .date{
+  	color:#666666;
+  	font-size: 13px;
+  	padding-top: 10px;
+  }
+
+  #write{
+  	margin-top: 60px;
+  	margin-right: 10px;
+  }
+
+  .right_form{
+  	float: right;
+  	display: block;
+  	margin-right: 20px;
+  }
+
+  .right_form input{
+  	border: 1px solid #666666;
+  	-webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+  }
+
+  .right_form input:focus{
+  	border: 1px solid #c0c0c0;
+  }
+  .right_form button{
+  	margin-left: 10px;
+  	width: 70px;
+  	height: 30px;
+  }
+
+  /*detail*/
+
+  .title{
+  	font-size: 20px;
+  	font-weight: bold;
+  }
+
+  .enterprise{
+  	font-size: 14px;
+  	margin-left: 40px;
+  }
+ #long-text{
+   width: 80px;
+   overflow:hidden;
+   white-space: nowrap;
+   text-overflow: ellipsis;
+ }
+  .#FF97B6{
+  	border: none;
+  	border-bottom: 3px solid #FF97B6;
+  }
+
+  .detail_table td{
+  	margin-left: 5px;
+  	height: 40px;
+  	vertical-align: middle;
+  	width: 60px;
+  }
+
+  .detail_table .td-title{
+  	color:#666666;
+    font-size: 14px;
+  }
+
+  .detail_table .td-content{
+    font-size: 12px;
+  }
+
+  .detail{
+  	margin: 20px 0;
+  	padding: 10px;
+  	overflow: hidden;
+  	border: 1px solid #dbdbdb;
+  }
+  .detail_img{
+    margin: 10px 4%;
+  	width: 300px;
+  }
+
+  .detail_desc{
+  	float: left;
+  	display: block;
+  	margin:5px 20px;
+  }
+
+  .detail_desc p{
+  	margin: 10px 0;
+  }
+
+  .list {
+  	margin: 0 auto;
+  	width: 350px;
+  }
+
+  .list th{
+  	font-size: 14px;
+    text-align: left;
+    padding-left: 0px;
+  }
+
+  .list td{
+    margin-left: 4px;
+    font-size: 14px;
+  }
+  .list .long-text{
+  	width: 50px;
+  }
+
+  .list #contact{
+  	width: 65px;
+    height: 30px;
+  	font-size: 10px;
+  }
+  .list #accept{
+  	width: 40px;
+    border-radius: 5px;
+  	font-size: 12px;
+  }
+
+  .list #reject{
+  	width: 40px;
+    border-radius: 5px;
+  	font-size: 12px;
+  }
+  /*popup form*/
+  #popup{
+  	max-width: 500px;
+  }
+
+  #send{
+  	max-width: 400px;
+  	margin: 30px 100px;
+  }
+
+  #review{
+  	max-width: 80px;
+  }
+ #mobile{
+   display: block;
+ }
+ #web{
+   display: none;
+ }
+
+ /*description*/
+ .description{
+ 	margin: 30px 10px;
+ 	padding: 30px 0;
+ 	text-align: center;
+ 	border: 1px solid #dbdbdb;
+ }
+ .description img{
+   width: 320px;
+ }
+ .button-center button{
+ 	font-size: 12px;
+ }
+
+ /*home*/
+ .home-container{
+ 	width: 100%;
+ 	overflow: hidden;
+ }
+ .video{
+ 	width: 100%;
+ }
+ .video iframe{
+ 	width:100%;
+ }
+ .call{
+ 	height: 235px;
+  width: 100%;
+ 	padding: 40px 0;
+ 	text-align: center;
+ 	float: left;
+ 	background-color: #FFF5F4;
+ }
+
+ .call h3{
+ 	font-size: 18px;
+ }
+
+ .call .circle{
+ 	width: 100px;
+ 	height: 60px;
+ 	padding-top: 40px;
+ 	margin: 20px auto;
+ 	border: 3px solid #FF97B6;
+ 	border-radius: 50%;
+ }
+
+ .circle a{
+ 	margin-top: 30px;
+ }
+
+ .message button{
+ 	width: 200px;
+ }
+
+ /*list*/
+ .home-list{
+ 	margin: 30px 0 0 0;
+ 	overflow:hidden;
+ 	background-color: #F1F1F1;
+ }
+
+ .home-list .inner{
+ 	padding-top: 15px;
+ 	border: none;
+ }
+ .home-list li{
+ 	float:left;
+ 	width: 33%;
+ 	text-align: center;
+ }
+
+ .home-list img{
+ 	width: 80px;
+ 	height: 80px;
+ 	border-radius: 50%;
+ }
+
+ .home-list .desc{
+ 	text-align: center;
+ }
+}
