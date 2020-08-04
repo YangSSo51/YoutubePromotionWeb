@@ -41,11 +41,12 @@
   background:rgba(0, 0, 0, 0.5);
   z-index:-1;
 }   
+
 </style>
 
 <%@ include file="../navbar.jsp"%>
       <section>
-          <span class="title">${EnterprisePost.title}</span><span class="enterprise">${name }</span>
+          <span class="title">${EnterprisePost.title}</span><span class="enterprise">${name}</span>
           <hr class="#FF97B6">
           <table class="detail_table">
             <tr>
@@ -105,6 +106,7 @@
             <a href="/myweb/enterprise/update?id=${EnterprisePost.id}"><button class="button" type="button" name="button" >수정하기</button></a>
             <a href="/myweb/enterprise/delete?id=${EnterprisePost.id}"><button class="button" type="button" name="button" >삭제하기</button></a>
           </div>
+          
 				<!-- Modal -->
 				<div id="root">
    					<button type="button" id="modal_open_btn">초대하기</button>
