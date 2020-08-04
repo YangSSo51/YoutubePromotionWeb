@@ -5,6 +5,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script language="javascript">
+	alert("${result}");
+	history.back();
+</script>
 </head>
 <body>
 	<div class="container">
@@ -17,6 +21,7 @@
     
 <!-- javascript  -->
 <script language="javascript">
+	alert(${result});
 	function finish(){
 		window.close();
 	}

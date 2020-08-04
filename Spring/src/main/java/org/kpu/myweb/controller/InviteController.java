@@ -13,9 +13,11 @@ import org.apache.commons.io.IOUtils;
 import org.kpu.myweb.domain.InviteVO;
 import org.kpu.myweb.domain.YoutuberVO;
 import org.kpu.myweb.domain.EnterprisePostVO;
+import org.kpu.myweb.domain.EnterpriseVO;
 import org.kpu.myweb.service.InviteService;
 import org.kpu.myweb.service.YoutuberService;
 import org.kpu.myweb.service.EnterprisePostService;
+import org.kpu.myweb.service.EnterpriseService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,6 +46,8 @@ public class InviteController {
 	private YoutuberService youtuberservice;
 	@Autowired
 	private EnterprisePostService postservice;
+	@Autowired
+    private EnterprisePostService enterservice;
 
 	private static final Logger logger = LoggerFactory.getLogger(InviteController.class);
     
@@ -58,16 +62,19 @@ public class InviteController {
     }
 	
 	@RequestMapping(value = {"/"}, method = RequestMethod.POST)
-	public String signupMemberPost(@ModelAttribute("Invite") InviteVO vo) throws Exception {
+	public String signupMemberPost(@ModelAttribute("Invite") InviteVO vo,Model model) throws Exception {
 		List<InviteVO> Invite = service.readInviteList();
 		if(service.checkOverlap(Invite, vo)){
 			service.addInvite(vo);
-			return "enterprise/popup/popup_finish";
+			model.addAttribute("result","초대가 완료되었습니다");
+			return "enterprise/result";
+		}else {
+			model.addAttribute("result","이미 진행중인 초대입니다");
 		}
 		logger.info(" /register URL GET method called. then forward post.jsp.");
-		return "enterprise/popup/popup_fail";
+		return "enterprise/result";
 	}
-	
+
 	/* 기업 초대 삭제 */
 	@RequestMapping(value = {"/delete"}, method = RequestMethod.GET)
 	public String InviteDelete(@RequestParam("id") int id) throws Exception {

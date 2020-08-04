@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.apache.commons.io.IOUtils;
 import org.kpu.myweb.domain.ApplyVO;
+import org.kpu.myweb.domain.InviteVO;
 import org.kpu.myweb.service.ApplyService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -44,12 +45,18 @@ public class ApplyController {
     }
 	
 	@RequestMapping(value = {"/"}, method = RequestMethod.POST)
-	public String signupMemberPost(@ModelAttribute("Apply") ApplyVO vo) throws Exception {
-		service.addApply(vo);
+	public String signupMemberPost(@ModelAttribute("Apply") ApplyVO vo,Model model) throws Exception {
+		List<ApplyVO> Invite = service.readApplyList();
+		if(service.checkOverlap(Invite, vo)){
+			service.addApply(vo);
+			model.addAttribute("result","신청이 완료되었습니다");
+			return "enterprise/result";
+		}else {
+			model.addAttribute("result","이미 진행중인 신청입니다");
+		}
 		logger.info(" /register URL GET method called. then forward post.jsp.");
-		return "/enterprise/list";
+		return "/enterprise/result";
 	}
-	
 	
 	@RequestMapping(value = {"/list"}, method = RequestMethod.GET)
 	public String ApplyListGet(@ModelAttribute("Apply") ApplyVO vo,Model model) throws Exception {

@@ -17,6 +17,7 @@
     
 <!-- javascript  -->
 <script language="javascript">
+	alert(${result});
 	function finish(){
 		window.close();
 	}

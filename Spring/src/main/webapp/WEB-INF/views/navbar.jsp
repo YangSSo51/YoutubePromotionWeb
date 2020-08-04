@@ -21,7 +21,7 @@
         <a href="#" class="gnb_menu">gnb menu</a>
         <nav>
           <a href="<c:url value="/"/>">홈</a>
-          <a href="#">비즈니스</a>
+          <a href="<c:url value="/enterprise/list"/>">비즈니스</a>
           <a href="#">프로필</a>
           <a href="<c:url value="/youtuber/question"/>">고객센터</a>
           <a href="#">로그인</a>

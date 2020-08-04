@@ -3,6 +3,7 @@ package org.kpu.myweb.service;
 import java.util.List;
 
 import org.kpu.myweb.domain.ApplyVO;
+import org.kpu.myweb.domain.InviteVO;
 import org.kpu.myweb.persistence.ApplyDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,5 +37,12 @@ public class ApplyServiceImpl implements ApplyService{
 	}
 	public List<ApplyVO> readListByPostID(int id) throws Exception{
 		return ApplyDAO.readListByPostID(id);
+	}
+	public boolean checkOverlap(List<ApplyVO> list, ApplyVO vo) throws Exception{
+		for(int i = 0; i < list.size(); i++) {
+			if(list.get(i).getPostID() == vo.getPostID() && list.get(i).getYoutuberID() == vo.getYoutuberID())
+				return false;
+		}
+		return true;
 	}
 }
