@@ -11,9 +11,11 @@
                   <th>신청 현황</th>
                   <th>초대 현황</th>
                 </tr>
+                <c:set var="i" value="0"/>
                  <c:forEach items="${EnterprisePost}" var="EnterprisePostVO">
+                 <c:set var="i" value="${i+1 }"/>
                 <tr>
-                  <td style="width:30px;">1</td>
+                  <td style="width:30px;"><c:out value="${i}"/></td>
                   <td>
                     <div class="long-text">
 	                	<a href="http://localhost:8080/myweb/enterprise/detail?id=${EnterprisePostVO.id}">

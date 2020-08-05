@@ -26,14 +26,16 @@
               <table class="list">
                 <tr>
                   <th style="width:30px;"></th>
-                  <th>체널명</th>
+                  <th>채널명</th>
                   <th>카테고리</th>
                   <th>홍보요청</th>
                   <th>승인여부</th>
                 </tr>
+                 <c:set var="i" value="0"/>
                 <c:forEach items="${Youtuber}" varStatus="status">   
+                 <c:set var="i" value="${i+1 }"/>
                 <tr>
-                  <td style="width:30px;">1</td>
+                  <td style="width:30px;"><c:out value="${i}"/></td>
                   <td>
                     <div class="long-text">
                       	<a href="<c:url value="/youtuber/profile"/>">${Youtuber[status.index].name}</a>
@@ -47,26 +49,27 @@
                   </td>
                   <td>
              
-	              <button id='accept' value="수락" onclick="accept_apply(${Apply[status.index].id});">수락</button>
-	              <button id='reject' value="거절" onclick="reject_apply(${Apply[status.index].id});">거절</button>
-	              <button id='result'></button>
-                
+	              <button name="accept" id='accept' value="수락" onclick="accept_apply(${Apply[status.index].id});">수락</button>
+	              <button name="reject" id='reject' value="거절" onclick="reject_apply(${Apply[status.index].id});">거절</button>                
                   <script>
-						var accept = document.getElementById('accept');
-						var reject = document.getElementById('reject');
+						var accept = document.getElementsByName('accept');
+						var reject = document.getElementsByName('reject');
 						var value = ${Apply[status.index].result};
 						
 						if(value != 0){
-							accept.style.display='none';
-							reject.style.display='none';
-							
+							for(i=0;i<accept.length;i++){
+								accept[i].style.display='none';
+							}
+							for(i=0;i<reject.length;i++){
+								reject[i].style.display='none';
+							}
 							if(value == 1)
 								document.write("수락");
 							else
 								document.write("거절");
 						}
-										
 					</script>
+					<button id='result'></button>
                   </td>
                 </tr>
                 </c:forEach>

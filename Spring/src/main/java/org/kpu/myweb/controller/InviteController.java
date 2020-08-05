@@ -37,7 +37,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 
 @Controller
-@RequestMapping(value="/enterprise/invite")
+@RequestMapping(value="/invite")
 public class InviteController {
 	
 	@Autowired
@@ -84,7 +84,7 @@ public class InviteController {
 	}
 	
 	/* 기업 공고별 초대 현황 */
-	@RequestMapping(value = "/invitelist", method = RequestMethod.GET)
+	@RequestMapping(value = "/enterprise/list", method = RequestMethod.GET)
     public String myInviteList(@RequestParam("id") int id,Model model) throws Exception {
 		List<InviteVO> Invite = service.readListByPostID(id);
 		ArrayList<YoutuberVO> Youtuber = new ArrayList<YoutuberVO>();
@@ -101,7 +101,7 @@ public class InviteController {
     }
 	
 	/* 유튜버 초대 목록 확인 */
-	@RequestMapping(value = {"/youtuberlist"}, method = RequestMethod.GET)
+	@RequestMapping(value = {"/youtuber/list"}, method = RequestMethod.GET)
 	public String InviteListGet(@ModelAttribute("postList") EnterprisePostVO vo, Model model, HttpSession session) throws Exception{
 		int youtuberID = (Integer)session.getAttribute("id"); // 세션에서 받아온 youtuberID
 		List<InviteVO> Invite = service.readListByYoutuberID(youtuberID);
