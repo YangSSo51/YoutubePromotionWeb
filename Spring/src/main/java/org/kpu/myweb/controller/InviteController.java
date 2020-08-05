@@ -120,15 +120,6 @@ public class InviteController {
 		return "/youtuber/invite_status";
 	}
 	
-	/* 유튜버 초대 선택 */
-	@RequestMapping(value = "/choice", method = RequestMethod.GET)
-    public String choiceInvite(@RequestParam("id") int id, @RequestParam("inviteid") int inviteid, Model model) throws Exception {
-		EnterprisePostVO post = postservice.readEnterprisePost(id);
-		model.addAttribute("EnterprisePost", post);
-		model.addAttribute("inviteid", inviteid);
-		logger.info(" /read?id=kang URL called. then readMemebr method executed.");
-        return "/youtuber/popup/invite_popup";
-    }
 	
 	@RequestMapping(value = "/accept", method = RequestMethod.GET)
     public String acceptInvite(@RequestParam("inviteid") int inviteid,Model model) throws Exception {
@@ -138,12 +129,13 @@ public class InviteController {
 	
 	
 	@RequestMapping(value = "/accept", method = RequestMethod.POST)
-    public String InsertInviteInfo(@ModelAttribute("Invite") InviteVO vo) throws Exception {
+    public String InsertInviteInfo(@ModelAttribute("Invite") InviteVO vo,Model model) throws Exception {
 		InviteVO invite = service.readInvite(vo.getId());
 		invite.setPhoneNo(vo.getPhoneNo());
 		invite.setResult(1); // 수락
 		service.updateInvite(invite);
-        return "/youtuber/popup/invite_finish";
+		model.addAttribute("result","초대가 승인되었습니다");
+        return "/enterprise/result";
     }
 	
 	@RequestMapping(value = "/reject", method = RequestMethod.GET)
@@ -151,7 +143,7 @@ public class InviteController {
 		InviteVO invite = service.readInvite(inviteid);
 		invite.setResult(2); // 거절
 		service.updateInvite(invite);
-        return "/youtuber/popup/invite_finish";
+        return "redirect:/invite/youtuber/list";
     }
 
 }
