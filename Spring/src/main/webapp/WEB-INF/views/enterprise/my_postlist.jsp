@@ -27,7 +27,7 @@
                     <a href="#" title="지원자 보러가기"><c:out value="${EnterprisePostVO.viewCnt}"/></a>
                   </td>                  
                   <td><a href="<c:url value="/enterprise/apply/list?id=${EnterprisePostVO.id}"/>"><button id="contact" type="button" name="button">지원자 보기</button></a></td>
-                  <td><a href="<c:url value="/enterprise/invite/invitelist?id=${EnterprisePostVO.id}"/>"><button id="contact" type="button" name="button">초대하기</button></a></td>
+                  <td><a href="<c:url value="/invite/enterprise/list?id=${EnterprisePostVO.id}"/>"><button id="contact" type="button" name="button">초대하기</button></a></td>
                 </tr>
                </c:forEach>
               </table>

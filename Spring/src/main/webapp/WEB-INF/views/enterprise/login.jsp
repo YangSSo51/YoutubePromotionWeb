@@ -1,23 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../navbar.jsp"%>
-<!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="<c:url value="images/icons/favicon.ico"/>">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/vendor/bootstrap/css/bootstrap.min.css"/>">>
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/vendor/animate/animate.css"/>">
-<!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/vendor/css-hamburgers/hamburgers.min.css"/>">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/vendor/animsition/css/animsition.min.css"/>">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/vendor/select2/select2.min.css"/>">
-<!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/vendor/daterangepicker/daterangepicker.css"/>">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/util.css"/>">
-	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/main.css"/>">
-<!--===============================================================================================-->'
+
 <% String enterNo = (String)session.getAttribute("enterNo"); %> 
 
 <script type="text/javascript">
@@ -42,48 +25,23 @@
 </script>
 
 <body>
-<div id="page">
     <%
        if(url==null){
     %>
-
-	<div class="limiter">
-		<div class="container-login100"> <!--style="background-image: url('images/bg-01.jpg');"-->
-			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
-				<form class="login100-form validate-form"  name=form1 action="http://localhost:8080/myweb/enterprise/login/" method="post" >
-					<span class="login100-form-title p-b-49">
-						<h2>Login</h2>
-					</span>
-					<div class="wrap-input100 validate-input m-b-23" data-validate = "Username is reauired">
-						<span class="label-input100">사업자번호</span>
-						<input class="input100" type="text" name="enterNo" placeholder="000-00-00000">
-						<span class="focus-input100" data-symbol="&#xf206;"></span>
-					</div>
-
-					<div class="wrap-input100 validate-input" data-validate="Password is required">
-						<span class="label-input100">Password</span>
-						<input class="input100" type="password" name="passwd" placeholder="Type your password">
-						<span class="focus-input100" data-symbol="&#xf190;"></span>
-					</div>
-					
-					<div class="text-right p-t-8 p-b-31">
-						<a href="#">
-							Forgot password?
-						</a>
-					</div>
-					
-					<div class="container-login100-form-btn">
-						<div class="wrap-login100-form-btn">
-							<div class="login100-form-bgbtn"></div>
-							<button class="login100-form-btn">
-								Login
-							</button>
-						</div>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
+	        <section>
+            <h2 class="text-center">Login</h2>
+            <form class="login-form" name=form1 action="http://localhost:8080/myweb/enterprise/login/" method="post">
+              <div class="form-text">
+                	사업자 번호
+              </div>
+              <input class="form-input" type="text" name="enterNo" placeholder="000-00-00000">
+              <div class="form-text">
+                Password
+              </div>
+              <input class="form-input" type="password" name="passwd" placeholder="Type your password">
+              <a href="#"><button class="button" type="submit" name="button">LOGIN</button></a>
+            </form>
+        </section>
 	
 
 	<div id="dropDownSelect1"></div>
@@ -104,7 +62,6 @@
       </div>
       </section>
     <% } %>
-</div>
 </body>
 <%@ include file="../footer.jsp"%>
 <!-- The core Firebase JS SDK is always required and must be listed first -->
