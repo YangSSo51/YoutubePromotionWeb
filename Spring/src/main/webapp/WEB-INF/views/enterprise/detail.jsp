@@ -144,7 +144,7 @@
     				<div class="modal_content">
 						<h2>신청하기</h2>
 						<div class="content">
-							<form method="post" action="http://localhost:8080/myweb/youtuber/apply/">
+							<form method="post" action="<c:url value="/youtuber/apply" />">
 							<div>
 								<span class="label-input100">category</span>
 								<input class="input100" type="text" name="category" placeholder="뷰티">
@@ -162,7 +162,7 @@
 								<input class="input100" type="text" name="comment" placeholder="안녕하세요">
 							</div>
 							<div>
-							<input name="youtuberID" type="hidden" class="form-control" value=<%=ID%>	>
+							<input name="youtuberID" type="hidden" class="form-control" value=<%=ID%>>
 							<input name="postID" type="hidden" class="form-control" value=${id}>
 					
 							<input type="submit" value="Submit">

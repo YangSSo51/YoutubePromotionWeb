@@ -67,7 +67,7 @@
                     </div>
                   </td>
                   <td>
-                    <input class="form-input" type="text" name="category" placeholder="뷰티,헬스" id="recuitCnt" >
+                    <input class="form-input" type="text" name="category" placeholder="" id="recuitCnt" >
                   </td>
                 </tr>
                 <tr>
@@ -77,7 +77,7 @@
                     </div>
                   </td>
                   <td>
-                    <textarea name="description" rows="15" cols="90" id="web"></textarea>
+	                <textarea name="description" rows="15" cols="90" id="web"></textarea>
                     <textarea name="description" rows="10" cols="34" id="mobile"></textarea>
                   </td>
                 </tr>
