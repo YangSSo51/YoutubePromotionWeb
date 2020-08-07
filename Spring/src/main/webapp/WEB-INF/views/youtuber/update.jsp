@@ -8,6 +8,7 @@
               </div>
               <label class="filebtn">
 		        Browse File<input type="file" name="file" value="${youtuber.image}" hidden>
+				<input type="text" name="image" value="${youtuber.image}" hidden>
               </label>
               <input class="form-input" type="text" name="id" value="${youtuber.id}" hidden>              
               <div class="form-text">

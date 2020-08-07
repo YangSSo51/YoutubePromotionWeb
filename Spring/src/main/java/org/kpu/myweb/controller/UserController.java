@@ -60,6 +60,7 @@ public class UserController {
 		vo.setId(enterID); 
 		enterservice.addUser(vo); // vo에 id 설정 후 enterprise_auth에 addUser
 		logger.info("user : " + user.getUsername() + user.getPassword() + user.getAuthorities());
+		// return "redirect:/register/enterprise";
 		return "/admin/enterpriseRegister";
 	}
 	

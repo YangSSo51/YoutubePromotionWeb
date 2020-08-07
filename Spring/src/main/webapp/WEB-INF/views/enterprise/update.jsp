@@ -4,7 +4,7 @@
 <body>
       <section>
             <h2 class="text-center">공고 수정하기</h2>
-            <form class="post-form" action="http://localhost:8080/myweb/enterprise/update/" method="post" enctype="multipart/form-data">
+            <form class="post-form" action="<c:url value="/enterprise/update/"/>" method="post" enctype="multipart/form-data">
               <table>
                 <tr>
                <input name="id" type="hidden" value="${EnterprisePost.id}">
@@ -41,8 +41,9 @@
                   <td>
                     <label class="filebtn">
                       Browse File
-	                  <input type="file" name="file" hidden/>
-	                  <input type="text" name="filename" value="${EnterprisePost.image}" hidden/>
+	                  <input type="file" name="file" value="${EnterprisePost.image}"/>
+	                  <input type="text" name="image" value="${EnterprisePost.image}"/>
+	                 
                     </label>
                   </td>
                 </tr>

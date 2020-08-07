@@ -51,7 +51,7 @@ public class InviteController {
 
 	private static final Logger logger = LoggerFactory.getLogger(InviteController.class);
     
-	/* 기업 초대 등록 */
+	/* 기업 초대 등록 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
     public String readYoutuberList(@RequestParam("id") int id,Model model) throws Exception {
 		List<YoutuberVO> youtuber = youtuberservice.readYoutuberList();
@@ -59,7 +59,7 @@ public class InviteController {
 		model.addAttribute("Youtuber", youtuber);
 		logger.info(" /read?id=kang URL called. then readMemebr method executed.");
         return "/enterprise/popup/popup";
-    }
+    }*/
 	
 	@RequestMapping(value = {"/"}, method = RequestMethod.POST)
 	public String signupMemberPost(@ModelAttribute("Invite") InviteVO vo,Model model) throws Exception {
@@ -102,8 +102,8 @@ public class InviteController {
 	
 	/* 유튜버 초대 목록 확인 */
 	@RequestMapping(value = {"/youtuber/list"}, method = RequestMethod.GET)
-	public String InviteListGet(@ModelAttribute("postList") EnterprisePostVO vo, Model model, HttpSession session) throws Exception{
-		int youtuberID = (Integer)session.getAttribute("id"); // 세션에서 받아온 youtuberID
+	public String InviteListGet(Model model, HttpSession session) throws Exception{
+		int youtuberID = (Integer)session.getAttribute("ID"); // 세션에서 받아온 youtuberID
 		List<InviteVO> Invite = service.readListByYoutuberID(youtuberID);
 		List<EnterprisePostVO> postList = new ArrayList<EnterprisePostVO>();
 		EnterprisePostVO temp;
