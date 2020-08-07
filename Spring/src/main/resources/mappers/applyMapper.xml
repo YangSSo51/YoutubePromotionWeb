@@ -37,4 +37,8 @@
      <select id="selectByPostId" resultType="applyVO">
  		select * from apply where postID= #{postID}
      </select>
+     
+     <select id="selectByYoutuberId" resultType="applyVO">
+ 		select * from apply where youtuberID= #{youtuberID}
+     </select>
 </mapper>  
