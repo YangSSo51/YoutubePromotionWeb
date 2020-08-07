@@ -10,6 +10,4 @@ public interface YoutuberDAO {
 	public YoutuberVO read(int id) throws Exception;
 	public void delete(int id) throws Exception;
 	public void update(YoutuberVO youtuber) throws Exception;
-	public boolean login(YoutuberVO youtuber)throws Exception;
-	public YoutuberVO viewYoutuber(YoutuberVO youtuber)throws Exception;
 }

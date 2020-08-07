@@ -11,19 +11,9 @@
  	</select>
  	
      <insert id="insert"> 
-   		insert into youtuber_auth ( url, passwd, name, image, category) values
- 		( #{url}, #{passwd}, #{name}, #{image}, #{category})
+   		insert into youtuber_auth (id, name, image, category) values
+ 		(#{id}, #{name}, #{image}, #{category})
      </insert> 
-     
- 	 <select id="login" resultType="String">
- 	 	select url from youtuber_auth
- 	 	where url=#{url} AND passwd=#{passwd}
- 	 </select>
- 	 
- 	 <select id="viewYoutuber" resultType="org.kpu.myweb.domain.YoutuberVO">
- 	 	select * from youtuber_auth
- 	 	where url=#{url} AND passwd=#{passwd}
- 	 </select>
  	
      <select id="selectByid" resultType="YoutuberVO">
  		select * from youtuber_auth where id = #{id}
@@ -36,7 +26,7 @@
      </select>
  	
      <update id="update">
-	 	update youtuber_auth set url=#{url},passwd=#{passwd},name=#{name},image=#{image},category=#{category} 
+	 	update youtuber_auth set name=#{name},image=#{image},category=#{category} 
 		 where id=#{id}
     </update>
  

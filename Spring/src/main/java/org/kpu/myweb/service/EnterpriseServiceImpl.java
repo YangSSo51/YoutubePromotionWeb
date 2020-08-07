@@ -41,23 +41,4 @@ public class EnterpriseServiceImpl implements EnterpriseService {
 		EnterpriseDAO.update(user);
 	}
 	
-	public EnterpriseVO viewUser(EnterpriseVO user) throws Exception {
-		return EnterpriseDAO.viewUser(user);
-	}
-	
-	public boolean login(EnterpriseVO user,HttpSession session) throws Exception {
-		boolean result= EnterpriseDAO.login(user);
-		if(result) {
-			EnterpriseVO user2 = viewUser(user);
-			session.setAttribute("enterNo", user2.getEnterNo());
-			session.setAttribute("name", user2.getName());
-			session.setAttribute("enterID", user2.getId());
-		}
-		return result;
-	}
-	
-	public void logout(HttpSession session) {
-		session.invalidate();
-	}
-
 }

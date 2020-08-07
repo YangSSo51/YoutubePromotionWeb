@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../navbar.jsp"%>
+
         <section>
             <h3>프로필</h3>
             <hr>
@@ -25,14 +26,14 @@
                   </tr>
                   <tr>
                     <td class="title">채널링크</td>
-                    <td class="content">${youtuber.url}</td>
+                    <td class="content">${channel}</td>
                   </tr>
                 </table>
               </div>
             </div>
             <div class="button_group">
-              <a href="<c:url value="/youtuber/delete?id=${id}"/>"><button class="button" type="button" name="button" id="out">회원탈퇴</button></a>
-              <a href="<c:url value="/youtuber/update?id=${id}"/>"><button class="button" type="button" name="button">정보수정</button></a>
+              <a href="<c:url value="/youtuber/delete?id=${ID}"/>"><button class="button" type="button" name="button" id="out">회원탈퇴</button></a>
+              <a href="<c:url value="/youtuber/update?id=${ID}"/>"><button class="button" type="button" name="button">정보수정</button></a>
             </div>
         </section>
 	

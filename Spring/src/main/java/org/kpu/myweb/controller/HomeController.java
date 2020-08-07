@@ -36,5 +36,8 @@ public class HomeController {
 		return "home";
 	}
 	
-	
+	@RequestMapping(value = "/error", method = RequestMethod.GET)
+	public String errorPage() {
+		return "error_403";
+	}
 }

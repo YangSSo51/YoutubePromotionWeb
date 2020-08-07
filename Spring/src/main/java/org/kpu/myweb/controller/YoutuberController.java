@@ -6,7 +6,9 @@ import java.io.FileInputStream;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.IOUtils;
+import org.kpu.myweb.domain.UserVO;
 import org.kpu.myweb.domain.YoutuberVO;
+import org.kpu.myweb.service.UserService;
 import org.kpu.myweb.service.YoutuberService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,6 +33,8 @@ import org.springframework.web.servlet.ModelAndView;
 public class YoutuberController {
 	@Autowired
 	private YoutuberService youtuberSerivce;
+	@Autowired
+	private UserService userService;
 	
 	
 	private static final Logger logger = LoggerFactory.getLogger(YoutuberController.class);
@@ -44,50 +48,18 @@ public class YoutuberController {
 	public String description() {
 		return "youtuber/description";
 	}
-	@RequestMapping(value = {"/login"}, method = RequestMethod.GET)
-	public String loginMemberGet() throws Exception {
-		logger.info(" /register URL GET method called. then forward login.jsp.");
-		return "youtuber/login";
-	}
-    
-	@RequestMapping(value = {"/login"}, method = RequestMethod.POST)
-	public ModelAndView loginMemberPost( @ModelAttribute("youtuber") YoutuberVO vo,HttpSession session) throws Exception {
-		boolean result = youtuberSerivce.login(vo,session);
-		ModelAndView mav = new ModelAndView();
-		if(result == true) {
-			mav.setViewName("home");
-			mav.addObject("msg","success");
-		}else {
-			mav.setViewName("redirect:/youtuber/login");
-			mav.addObject("msg","failure");
-		}
-		return mav;
-	}
-	@RequestMapping(value= {"/logout"},method=RequestMethod.GET)
-	public ModelAndView logout(HttpSession session) throws Exception {
-		youtuberSerivce.logout(session);
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("redirect:/member/login");
-		mav.addObject("msg","logout");
-		return mav;
-	}
 	
 	@RequestMapping(value = "/profile", method = RequestMethod.GET)
     public String readYoutuber(HttpSession session, Model model) throws Exception {
-		int id = (Integer) session.getAttribute("id");
+		int id = (Integer) session.getAttribute("ID");
     	YoutuberVO youtuber = youtuberSerivce.readYoutuber(id);
+    	UserVO user = userService.readUser(id);
+    	
         model.addAttribute("youtuber", youtuber);
-        model.addAttribute("id",id);
+        model.addAttribute("channel", user.getUsername());
+        model.addAttribute("ID",id);
         return "youtuber/profile";
     }
-	
-	@RequestMapping(value = "/update", method = RequestMethod.GET)
-    public String updateYoutuberGet(@RequestParam("id") int id, Model model) throws Exception {
-    	YoutuberVO youtuber = youtuberSerivce.readYoutuber(id);
-    	model.addAttribute("youtuber",youtuber);
-        return "youtuber/update";
-    }
-
 	
 	@RequestMapping(value = {"/delete"}, method = RequestMethod.GET)
 	public String recipeDelete(@RequestParam("id") int id) throws Exception {
@@ -103,8 +75,19 @@ public class YoutuberController {
         return new ResponseEntity<byte[]>(IOUtils.toByteArray(new FileInputStream(new File("C:\\temp\\"+filename))), header, HttpStatus.CREATED);
     }
     
+	@RequestMapping(value = "/update", method = RequestMethod.GET)
+    public String updateYoutuberGet(@RequestParam("id") int id, Model model) throws Exception {
+    	YoutuberVO youtuber = youtuberSerivce.readYoutuber(id);
+    	UserVO user = userService.readUser(id);
+    	model.addAttribute("channel", user.getUsername());
+    	model.addAttribute("youtuber",youtuber);
+        return "youtuber/update";
+    }
+    
     @RequestMapping(value = "/update", method = RequestMethod.POST)
-    public String updateYoutuberPost(MultipartHttpServletRequest mtf,@ModelAttribute("youtuber") YoutuberVO vo) throws Exception {
+    public String updateYoutuberPost(MultipartHttpServletRequest mtf,
+    									@ModelAttribute("youtuber") YoutuberVO vo,
+    									@ModelAttribute("user") UserVO user) throws Exception {
 		String fileTag = "file";
 		String filePath = "C:\\temp\\";
 		MultipartFile file = mtf.getFile(fileTag);
@@ -119,8 +102,12 @@ public class YoutuberController {
 		}
 		vo.setImage(image);
 		youtuberSerivce.updateYoutuber(vo);
-		System.out.println(vo.getId());
-		logger.info(vo.toString());
+		
+		logger.info("passwd : " + user.getPassword());
+		if(user.getPassword() != "") {// 비밀번호 변경
+			user.setId(vo.getId());
+			userService.updateUser(user); 
+		}
         return "redirect:/youtuber/profile";
     }
 }

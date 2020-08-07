@@ -2,8 +2,6 @@ package org.kpu.myweb.service;
 
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
 import org.kpu.myweb.domain.YoutuberVO;
 import org.kpu.myweb.persistence.YoutuberDAO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,25 +35,6 @@ public class YoutuberServiceImpl implements YoutuberService {
 	
 	public void updateYoutuber(YoutuberVO youtuber) throws Exception {
 		YoutuberDAO.update(youtuber);
-		System.out.println("Service"+youtuber.getUrl());
 	}
 	
-	public YoutuberVO viewYoutuber(YoutuberVO youtuber) throws Exception {
-		return YoutuberDAO.viewYoutuber(youtuber);
-	}
-	
-	public boolean login(YoutuberVO youtuber,HttpSession session) throws Exception {
-		boolean result= YoutuberDAO.login(youtuber);
-		if(result) {
-			YoutuberVO Youtuber2 = viewYoutuber(youtuber);
-			session.setAttribute("id", Youtuber2.getId());
-			session.setAttribute("Youtubername", Youtuber2.getName());
-		}
-		return result;
-	}
-	
-	public void logout(HttpSession session) {
-		session.invalidate();
-	}
-
 }

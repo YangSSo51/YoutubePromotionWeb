@@ -40,12 +40,4 @@ public class EnterpriseDAOImpl implements EnterpriseDAO{
 	    sqlSession.update(namespace + ".update", user);
 	}
 	
-	public boolean login(EnterpriseVO user) throws Exception{
-		String name=sqlSession.selectOne(namespace+".login",user);
-		return (name==null)?false:true;
-	}
-	
-	public EnterpriseVO viewUser(EnterpriseVO user) throws Exception{
-		return sqlSession.selectOne(namespace+".viewUser",user);
-	}
 }

@@ -11,19 +11,10 @@
  	</select>
  	
      <insert id="insert"> 
-   		insert into enterprise_auth (id, enterNo, passwd, name, category, email, address, manager) values
- 		(#{id}, #{enterNo}, #{passwd}, #{name}, #{category}, #{email}, #{address}, #{manager})
+   		insert into enterprise_auth (id, name, category, email, address, manager) values
+ 		(#{id}, #{name}, #{category}, #{email}, #{address}, #{manager})
      </insert> 
      
- 	 <select id="login" resultType="String">
- 	 	select name from enterprise_auth
- 	 	where enterNo=#{enterNo} AND passwd=#{passwd}
- 	 </select>
- 	 
- 	 <select id="viewUser" resultType="org.kpu.myweb.domain.EnterpriseVO">
- 	 	select * from enterprise_auth
- 	 	where enterNo=#{enterNo} AND passwd=#{passwd}
- 	 </select>
  	
      <select id="selectByid" resultType="EnterpriseVO">
  		select * from enterprise_auth where id=#{id}
@@ -36,8 +27,8 @@
      </select>
  	
      <update id="update">
-	 	update enterprise_auth set id=#{id}, enterNo=#{enterNo}, passwd=#{passwd}, name=#{name}, category=#{category}, 
-	 	email=#{email}, address=#{address}, manager=#{manager}} 
+	 	update enterprise_auth set 
+	 	id=#{id}, name=#{name}, category=#{category},email=#{email}, address=#{address}, manager=#{manager}} 
 	 	where id = #{id}
     </update>
  

@@ -2,7 +2,7 @@
 
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
-<% int id = (Integer)session.getAttribute("id"); %> 
+<% int ID = (Integer)session.getAttribute("ID"); %> 
 
 <style>
 #modal,#modal2{
@@ -162,7 +162,7 @@
 								<input class="input100" type="text" name="comment" placeholder="안녕하세요">
 							</div>
 							<div>
-							<input name="youtuberID" type="hidden" class="form-control" value=<%=id%>	>
+							<input name="youtuberID" type="hidden" class="form-control" value=<%=ID%>	>
 							<input name="postID" type="hidden" class="form-control" value=${id}>
 					
 							<input type="submit" value="Submit">

@@ -1,26 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../navbar.jsp"%>
-<% String enterNo = (String)session.getAttribute("enterNo"); %> 
-<% int enterID = (Integer)session.getAttribute("enterID"); %> 
+<% int ID = (Integer)session.getAttribute("ID"); %> 
 
 <body>
-<% 	String msg=null;
-	if(enterNo == null){
-		msg = "로그인이 필요합니다.";
-		%>
-		<script> // alert 메세지
-		alert("<%=msg%>");
-		document.location.href="/myweb/enterprise/login"
-		</script>
-	<%
-	}
-	%>
+
 	   <section>
             <h2 class="text-center">공고 등록하기</h2>
             <form class="post-form" action="http://localhost:8080/myweb/enterprise/post/" method="post" enctype="multipart/form-data">
               <table>
                 <tr>
- 				<input name="enterID" type="hidden" value=<%=enterID%> >
+ 				<input name="enterID" type="hidden" value=<%=ID%> >
 
                   <td>
                     <div class="form-text">

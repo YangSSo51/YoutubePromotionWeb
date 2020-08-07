@@ -24,43 +24,7 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping(value="/enterprise")
 public class EnterpriseController {
 	
-
-
 	@Autowired
 	private EnterpriseService enterpriseService;
-	
-	
-	private static final Logger logger = LoggerFactory.getLogger(EnterpriseController.class);
-
-    
-	
-	@RequestMapping(value = {"/login"}, method = RequestMethod.GET)
-	public String loginMemberGet() throws Exception {
-		logger.info(" /register URL GET method called. then forward login.jsp.");
-		return "enterprise/login";
-	}
-
-	@RequestMapping(value = {"/login"}, method = RequestMethod.POST)
-	public ModelAndView loginMemberPost( @ModelAttribute("enterprise") EnterpriseVO vo,HttpSession session) throws Exception {
-		//boolean result = userService.login(vo, session);
-		boolean result = enterpriseService.login(vo,session);
-		ModelAndView mav = new ModelAndView();
-		if(result == true) {
-			mav.setViewName("home");
-			mav.addObject("msg","success");
-		}else {
-			mav.setViewName("redirect:/enterprise/login");
-			mav.addObject("msg","failure");
-		}
-		return mav;
-	}
-	@RequestMapping(value= {"/logout"},method=RequestMethod.GET)
-	public ModelAndView logout(HttpSession session) throws Exception {
-		enterpriseService.logout(session);
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("redirect:/enterprise/login");
-		mav.addObject("msg","logout");
-		return mav;
-	}
 
 }

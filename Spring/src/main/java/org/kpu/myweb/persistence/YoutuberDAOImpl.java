@@ -39,18 +39,7 @@ public class YoutuberDAOImpl implements YoutuberDAO {
 
 	public void update(YoutuberVO youtuber) throws Exception {
 		// TODO Auto-generated method stub
-		System.out.println("DAO"+youtuber.getUrl());
 	    sqlSession.update(namespace + ".update", youtuber);
 	}
 	
-	public boolean login(YoutuberVO youtuber) throws Exception{
-		String url=sqlSession.selectOne(namespace+".login",youtuber);
-		return (url==null)?false:true;
-	}
-	
-	public YoutuberVO viewYoutuber(YoutuberVO youtuber) throws Exception{
-		return sqlSession.selectOne(namespace+".viewYoutuber",youtuber);
-		
-	}
-
 }
