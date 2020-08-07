@@ -3,12 +3,17 @@ package org.kpu.myweb.controller;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.io.IOUtils;
 import org.kpu.myweb.domain.ApplyVO;
+import org.kpu.myweb.domain.EnterprisePostVO;
 import org.kpu.myweb.domain.InviteVO;
+import org.kpu.myweb.domain.YoutuberVO;
 import org.kpu.myweb.service.ApplyService;
+import org.kpu.myweb.service.EnterprisePostService;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,11 +33,13 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 
 @Controller
-@RequestMapping(value="/youtuber/apply")
+@RequestMapping(value="/apply")
 public class ApplyController {
 	
 	@Autowired
     private ApplyService service;
+	@Autowired
+	private EnterprisePostService postService;
 
 	private static final Logger logger = LoggerFactory.getLogger(ApplyController.class);
     
@@ -88,4 +95,21 @@ public class ApplyController {
 		logger.info(" /register URL GET method called. then forward detail.jsp.");
 		return "redirect:/enterprise/list";
 	}
+	
+	/* 기업 공고별 지원 현황 확인 */
+	@RequestMapping(value = {"/youtuber/list"}, method = RequestMethod.GET)
+	public String ApplyListGet(@RequestParam int id, Model model) throws Exception {
+		List<ApplyVO> apply = service.readListByYoutuberID(id); 
+		List<EnterprisePostVO> post = new ArrayList<EnterprisePostVO>();
+		EnterprisePostVO temp;
+		
+		for(int i=0; i<apply.size(); i++) {
+			temp = postService.readEnterprisePost(apply.get(i).getPostID());
+			post.add(temp);
+		}
+		model.addAttribute("Apply", apply);
+		model.addAttribute("Post", post);
+		logger.info(" /register URL GET method called. then forward list.jsp.");
+		return "youtuber/apply_status";
+	}     
 }

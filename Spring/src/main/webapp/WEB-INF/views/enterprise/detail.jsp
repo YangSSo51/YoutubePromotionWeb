@@ -174,7 +174,7 @@
     				<div class="modal_layer"></div>
 				</div>
         </section>
-<script language="javascript">
+		<script language="javascript">
 		// Modal 
 		document.getElementById("modal_open_btn").onclick = function() {
         	document.getElementById("modal").style.display="block";

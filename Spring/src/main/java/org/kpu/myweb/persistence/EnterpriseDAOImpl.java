@@ -16,7 +16,7 @@ public class EnterpriseDAOImpl implements EnterpriseDAO{
 	private static final String namespace = "org.kpu.myweb.mapper.enterpriseMapper";
 
 	public EnterpriseVO read(int id) throws Exception {
-		EnterpriseVO vo = sqlSession.selectOne(namespace+".selectByid", id);
+		EnterpriseVO vo = sqlSession.selectOne(namespace+".selectById", id);
 		return vo;   
 	}
  

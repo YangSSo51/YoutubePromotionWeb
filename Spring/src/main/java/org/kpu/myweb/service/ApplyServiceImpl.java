@@ -38,6 +38,9 @@ public class ApplyServiceImpl implements ApplyService{
 	public List<ApplyVO> readListByPostID(int id) throws Exception{
 		return ApplyDAO.readListByPostID(id);
 	}
+	public List<ApplyVO> readListByYoutuberID(int id) throws Exception{
+		return ApplyDAO.readListByYoutuberID(id);
+	}
 	public boolean checkOverlap(List<ApplyVO> list, ApplyVO vo) throws Exception{
 		for(int i = 0; i < list.size(); i++) {
 			if(list.get(i).getPostID() == vo.getPostID() && list.get(i).getYoutuberID() == vo.getYoutuberID())

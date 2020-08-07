@@ -46,4 +46,9 @@ public class ApplyDAOImpl  implements ApplyDAO{
 		applylist = sqlSession.selectList(namespace + ".selectByPostId", id);
 		return applylist;
 	}
+	public List<ApplyVO> readListByYoutuberID(int id) throws Exception {
+		List<ApplyVO> applylist = new ArrayList<ApplyVO>();
+		applylist = sqlSession.selectList(namespace + ".selectByYoutuberId", id);
+		return applylist;
+	}
 }
