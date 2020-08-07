@@ -6,6 +6,8 @@ import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.apache.commons.io.IOUtils;
 import org.kpu.myweb.domain.ApplyVO;
 import org.kpu.myweb.domain.EnterprisePostVO;
@@ -73,7 +75,7 @@ public class EnterprisePostController {
 		vo.setImage(fileName);
 		logger.info("file : " + filePath+fileName );
 		try{
-			file.transferTo(new File(filePath+fileName)); // �뙆�씪 ���옣
+			file.transferTo(new File(filePath+fileName)); // 파일 저장
 		}catch(Exception e) {
 			System.out.println("업로드 오류");
 		}
@@ -107,7 +109,9 @@ public class EnterprisePostController {
 		String filePath = "C:\\temp\\";
 		MultipartFile file = mtf.getFile(fileTag);
 		String fileName = file.getOriginalFilename();
+		System.out.println("이미지"+fileName);
 		if(fileName!="") {
+			System.out.println("이미지 공백아님"+fileName);
 			vo.setImage(fileName);
 			try{
 				file.transferTo(new File(filePath+fileName));
@@ -116,7 +120,6 @@ public class EnterprisePostController {
 			}
 		}
     	service.updateEnterprisePost(vo);
-		logger.info(vo.toString());
         return "redirect:/enterprise/list";
     }
 
@@ -132,7 +135,8 @@ public class EnterprisePostController {
 	@RequestMapping(value = {"/detail"}, method = RequestMethod.GET)
 	public String EnterprisePostDetailById(@RequestParam("id") int id,Model model) throws Exception {
 		EnterprisePostVO EnterprisePost = service.readEnterprisePost(id);
-		EnterpriseVO vo = enterservice.readUser(EnterprisePost.getEnterID());
+		int enterID = EnterprisePost.getEnterID();	//post에 있는 enterID가져옴
+		EnterpriseVO vo = enterservice.readUser(enterID);	//enterpriser_auth에서 유저정보 읽어옴
 		List<YoutuberVO> youtuber = youtuberservice.readYoutuberList();
 
 		model.addAttribute("EnterprisePost",EnterprisePost);
@@ -155,8 +159,8 @@ public class EnterprisePostController {
     
     /* 내가 올린 공고 확인 */
 	@RequestMapping(value = {"/mypost"}, method = RequestMethod.GET)
-	public String MyPostListGet(@ModelAttribute("EnterprisePost") EnterprisePostVO vo,Model model) throws Exception {
-		int enterid = 1;
+	public String MyPostListGet(@ModelAttribute("EnterprisePost") EnterprisePostVO vo,Model model, HttpSession session) throws Exception {
+		int enterid = (Integer)session.getAttribute("ID");
 		List<EnterprisePostVO> EnterprisePost = service.readMyEnterprisePost(enterid);
 		model.addAttribute("EnterprisePost",EnterprisePost);
 		model.addAttribute("count",0);

@@ -117,7 +117,7 @@
 						<!-- content1 : 유튜버 목록  -->
 						<div class="content1">
 							<h2>유튜버 리스트</h2>
-							<form method="post" action="http://localhost:8080/myweb/enterprise/invite/">
+							<form method="post" action="<c:url value="/invite/"/>">
 								<c:forEach items="${Youtuber}" var="YoutuberVO">
 								<div>
 									<label><input type="checkbox" name="youtuberID" value=${YoutuberVO.id}>${YoutuberVO.name}</label>
@@ -144,7 +144,7 @@
     				<div class="modal_content">
 						<h2>신청하기</h2>
 						<div class="content">
-							<form method="post" action="<c:url value="/youtuber/apply" />">
+							<form method="post" action="<c:url value="/apply/" />">
 							<div>
 								<span class="label-input100">category</span>
 								<input class="input100" type="text" name="category" placeholder="뷰티">
@@ -163,7 +163,7 @@
 							</div>
 							<div>
 							<input name="youtuberID" type="hidden" class="form-control" value=<%=ID%>>
-							<input name="postID" type="hidden" class="form-control" value=${id}>
+							<input name="postID" type="hidden" class="form-control" value=${EnterprisePost.id}>
 					
 							<input type="submit" value="Submit">
 							</div>

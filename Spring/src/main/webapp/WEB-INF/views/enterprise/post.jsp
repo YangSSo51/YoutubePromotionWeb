@@ -45,7 +45,7 @@
                     <label class="filebtn">
                       Browse File
 	                  <input type="file" name="file" hidden/>
-	                  <input type="text" name="filename" hidden/>
+	                  <input type="text" name="image" />
                     </label>
                   </td>
                 </tr>

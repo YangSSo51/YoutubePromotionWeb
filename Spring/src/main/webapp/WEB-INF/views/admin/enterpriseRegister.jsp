@@ -6,9 +6,28 @@
 <head>
 <meta charset="UTF-8">
 <title>기업 회원 등록</title>
+
+<!-- password 암호화  -->
+<script    src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+<script    src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/sha256.js"></script>
+<script type="text/javascript">
+	function encrypt(){ 
+		   console.log("암호화 패스워드 : ");
+	       var passphrase="123456";
+	       var password = document.getElementById("password");
+	       console.log("패스워드 : " + password.value);
+	       var encrypt = CryptoJS.AES.encrypt(password.value, passphrase).toString();
+
+	       console.log("암호화 패스워드2 : " + encrypt);
+    	   password.value = encyrpt; // 암호화 한 값으로 등록
+    	   
+           document.loginForm.submit();
+	}
+</script>
 </head>
+
 <body>
-	<form class="login100-form validate-form"  name=form1 method="post" action="<c:url value="/register/enterprise" />"  >
+	<form class="login100-form validate-form"  name="loginForm" method="post" action="<c:url value="/register/enterprise" />"  >
 		<sec:csrfInput/>
 		<span class="login100-form-title p-b-49">
 			<h2>Register</h2>
@@ -62,7 +81,7 @@
 			<div class="container-login100-form-btn">
 				<div class="wrap-login100-form-btn">
 					<div class="login100-form-bgbtn"></div>
-						<button class="login100-form-btn">
+						<button class="login100-form-btn" onclick="encrypt();">
 							Sign
 						</button>
 					</div>

@@ -22,10 +22,25 @@
 	});
 </script>
 
+<!-- Password Encode -->
+<script    src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+<script    src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/sha256.js"></script>
+<script type="text/javascript">
+	function encrypt(){ 
+	       var passphrase="1234";
+	       var password = document.getElementById("password");
+	       var encrypt = CryptoJS.AES.encrypt(password.value.toString(),passphrase);
+	       
+    	   password.value = encyrpt; // 암호화 한 값으로 등록
+    	   
+           document.loginForm.submit();
+	}
+</script>
+
 <body>
 	     <section>
             <h2 class="text-center">Login</h2>
-            <form class="login-form" name=form1 action="<c:url value="/login"/>" method="post">
+            <form class="login-form" name=loginForm action="<c:url value="/login"/>" method="post" >
               <div class="form-text">
                 	ID
               </div>
@@ -34,7 +49,7 @@
                 Password
               </div>
               <input class="form-input" type="password" name="password" placeholder="Type your password">
-              <a href="#"><button class="button" type="submit" name="button">LOGIN</button></a>
+              <a href="#"><button class="button" type="submit" name="button" onclick="encrypt()">LOGIN</button></a>
             </form>
         </section>
 	

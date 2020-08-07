@@ -29,7 +29,6 @@
 		<security:csrf disabled="true"/>
 		
 		<security:intercept-url pattern="/" access="permitAll()" />
-		<security:intercept-url pattern="/register" access="permitAll()" />
 		<security:intercept-url pattern="/login" access="permitAll()" />
 		
 		<security:intercept-url pattern="/admin/**" access="hasAuthority('ROLE_ADMIN')" />

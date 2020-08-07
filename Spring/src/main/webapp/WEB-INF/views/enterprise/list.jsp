@@ -13,8 +13,8 @@
             <hr>
             <h6>선정완료</h6>
             <div>
-            <form class="right_form" action="http://localhost:8080/myweb/enterprise/search" method="post">
-              <input type="search" name="" value="">
+            <form class="right_form" action="<c:url value="/enterprise/search"/>" method="post">
+              <input type="search" name="title" value="">
               <button type="submit" name="button">검색</button>
             </form>
             </div>

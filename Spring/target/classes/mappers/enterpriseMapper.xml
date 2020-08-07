@@ -16,7 +16,7 @@
      </insert> 
      
  	
-     <select id="selectByid" resultType="EnterpriseVO">
+     <select id="selectById" resultType="EnterpriseVO">
  		select * from enterprise_auth where id=#{id}
      </select>
  	
