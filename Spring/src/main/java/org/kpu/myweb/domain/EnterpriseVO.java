@@ -2,8 +2,6 @@ package org.kpu.myweb.domain;
 
 public class EnterpriseVO {
 	int id;
-	String enterNo;
-	String passwd;
 	String name;
 	String category;
 	String email;
@@ -15,18 +13,6 @@ public class EnterpriseVO {
 	}
 	public void setId(int id) {
 		this.id = id;
-	}
-	public String getEnterNo() {
-		return enterNo;
-	}
-	public void setEnterNo(String enterNo) {
-		this.enterNo = enterNo;
-	}
-	public String getPasswd() {
-		return passwd;
-	}
-	public void setPasswd(String passwd) {
-		this.passwd = passwd;
 	}
 	public String getName() {
 		return name;

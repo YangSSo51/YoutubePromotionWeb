@@ -2,7 +2,7 @@ package org.kpu.myweb.controller;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.InputStream;
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +13,7 @@ import org.kpu.myweb.domain.EnterpriseVO;
 import org.kpu.myweb.domain.YoutuberVO;
 import org.kpu.myweb.service.EnterprisePostService;
 import org.kpu.myweb.service.EnterpriseService;
+import org.kpu.myweb.service.UserService;
 import org.kpu.myweb.service.YoutuberService;
 import org.kpu.myweb.service.ApplyService;
 import org.slf4j.Logger;
@@ -22,6 +23,8 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -40,6 +43,8 @@ public class EnterprisePostController {
 	@Autowired
     private EnterprisePostService service;
 	@Autowired
+    private UserService userservice;
+	@Autowired
     private EnterpriseService enterservice;
 	@Autowired
 	private ApplyService applyservice;
@@ -47,16 +52,20 @@ public class EnterprisePostController {
 	private YoutuberService youtuberservice;
 
 	private static final Logger logger = LoggerFactory.getLogger(EnterprisePostController.class);
-    
+	Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
 	/* 기업 공고 등록 */
 	@RequestMapping(value = {"/post"}, method = RequestMethod.GET)
 	public String postEnterprisePostGet() throws Exception {
-		logger.info(" /register URL GET method called. then forward post.jsp.");
+		logger.info(" /register URL GET method called. then forward post.jsp.");	
 		return "/enterprise/post";
 	}
 	
 	@RequestMapping(value = {"/post"}, method = RequestMethod.POST)
-	public String postEnterprisePost(MultipartHttpServletRequest mtf, @ModelAttribute("EnterprisePost") EnterprisePostVO vo) throws Exception {
+	public String postEnterprisePost(MultipartHttpServletRequest mtf, 
+									Principal principal,
+									@ModelAttribute("EnterprisePost") EnterprisePostVO vo) throws Exception {
+		
 		String fileTag = "file";
 		String filePath = "C:\\temp\\";
 		MultipartFile file = mtf.getFile(fileTag);
@@ -64,7 +73,7 @@ public class EnterprisePostController {
 		vo.setImage(fileName);
 		logger.info("file : " + filePath+fileName );
 		try{
-			file.transferTo(new File(filePath+fileName)); // 파일 저장
+			file.transferTo(new File(filePath+fileName)); // �뙆�씪 ���옣
 		}catch(Exception e) {
 			System.out.println("업로드 오류");
 		}
@@ -84,7 +93,7 @@ public class EnterprisePostController {
 	}
 	
 	
-	/* 기업 공고 수정 */
+	/* 기업 공고 수정  */
     @RequestMapping(value = "/update", method = RequestMethod.GET)
     public String updateEnterprisePostGet(@RequestParam("id") int id, Model model) throws Exception {
     	EnterprisePostVO EnterprisePost = service.readEnterprisePost(id);

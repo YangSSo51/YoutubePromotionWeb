@@ -9,6 +9,4 @@ public interface EnterpriseDAO {
 	public EnterpriseVO read(int id) throws Exception;
 	public void delete(int id) throws Exception;
 	public void update(EnterpriseVO user) throws Exception;
-	public boolean login(EnterpriseVO user)throws Exception;
-	public EnterpriseVO viewUser(EnterpriseVO user)throws Exception;
 }

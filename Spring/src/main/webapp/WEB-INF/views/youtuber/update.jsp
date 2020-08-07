@@ -13,19 +13,19 @@
               <div class="form-text">
                 Youtube URL
               </div>
-              <input class="form-input" type="text"  name="url" value="${youtuber.url }" autofocus>
+              <input class="form-input" type="text"  name="username" value="${channel}" autofocus>
               <div class="form-text">
                 Password
               </div>
-              <input class="form-input" type="password" name="passwd" value=${youtuber.passwd }>
+              <input class="form-input" type="password" name="password" value=>
               <div class="form-text">
                 Name
               </div>
-              <input class="form-input" type="text" name="name" value=${youtuber.name }>
+              <input class="form-input" type="text" name="name" value="${youtuber.name}">
               <div class="form-text">
                 Category
               </div>
-              <input class="form-input" type="text" name="category" value=${youtuber.category }>
+              <input class="form-input" type="text" name="category" value="${youtuber.category}">
               <a href="#"><button class="button" type="submit" name="button">수정하기</button></a>
             </form>
         </section>
