@@ -83,7 +83,7 @@ public class UserController {
 	@RequestMapping(value = {"/delete"}, method = RequestMethod.GET)
 	public String recipeDelete(@RequestParam("id") int id) throws Exception {
 		service.deleteUser(id);
-		return "redirect:/login";
+		return "redirect:/home";
 	}
 		/*비밀번호 확인*/
 		@RequestMapping(value = {"/password"}, method = RequestMethod.GET)
@@ -97,10 +97,7 @@ public class UserController {
 			boolean result = service.login(vo);
 			if(result == true) {
 				if(next.equals("update")) return "redirect:/youtuber/update?id="+vo.getId();
-				else return "redirect:/ "
-						+ ""
-						+ ""
-						+ "delete?id="+vo.getId();
+				else return "redirect:/delete?id="+vo.getId();
 			}else {
 				model.addAttribute("result","실패");
 			}
