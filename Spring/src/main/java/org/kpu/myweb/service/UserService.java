@@ -14,4 +14,5 @@ public interface UserService {
 	public void updateUser(UserVO User) throws Exception;
 	public UserVO viewUser(UserVO vo) throws Exception;
 	public Integer readID(String username) throws Exception;
+	public boolean login(UserVO vo) throws Exception;
 }

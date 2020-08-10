@@ -64,7 +64,7 @@ public class YoutuberController {
 	@RequestMapping(value = {"/delete"}, method = RequestMethod.GET)
 	public String recipeDelete(@RequestParam("id") int id) throws Exception {
 		youtuberSerivce.deleteYoutuber(id);
-		return "redirect:/youtuber/login";
+		return "redirect:/login";
 	}
 	
 	@RequestMapping("/getImage")

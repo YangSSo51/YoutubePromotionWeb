@@ -32,8 +32,8 @@
               </div>
             </div>
             <div class="button_group">
-              <a href="<c:url value="/youtuber/delete?id=${ID}"/>"><button class="button" type="button" name="button" id="out">회원탈퇴</button></a>
-              <a href="<c:url value="/youtuber/update?id=${ID}"/>"><button class="button" type="button" name="button">정보수정</button></a>
+              <a href="<c:url value="/password?next=delete"/>"><button class="button" type="button" name="button" id="out">회원탈퇴</button></a>
+              <a href="<c:url value="/password?next=update"/>"><button class="button" type="button" name="button">정보수정</button></a>
             </div>
         </section>
 	
