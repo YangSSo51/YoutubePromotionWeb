@@ -43,7 +43,7 @@ public class UserController {
 
 	// 로그인 
 	@RequestMapping(value="/login", method=RequestMethod.GET)
-	public String login(@RequestParam(value="error", required=false) String error, Model model) {
+	public String login(@RequestParam(value="msg", required=false) String msg, Model model) {
 		logger.info("Is this process login?");
 		return "/login";
 	}
