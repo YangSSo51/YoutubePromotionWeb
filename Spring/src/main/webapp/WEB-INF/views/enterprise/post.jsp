@@ -67,7 +67,14 @@
                     </div>
                   </td>
                   <td>
-                    <input class="form-input" type="text" name="category" placeholder="" id="recuitCnt" >
+                  	<select name="category">
+                  		<option value="네일">네일</option>
+                  		<option value="헤어">헤어</option>
+                  		<option value="바디">바디</option>
+                  		<option value="헬스">헬스</option>
+						<option value="뷰티">뷰티</option>
+                  		<option value="메이크업">메이크업</option>                  		
+                  	</select>
                   </td>
                 </tr>
                 <tr>
