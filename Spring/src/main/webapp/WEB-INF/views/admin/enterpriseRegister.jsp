@@ -8,41 +8,13 @@
 <title>기업 회원 등록</title>
 
 <!-- Password Encode -->
-<script    src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
-<script    src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/sha256.js"></script>
-<script type="text/javascript">
-	function encrypt(){ 
-	       var passphrase="1234";
-	       var username = document.getElementById("username").value;
-		   var password = document.getElementById("password").value;
-
-		   if(!username){
-				alert("아이디를 입력하세요.");
-				document.getElementById("username").focus();
-				return false;
-			}
-		   else if(!password){
-				alert("비밀번호를 입력하세요.");
-				document.getElementById("password").focus();
-				return false;
-			}
-		   else{
-			   var encrypt = CryptoJS.AES.encrypt(password.toString(), passphrase);
-	    	   var form = document.loginForm;
-	    	   form.password.value=encrypt;  // 암호화 한 값으로 등록
-			   alert(form.password.value);
-			   var decrypt = CryptoJS.AES.decrypt(encrypt, passphrase);
-			   var text = decrypt.toString(CryptoJS.enc.Utf8);
-			  // alert(text);
-			   
-	           return true;
-		   }
-	}
-</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/sha256.js"></script>
+<script type="text/javascript" src="<c:url value="/resources/passwordEncrypt.js"/>"></script>
 </head>
 
 <body>
-	<form class="login100-form validate-form"  name="loginForm" method="post" onsubmit="return encrypt()" >
+	<form class="login100-form validate-form"  name="loginForm" method="post" action="<c:url value="/register/enterprise"/>"onsubmit="return encrypt()" >
 		<sec:csrfInput/>
 		<span class="login100-form-title p-b-49">
 			<h2>Register</h2>
@@ -92,7 +64,7 @@
 			<input class="input100" type="text" name="manager" placeholder="">
 			<span class="focus-input100" data-symbol="&#xf190;"></span>
 		</div>
-		<a href="#"><button class="button" name="signUpBtn">SIGN</button></a>
+		<button class="button" name="signUpBtn">SIGN</button>
 		</form>
 </body>
 </html>
