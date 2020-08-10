@@ -19,6 +19,10 @@
 			<property name="username" value="username"/>
 			<property name="defaultUrl" value="/" />		
 	</bean>	
+	<bean id="LoginFailureHandler" class="org.kpu.myweb.handler.LoginFailureHandler">
+			<property name="msg" value="msg"/>
+			<property name="defaultUrl" value="/" />		
+	</bean>	
 	
 	<!-- Encode Password -->
 	<bean id="encoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
@@ -39,11 +43,10 @@
 		<security:form-login
 			always-use-default-target="true"
 			login-page="/login"
-			login-processing-url="/login" 
-			authentication-failure-url="/login"
 			username-parameter="username"
 			password-parameter="password"
-			authentication-success-handler-ref="LoginSuccessHandler" />
+			authentication-success-handler-ref="LoginSuccessHandler"
+			authentication-failure-handler-ref="LoginFailureHandler" />
 			
 		<security:logout
 			logout-url="/logout"
