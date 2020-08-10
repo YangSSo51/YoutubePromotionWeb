@@ -94,4 +94,10 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 	public Integer readID(String username) throws Exception{
 		return UserDAO.readID(username);
 	}
+	
+	/*로그인*/
+	public boolean login(UserVO user) throws Exception {
+		boolean result= UserDAO.login(user);
+		return result;
+	}
 }

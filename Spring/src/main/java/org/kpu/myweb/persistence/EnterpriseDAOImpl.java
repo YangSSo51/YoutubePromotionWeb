@@ -28,7 +28,7 @@ public class EnterpriseDAOImpl implements EnterpriseDAO{
 	
 	public void add(EnterpriseVO vo) throws Exception {
 		sqlSession.insert(namespace + ".insert", vo);
-	}
+	} 
 
 	public void delete(int id) throws Exception {
 		// TODO Auto-generated method stub

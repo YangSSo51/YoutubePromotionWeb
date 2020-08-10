@@ -26,7 +26,7 @@
      </select>
  	
      <update id="update">
-	 	update youtuber_auth set name=#{name},image=#{image},category=#{category} 
+	 	update youtuber_auth set image=#{image},category=#{category} 
 		 where id=#{id}
     </update>
  

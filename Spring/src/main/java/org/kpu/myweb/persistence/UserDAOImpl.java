@@ -16,7 +16,7 @@ public class UserDAOImpl implements UserDAO {
 	private static final String namespace = "org.kpu.myweb.mapper.userMapper";
 
 	public UserVO read(int id) throws Exception {
-		UserVO vo = sqlSession.selectOne(namespace+".selectByid", id);
+		UserVO vo = sqlSession.selectOne(namespace+".selectById", id);
 		return vo;   
 	}
  
@@ -41,8 +41,8 @@ public class UserDAOImpl implements UserDAO {
 	}
 	
 	public boolean login(UserVO User) throws Exception{
-		String url=sqlSession.selectOne(namespace+".login",User);
-		return (url==null)?false:true;
+		String id=sqlSession.selectOne(namespace+".login",User);
+		return (id==null)?false:true;
 	}
 	
 	public UserVO viewUser(UserVO User) throws Exception{
