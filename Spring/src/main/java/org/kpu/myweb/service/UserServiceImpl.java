@@ -45,7 +45,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 		try {
 			logger.info("loadUserByUsername");
 			userInfo = UserDAO.readByUserID(username);
-		
+			
 			user.setUsername(userInfo.getUsername());
 			user.setPassword(userInfo.getPassword());
 			logger.info("userInfo : " + userInfo.getUsername() + userInfo.getPassword());
