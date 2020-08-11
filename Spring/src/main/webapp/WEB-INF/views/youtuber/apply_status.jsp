@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../navbar.jsp"%>
+<style>
+#result{
+	width:50px;
+	background-color:#fff;
+	color:#000;
+}
+</style>
    <script language="javascript">	
 		function showResult(result){
 			var str;
@@ -34,8 +41,8 @@
                     ${Apply[status.index].category}
                   </td>
                   <td>
-					<script>showResult(${Apply[status.index].result})</script>
-                  </td>
+                  	<button id='result'><script>showResult(${Apply[status.index].result})</script></button>
+                   </td>
 
                 </tr>
                 </c:forEach>
