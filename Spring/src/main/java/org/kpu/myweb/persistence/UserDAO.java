@@ -12,7 +12,9 @@ public interface UserDAO {
 	public void update(UserVO User) throws Exception;
 	public boolean login(UserVO User)throws Exception;
 	public UserVO viewUser(UserVO User)throws Exception;
-	public UserVO readByUserID(String userID) throws Exception;
-	public List<String> readAuthByUserID(String userID) throws Exception;
-	public Integer readID(String username) throws Exception;
+	
+	public UserVO readByUsername(String username) throws Exception;
+	public UserVO readByUserID(int id) throws Exception;
+	public String readAuthByUsername(String username) throws Exception;
+	public Integer readIDByUsername(String username) throws Exception;
 }
