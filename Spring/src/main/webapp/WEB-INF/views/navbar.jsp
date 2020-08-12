@@ -32,7 +32,7 @@
         <nav>
           <a href="<c:url value="/"/>">홈</a>
           <a href="<c:url value="/enterprise/list"/>">비즈니스</a>
-          <a href="#">프로필</a>
+          <a href="<c:url value="/youtuber/profile"/>">마이페이지</a>
           <a href="<c:url value="/youtuber/question"/>">고객센터</a>
           
            <sec:authorize access="isAnonymous()">

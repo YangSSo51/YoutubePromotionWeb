@@ -196,7 +196,30 @@ hr{
 .url{
 	margin-top: 20px;
 }
-
+/*mypage*/
+.my-list{
+	float:left;
+	border: 1px solid #FF97B6;
+	border-radius: 1px;
+}
+.my-list .mypage{
+	font-weight: 600;
+	border-bottom :1px solid #FF97B6;
+}
+.my-list li{
+	font-size : 18px;
+	padding: 15px 30px;
+}
+.my-list li:hover{
+	background-color:#FF97B6;
+	color:#fff;
+}
+.my-list a:hover{
+	color:#fff;
+}
+.right-container{
+	margin-left: 20%;
+}
 /*profile page*/
 
 .image{
