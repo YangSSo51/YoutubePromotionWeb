@@ -63,9 +63,18 @@ public class YoutuberController {
     	YoutubeAPI2 api = new YoutubeAPI2();
     	profile = api.getYoutubeProfile(channelId); // 0 : 채널명, 1 : 채널개설일, 2: 구독자수
     	
+    	// 구독자 수 (만 단위)
+    	String subscriber = "";
+    	int size = profile.get(2).length();
+    	if(size > 5)
+    	subscriber = profile.get(2).substring(0, size-4) + "만 " 
+    			+ profile.get(2).substring(size-4, size) + "명";
+    	else
+    		subscriber = profile.get(2) + "명";
+    	
     	model.addAttribute("channelTitle", profile.get(0));
     	model.addAttribute("publishedDate", profile.get(1));
-    	model.addAttribute("subscriber", profile.get(2));
+    	model.addAttribute("subscriber", subscriber);
         model.addAttribute("youtuber", youtuber);
         model.addAttribute("channelUrl", "https://www.youtube.com/channel/" + channelId);
         model.addAttribute("ID",id);
