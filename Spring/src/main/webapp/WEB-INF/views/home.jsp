@@ -21,7 +21,7 @@
           <div class="category">
             <ul class="home-list">
               <li>
-                <a href="#" class="inner">
+                <a href="<c:url value="/enterprise/search?category=네일"/>" class="inner">
                   <div class="thumb">
                     <img src="<c:url value="/resources/images/youtuber.jpg"/>" alt="" width="250px">   
                   </div>
@@ -31,7 +31,7 @@
                 </a>
               </li>
               <li>
-                <a href="#" class="inner">
+                <a href="<c:url value="/enterprise/search?category=헤어"/>" class="inner">
                   <div class="thumb">
                     <img src="<c:url value="/resources/images/youtuber.jpg"/>" alt="" width="250px">   
                   </div>
@@ -41,7 +41,7 @@
                 </a>
               </li>
               <li>
-                <a href="#" class="inner">
+                <a href="<c:url value="/enterprise/search?category=바디"/>" class="inner">
                   <div class="thumb">
                     <img src="<c:url value="/resources/images/youtuber.jpg"/>" alt="" width="250px">   
                   </div>
@@ -51,7 +51,7 @@
                 </a>
               </li>
               <li>
-                <a href="#" class="inner">
+                <a href="<c:url value="/enterprise/search?category=헬스"/>" class="inner">
                   <div class="thumb">
                     <img src="<c:url value="/resources/images/youtuber.jpg"/>" alt="" width="250px">   
                   </div>
@@ -61,17 +61,17 @@
                 </a>
               </li>
               <li>
-                <a href="#" class="inner">
+                <a href="<c:url value="/enterprise/search?category=뷰티"/>" class="inner">
                   <div class="thumb">
                     <img src="<c:url value="/resources/images/youtuber.jpg"/>" alt="" width="250px">   
                   </div>
                   <div class="desc">
-                      Fashion
+                    Beauty
                   </div>
                 </a>
               </li>
               <li>
-                <a href="#" class="inner">
+                <a href="<c:url value="/enterprise/search?category=메이크업"/>" class="inner">
                   <div class="thumb">
                     <img src="<c:url value="/resources/images/youtuber.jpg"/>" alt="" width="250px">   
                   </div>

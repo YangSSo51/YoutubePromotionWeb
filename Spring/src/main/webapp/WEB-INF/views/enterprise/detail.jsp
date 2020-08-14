@@ -90,7 +90,7 @@
 	                    <button type="button" id="modal_close_btn">취소</button>
 	                    <button type="submit" id="submit">초대하기</button>
 	                  </div>
-				</form>
+				  </form>
                  
                 </div>
               </div><!--modal layer-->

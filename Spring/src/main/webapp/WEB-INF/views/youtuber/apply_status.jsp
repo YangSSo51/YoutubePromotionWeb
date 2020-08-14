@@ -46,9 +46,9 @@
                 <c:forEach items="${Apply}" varStatus="status">   
                  <c:set var="i" value="${i+1 }"/>
                 <tr>
-                  <td style="width:30px;"><c:out value="${i}"/></td>
+                  <td style="width:30px; padding-left:10px;" ><c:out value="${i}"/></td>
                   <td>
-                    ${Post[status.index].title}
+                   <a href="<c:url value="/enterprise/detail?id=${Post[status.index].id}"/>">${Post[status.index].title}</a>
                   </td>
                   <td>
                     ${Apply[status.index].category}
