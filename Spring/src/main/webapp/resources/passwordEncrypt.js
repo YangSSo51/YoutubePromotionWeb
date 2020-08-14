@@ -4,7 +4,6 @@
 	    var iv = CryptoJS.enc.Utf8.parse(init_iv);
 	    var cipherData = CryptoJS.AES.encrypt(pText, key, {iv: iv});
 	    return cipherData;
-	
 	}
 	function decrypt_data(cipherText, init_key, init_iv) {
 	    var key = CryptoJS.enc.Utf8.parse(init_key);

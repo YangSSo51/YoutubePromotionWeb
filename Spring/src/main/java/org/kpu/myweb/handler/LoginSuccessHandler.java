@@ -53,6 +53,7 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler{
 		try {
 			ID = userservice.readID(authentication.getName());
 			session.setAttribute("ID", ID);
+			session.setAttribute("username", authentication.getName());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

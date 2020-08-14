@@ -73,8 +73,7 @@ public class UserController {
 	}
 	@RequestMapping(value="/register/youtuber", method=RequestMethod.POST)
 	public String youRegisterPost(@ModelAttribute("User") UserVO user, @ModelAttribute("YoutuberVO") YoutuberVO vo) throws Exception {
-		service.addUser(user); // username과 password 설정
-		
+		service.addUser(user); // username과 password 설정	
 		int youID = service.readID(user.getUsername()); // addUser 한 후, id받아와서 
 		vo.setId(youID); 
 		youtuberservice.addYoutuber(vo);

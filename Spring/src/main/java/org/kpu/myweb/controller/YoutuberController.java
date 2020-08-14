@@ -2,6 +2,8 @@ package org.kpu.myweb.controller;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -10,6 +12,7 @@ import org.kpu.myweb.domain.UserVO;
 import org.kpu.myweb.domain.YoutuberVO;
 import org.kpu.myweb.service.UserService;
 import org.kpu.myweb.service.YoutuberService;
+import org.kpu.myweb.youtube.YoutubeAPI2;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,9 +57,26 @@ public class YoutuberController {
 		int id = (Integer) session.getAttribute("ID");
     	YoutuberVO youtuber = youtuberSerivce.readYoutuber(id);
     	UserVO user = userService.readUser(id);
+    
+    	String channelId = user.getUsername(); // 유튜버 채널ID
+    	List<String> profile = new ArrayList<String>();
+    	YoutubeAPI2 api = new YoutubeAPI2();
+    	profile = api.getYoutubeProfile(channelId); // 0 : 채널명, 1 : 채널개설일, 2: 구독자수
     	
+    	// 구독자 수 (만 단위)
+    	String subscriber = "";
+    	int size = profile.get(2).length();
+    	if(size > 5)
+    	subscriber = profile.get(2).substring(0, size-4) + "만 " 
+    			+ profile.get(2).substring(size-4, size) + "명";
+    	else
+    		subscriber = profile.get(2) + "명";
+    	
+    	model.addAttribute("channelTitle", profile.get(0));
+    	model.addAttribute("publishedDate", profile.get(1));
+    	model.addAttribute("subscriber", subscriber);
         model.addAttribute("youtuber", youtuber);
-        model.addAttribute("channel", user.getUsername());
+        model.addAttribute("channelUrl", "https://www.youtube.com/channel/" + channelId);
         model.addAttribute("ID",id);
         return "youtuber/profile";
     }

@@ -6,6 +6,10 @@
 	color:#fff;
 }
 </style>
+		<sec:authorize access="isAnonymous()">
+			
+		</sec:authorize>
+
         <section>
          <div class="my-list">
             <ul>
@@ -36,11 +40,15 @@
                   </tr>
                   <tr>
                     <td class="title">채널 개설일</td>
-                    <td class="content">2018.05.25</td>
+                    <td class="content">${publishedDate}</td>
+                  </tr>
+                   <tr>
+                    <td class="title">구독자 수</td>
+                    <td class="content">${subscriber}</td>
                   </tr>
                   <tr>
                     <td class="title">채널링크</td>
-                    <td class="content">${channel}</td>
+                    <td class="content"><a href=${channelUrl}>${youtuber.name}의 채널</a></td>
                   </tr>
                 </table>
               </div>
