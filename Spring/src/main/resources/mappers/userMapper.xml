@@ -45,9 +45,12 @@
     </delete>
 
 	<select id="selectByUserID" resultType="org.kpu.myweb.domain.UserVO">
+		select * from user where id=#{id}
+	</select>
+	<select id="selectByUsername" resultType="org.kpu.myweb.domain.UserVO">
 		select * from user where username=#{username}
 	</select>
-	<select id="selectAuthByUserID" resultType="String">
+	<select id="selectAuthByUsername" resultType="String">
 		select authorities from user where username=#{username}
 	</select>
 	<select id="selectIdByUsername" resultType="Integer">

@@ -6,6 +6,8 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.apache.commons.io.IOUtils;
 import org.kpu.myweb.domain.ApplyVO;
 import org.kpu.myweb.domain.EnterprisePostVO;
@@ -98,7 +100,8 @@ public class ApplyController {
 	
 	/* 기업 공고별 지원 현황 확인 */
 	@RequestMapping(value = {"/youtuber/list"}, method = RequestMethod.GET)
-	public String ApplyListGet(@RequestParam int id, Model model) throws Exception {
+	public String ApplyListGet(Model model, HttpSession session) throws Exception {
+		int id = (Integer)session.getAttribute("ID");
 		List<ApplyVO> apply = service.readListByYoutuberID(id); 
 		List<EnterprisePostVO> post = new ArrayList<EnterprisePostVO>();
 		EnterprisePostVO temp;

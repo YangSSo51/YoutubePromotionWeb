@@ -94,6 +94,7 @@ public class InviteController {
 		for(int i=0; i<Invite.size(); i++) {
 			temp = youtuberservice.readYoutuber(Invite.get(i).getYoutuberID());
 			Youtuber.add(temp);
+			if(Invite.get(i).getResult()==0) Invite.get(i).setPhoneNo("");
 		}
 		model.addAttribute("Invite", Invite);
 		model.addAttribute("Youtuber", Youtuber);

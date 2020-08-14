@@ -8,8 +8,11 @@
               <div class="form-text">
                 	이미지를 선택하세요
               </div>
-              <label class="filebtn">
-		        Browse File<input type="file" name="file" value="${youtuber.image}" hidden>
+               <label class="filebtn" style="display:inline-block; ">
+                    <div style="text-align:center; padding-top:10px;">
+                      Browse File
+                    </div>
+            	<input type="file" name="file" value="${youtuber.image}" hidden>
 				<input type="text" name="image" value="${youtuber.image}" hidden>
               </label>
               <input class="form-input" type="text" name="id" value="<%=ID%>" hidden>              
@@ -20,7 +23,14 @@
               <div class="form-text">
                 Category
               </div>
-              <input class="form-input" type="text" name="category" value="${youtuber.category}">
+                    <select name="category">
+                  		<option value="네일">네일</option>
+                  		<option value="헤어">헤어</option>
+                  		<option value="바디">바디</option>
+                  		<option value="헬스">헬스</option>
+						<option value="뷰티">뷰티</option>
+                  		<option value="메이크업">메이크업</option>                  		
+                  	</select>
               <a href="#"><button class="button" type="submit" name="button">수정하기</button></a>
             </form>
         </section>

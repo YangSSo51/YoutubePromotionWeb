@@ -43,14 +43,16 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 		UserVO user = new UserVO();
 		UserVO userInfo;
 		try {
-			logger.info("loadUserByUsername");
-			userInfo = UserDAO.readByUserID(username);
+			List<String> auth = null;
+			auth.add(UserDAO.readAuthByUsername(username));
+
+			userInfo = UserDAO.readByUsername(username);
 			
 			user.setUsername(userInfo.getUsername());
 			user.setPassword(userInfo.getPassword());
 			logger.info("userInfo : " + userInfo.getUsername() + userInfo.getPassword());
 			logger.info("userInfo : " + userInfo.getAuthorities());
-			user.setAuthorities(UserDAO.readAuthByUserID(username));
+			user.setAuthorities(auth);
 			
 		} catch (Exception e) {
 			return null;
@@ -91,13 +93,26 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 	public UserVO viewUser(UserVO User) throws Exception {
 		return UserDAO.viewUser(User);
 	}
-	public Integer readID(String username) throws Exception{
-		return UserDAO.readID(username);
-	}
 	
 	/*로그인*/
 	public boolean login(UserVO user) throws Exception {
 		boolean result= UserDAO.login(user);
 		return result;
+	}
+
+	public Integer readID(String username) throws Exception{
+		return UserDAO.readIDByUsername(username);
+	}
+	
+	public String readAuthByUsername(String username) throws Exception {
+		String auth= UserDAO.readAuthByUsername(username);
+		return auth;
+	}
+	
+	public UserVO readByUsername(String username) throws Exception{
+		return UserDAO.readByUsername(username);
+	}
+	public UserVO readByUserID(int id) throws Exception{
+		return UserDAO.readByUserID(id);
 	}
 }

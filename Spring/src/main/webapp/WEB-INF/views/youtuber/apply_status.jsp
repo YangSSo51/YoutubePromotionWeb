@@ -1,5 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../navbar.jsp"%>
+<style>
+#result{
+	width:50px;
+	background-color:#fff;
+	color:#000;
+}
+#select{
+	background-color:#FF97B6;
+	color:#fff;
+}
+</style>
    <script language="javascript">	
 		function showResult(result){
 			var str;
@@ -13,7 +24,16 @@
 		}
    </script>
 
-	        <section>
+        <section>
+         <div class="my-list">
+            <ul>
+              <li class="mypage">마이페이지</li>
+              <li><a href="<c:url value="/youtuber/profile"/>">프로필</a></li>
+              <li id="select"><a id="select" href="<c:url value="/apply/youtuber/list"/>">지원현황</a></li>
+              <li><a href="<c:url value="/invite/youtuber/list"/>">초대현황</a></li>
+            </ul>
+          </div>
+          <div class="right-container">
             <h2 class="text-center">지원현황</h2>
               <table class="list">
                 <tr>
@@ -34,12 +54,13 @@
                     ${Apply[status.index].category}
                   </td>
                   <td>
-					<script>showResult(${Apply[status.index].result})</script>
-                  </td>
+                  	<button id='result'><script>showResult(${Apply[status.index].result})</script></button>
+                   </td>
 
                 </tr>
                 </c:forEach>
               </table>
+              </div>
         </section>
 <%@ include file="../footer.jsp"%>
 </html>

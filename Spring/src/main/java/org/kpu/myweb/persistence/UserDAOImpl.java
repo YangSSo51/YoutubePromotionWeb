@@ -21,8 +21,7 @@ public class UserDAOImpl implements UserDAO {
 	}
  
 	public List<UserVO> readList() throws Exception {
-		List<UserVO> Userlist = new ArrayList<UserVO>();
-		Userlist = sqlSession.selectList(namespace + ".selectAll");
+		List<UserVO> Userlist = sqlSession.selectList(namespace + ".selectAll");
 		return Userlist;
 	}
 	
@@ -48,13 +47,16 @@ public class UserDAOImpl implements UserDAO {
 	public UserVO viewUser(UserVO User) throws Exception{
 		return sqlSession.selectOne(namespace+".viewUser",User);
 	}
-	public UserVO readByUserID(String username) throws Exception {
-		return sqlSession.selectOne(namespace+".selectByUserID", username);
+	public UserVO readByUserID(int id) throws Exception {
+		return sqlSession.selectOne(namespace+".selectByUserID", id);
 	}
-	public List<String> readAuthByUserID(String userID) throws Exception{
-		return sqlSession.selectOne(namespace+".selectAuthByUserID", userID);
+	public UserVO readByUsername(String username) throws Exception {
+		return sqlSession.selectOne(namespace+".selectByUsername", username);
 	}
-	public Integer readID(String username) throws Exception{
+	public String readAuthByUsername(String username) throws Exception{
+		return sqlSession.selectOne(namespace+".selectAuthByUsername", username);
+	}
+	public Integer readIDByUsername(String username) throws Exception{
 		return sqlSession.selectOne(namespace+".selectIdByUsername", username);
 	}
 }

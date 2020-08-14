@@ -196,7 +196,30 @@ hr{
 .url{
 	margin-top: 20px;
 }
-
+/*mypage*/
+.my-list{
+	float:left;
+	border: 1px solid #FF97B6;
+	border-radius: 1px;
+}
+.my-list .mypage{
+	font-weight: 600;
+	border-bottom :1px solid #FF97B6;
+}
+.my-list li{
+	font-size : 18px;
+	padding: 15px 30px;
+}
+.my-list li:hover{
+	background-color:#FF97B6;
+	color:#fff;
+}
+.my-list a:hover{
+	color:#fff;
+}
+.right-container{
+	margin-left: 20%;
+}
 /*profile page*/
 
 .image{
@@ -545,3 +568,81 @@ div #out{
 .home-list .desc{
 	text-align: center;
 }
+
+/*modal*/
+/*modal*/
+#modal,#modal2 {
+	display: none;
+	position:relative;
+	width:100%;
+	height:100%;
+	top:0;
+	left:0;
+	z-index:20;
+}
+
+#modal h2 ,#modal2 h2{
+	margin:0;
+}
+
+#modal .modal_content,#modal2 .modal_content {
+	width:1100px;
+	margin:80px auto;
+	padding:10px;
+	background:#F2F2F2;
+	border:2px solid #666;
+	border-radius: 15px;
+	overflow: hidden;
+}
+
+#modal .modal_layer ,#modal2 .modal_layer{
+	position:fixed;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	background:rgba(0, 0, 0, 0.5);
+	z-index:-1;
+}
+
+.modal_title {
+	font-size: 20px;
+	font-weight: 600;
+	padding: 20px 0;
+}
+
+.modal_button{
+	margin: 10px auto;
+	width: 1050px;
+	overflow: hidden;
+}
+.modal_button button{
+	margin-top:5px;
+	margin-left: 10px;
+	float: right;
+	display: block;
+	height:35px;
+}
+
+.modal_button #modal_close_btn,.modal_button #close_btn{
+	background-color: inherit;
+	border: 2px solid #FF97B6;
+	color: #000;
+	width:60px;
+}
+
+.modal_button #submit{
+	width:80px;
+}
+
+#modal .middle_modal_content,#modal2 .middle_modal_content {
+	width:300px;
+	margin:80px auto;
+	padding:20px;
+	background:#fff;
+	border:2px solid #666;
+	border-radius: 15px;
+	overflow: hidden;
+	padding-left:20px;
+}
+
