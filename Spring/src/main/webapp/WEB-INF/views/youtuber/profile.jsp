@@ -12,7 +12,7 @@
               <li class="mypage">마이페이지</li>
               <li id="select"><a id="select" href="<c:url value="/youtuber/profile"/>">프로필</a></li>
               <li><a href="<c:url value="/apply/youtuber/list"/>">지원현황</a></li>
-              <li><a href="<c:url value="/youtuber/profile"/>">초대현황</a></li>
+              <li><a href="<c:url value="/invite/youtuber/list"/>">초대현황</a></li>
             </ul>
           </div>
           <div class="right-container">

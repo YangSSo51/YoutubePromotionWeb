@@ -2,8 +2,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<style>
+#select{
+	background-color:#FF97B6;
+	color:#fff;
+}
+</style>
 <body>
 <section>
+<div class="my-list">
+            <ul>
+              <li class="mypage">마이페이지</li>
+              <li><a href="<c:url value="/youtuber/profile"/>">프로필</a></li>
+              <li><a href="<c:url value="/apply/youtuber/list"/>">지원현황</a></li>
+              <li id="select"><a id="select" href="<c:url value="/invite/youtuber/list"/>">초대현황</a></li>
+            </ul>
+          </div>
+          <div class="right-container">
 			<h2 class="text-center">초대 대기 목록</h2>
               <table class="list">
                 <tr>
@@ -47,7 +62,7 @@
               </div><!--modal layer-->
               </div><!--modal-->
 				
-            
+      </div>
 </section>
   
 	<!-- javascript -->
