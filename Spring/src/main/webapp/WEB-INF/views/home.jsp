@@ -88,4 +88,7 @@
  <%@ include file="footer.jsp"%>
 
   </body>
+  <script>
+	window.open("popup","popup","width=596, height=600, left=100, top=50");
+  </script>
 </html>
