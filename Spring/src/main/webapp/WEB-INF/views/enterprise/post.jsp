@@ -10,7 +10,6 @@
               <table>
                 <tr>
  				<input name="enterID" type="hidden" value=<%=ID%> >
-
                   <td>
                     <div class="form-text">
                       	제목
@@ -77,7 +76,7 @@
                     </div>
                   </td>
                   <td>
-	                <textarea name="description" rows="15" cols="90" id="web"></textarea>
+                    <textarea name="description" rows="15" cols="90" id="web"></textarea>
                     <textarea name="description" rows="10" cols="34" id="mobile"></textarea>
                   </td>
                 </tr>

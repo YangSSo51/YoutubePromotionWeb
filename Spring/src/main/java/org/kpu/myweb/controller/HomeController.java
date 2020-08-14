@@ -40,4 +40,9 @@ public class HomeController {
 	public String errorPage() {
 		return "error_403";
 	}
+	
+	@RequestMapping(value = "/api", method = RequestMethod.GET)
+	public String YoutubeAPI() {
+		return "youtube_test";
+	}
 }

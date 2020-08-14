@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../navbar.jsp"%>
+<script type="text/javascript">
 
+</script>
         <section>
             <h3>프로필</h3>
             <hr>
