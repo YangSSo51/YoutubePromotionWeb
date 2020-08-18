@@ -2,36 +2,14 @@
 <%@ include file="../navbar.jsp"%>
 <% int ID = (Integer)session.getAttribute("ID"); %> 
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/sha256.js"></script>
 <script type="text/javascript" src="<c:url value="/resources/passwordEncrypt.js"/>"></script>
-<script type="text/javascript">
-	function checkPassword(){
-		var form = document.login-form;
-		var password1 = document.getElementById("password").value;
-		var password2 = document.getElementById("passwordCheck").value;
-		
-		if(!password1 && !password2){
-			// 비밀번호를 변경하지 않음
-			alert("비밀번호를 변경하지 않음.");
-			return true;
-		}
-		else if(password1 || password2){
-			// 비밀번호를 변경함
-			if(password1 == password2)
-				var encrypt = encrypt_data(password, passphrase, iv);
-	    		form.password.value=encrypt;  // 암호화 한 값으로 등록	   
-	    		alert(encrypt); 		
-				return true;
-			else{
-				alert("비밀번호가 일치하지 않습니다.");
-				return false;
-			}
-		}
-	}
-</script>
+<script type="text/javascript" src="<c:url value="/resources/checkPassword.js"/>"></script>
 
       <section>
             <h2 class="text-center">프로필 수정하기</h2>
-            <form class="login-form" action="<c:url value="/youtuber/update/"/>" method="post" enctype="multipart/form-data" onsubmit="return checkPassword()">
+            <form class="login-form" name="loginForm"action="<c:url value="/youtuber/update/"/>" method="post" enctype="multipart/form-data" onsubmit="return checkPassword()">
               <div class="form-text">
                 	이미지를 선택하세요
               </div>

@@ -40,7 +40,9 @@
     		</li>
     		</c:forEach>
             </ul>
-            <div class="button_group">
-              <a href="<c:url value="/enterprise/post"/>"><button class="button" type="button" name="button" id="write" >작성하기</button></a>
-            </div>
+            <sec:authorize access="hasRole('ROLE_ENTERPRISE')">
+	            <div class="button_group">
+	              <a href="<c:url value="/enterprise/post"/>"><button class="button" type="button" name="button" id="write" >작성하기</button></a>
+	            </div>
+            </sec:authorize>
         </section>

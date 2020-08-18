@@ -64,11 +64,14 @@
             </div>
           </div>
           <div class="button_group" style="margin: 0;">          
-            <a href="/myweb/enterprise/update?id=${EnterprisePost.id}"><button class="button" type="button" name="button" >수정하기</button></a>
-            <a href="/myweb/enterprise/delete?id=${EnterprisePost.id}"><button class="button" type="button" name="button" >삭제하기</button></a>
+            <sec:authorize access="hasRole('ROLE_ENTERPRISE')">
+	            <a href="/myweb/enterprise/update?id=${EnterprisePost.id}"><button class="button" type="button" name="button" >수정하기</button></a>
+	            <a href="/myweb/enterprise/delete?id=${EnterprisePost.id}"><button class="button" type="button" name="button" >삭제하기</button></a>
+          	</sec:authorize>
           </div>
           
-				<!-- Modal -->
+          		<!-- Modal -->
+          		<sec:authorize access="hasRole('ROLE_ENTERPRISE')">
 				<div id="root">
    					<button type="button" id="modal_open_btn">초대하기</button>
 				</div>
@@ -91,13 +94,13 @@
 	                    <button type="submit" id="submit">초대하기</button>
 	                  </div>
 				</form>
-                 
                 </div>
               </div><!--modal layer-->
-              </div><!--modal-->
-			
-			
-				<!-- Modal -->
+              </div> <!--modal-->
+              </sec:authorize>
+             
+			  <!-- Modal -->
+			  <sec:authorize access="hasRole('ROLE_YOUTUBER')">	
 				<div id="root">
    					<button type="button" id="open_btn">신청하기</button>
 				</div>
@@ -145,6 +148,8 @@
                 </div>
               </div><!--modal layer-->
               </div><!--modal-->
+              </sec:authorize>
+             
 				
         </section>
 		<script language="javascript">

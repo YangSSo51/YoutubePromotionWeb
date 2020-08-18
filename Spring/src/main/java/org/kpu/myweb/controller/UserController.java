@@ -17,10 +17,8 @@ import org.kpu.myweb.domain.UserVO;
 import org.kpu.myweb.domain.YoutuberVO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -82,24 +80,24 @@ public class UserController {
 	}
 	
 
-		/*비밀번호 확인*/
-		@RequestMapping(value = {"/password"}, method = RequestMethod.GET)
-		public String loginMemberGet(@RequestParam("next") String next,Model model) throws Exception {
-			model.addAttribute("next",next);
-			return "/user/password";
-		}
+	/*비밀번호 확인*/
+	@RequestMapping(value = {"/password"}, method = RequestMethod.GET)
+	public String loginMemberGet(@RequestParam("next") String next,Model model) throws Exception {
+		model.addAttribute("next",next);
+		return "/user/password";
+	}
 	    
-		@RequestMapping(value = {"/password"}, method = RequestMethod.POST)
-		public String loginMemberPost( @ModelAttribute("User") UserVO vo,@RequestParam("next") String next,HttpSession session,Model model) throws Exception {
-			boolean result = service.login(vo);
-			if(result == true) {
-				if(next.equals("update")) return "redirect:/youtuber/update?id="+vo.getId();
-				else return "redirect:/delete?id="+vo.getId();
-			}else {
-				model.addAttribute("result","실패");
-			}
-			return "/enterprise/result";
+	@RequestMapping(value = {"/password"}, method = RequestMethod.POST)
+	public String loginMemberPost( @ModelAttribute("User") UserVO vo,@RequestParam("next") String next,HttpSession session,Model model) throws Exception {
+		boolean result = service.login(vo);
+		if(result == true) {
+			if(next.equals("update")) return "redirect:/youtuber/update?id="+vo.getId();
+			else return "redirect:/delete?id="+vo.getId();
+		}else {
+			model.addAttribute("result","실패");
 		}
+		return "/enterprise/result";
+	}
 		
     /* 회원목록 확인 */
 	@RequestMapping(value = {"/list"}, method = RequestMethod.GET)
