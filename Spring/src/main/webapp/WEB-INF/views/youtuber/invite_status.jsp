@@ -25,22 +25,22 @@
                   <th style="width:30px;"></th>
                   <th>공고 제목</th>
                   <th style="width:80px;">현황</th>
-                  <th style="width:80px;"></th>
                 </tr>
                 <c:set var="i" value="0"/>
 				<c:forEach items="${postList}" varStatus="status">
                  <c:set var="i" value="${i+1}"/>
                 <tr>
-                  <td style="width:30px;"><c:out value="${i}"/></td>
+                  <td style="width:30px; padding-left:10px;"><c:out value="${i}"/></td>
                   <td>
                     <div class="long-text">
                		 <a href="<c:url value="/enterprise/detail?id=${postList[status.index].id}"/>">${postList[status.index].title}</a>
                     </div>
                   </td>
-					<td style="width:80px;"><button style="width:60px;" value="수락" onclick="accept_invite(${Invite[status.index].id});">수락</button></td>
-                  	<td style="width:80px;"><a href="<c:url value="/invite/reject?inviteid=${Invite[status.index].id}"/>">
+					<td style="width:80px;">
+					<button style="width:60px;" value="수락" onclick="accept_invite(${Invite[status.index].id});">수락</button>
+					<a href="<c:url value="/invite/reject?inviteid=${Invite[status.index].id}"/>">
                   	<button style="width:60px;" value="거절" onclick="reject_invite();">거절</button></a>
-                  	</td>                                    
+					</td>                                 
                 </tr>
                </c:forEach>
               </table>
@@ -51,8 +51,13 @@
                    	연락처 제공
                   </div>
                	<form id="accept_form" action="<c:url value="/invite/accept"/>" method="post">
-					<input type="text" name="phoneNo" placeholder="연락처를  입력해주세요" />
+					<input style="margin-bottom:15px;"type="text" name="phoneNo" placeholder="010-1234-5678" />
 					<input type="hidden" name="id" id="inviteId"/>
+					<br>
+					<label style="margin-top:5px;"><span>*업체에 정보제공을 위한</span></label>
+					<br>
+					<label><span>제3자 정보제공 동의 체크</span></label>
+					<input type="checkbox" >
 	                  <div class="modal_button" style="width:300px;">
 	                    <button type="button" id="modal_close_btn">취소</button>
 	                    <button type="submit" id="submit">제출하기</button>

@@ -41,4 +41,9 @@ public class HomeController {
 		return "error_403";
 	}
 
+	@RequestMapping(value = "/popup", method = RequestMethod.GET)
+	public String popup() {
+		return "popup";
+	}
+
 }

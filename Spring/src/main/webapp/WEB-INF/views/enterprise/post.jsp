@@ -41,8 +41,10 @@
                   </div>
                   </td>
                   <td>
-                    <label class="filebtn">
+                    <label class="filebtn" style="display:inline-block; ">
+                    <div style="text-align:center; padding-top:10px;">
                       Browse File
+                    </div>
 	                  <input type="file" name="file" hidden/>
 	                  <input type="text" name="image" hidden />
                     </label>
