@@ -6,34 +6,45 @@
 		margin: 0 0 1em 0;
 		width:100%;
 	}
+	a{
+		color:#2524FF;
+	}
 
 </style>
         <section>
             <span><h3>지원업체</h3></span>
             <hr>
-            <h6>선정완료</h6>
             <div>
+            <div >
+            	<a href="<c:url value="/enterprise/search?category=헬스"/>">헬스</a>
+            	<a href="<c:url value="/enterprise/search?category=뷰티"/>">뷰티</a>
+            	<a href="<c:url value="/enterprise/search?category=메이크업"/>">메이크업</a>
+            	<a href="<c:url value="/enterprise/search?category=바디"/>">바디</a>
+            	<a href="<c:url value="/enterprise/search?category=네일"/>">네일</a>
+            	<a href="<c:url value="/enterprise/search?category=헤어"/>">헤어</a>
+
+            </div>
             <form class="right_form" action="<c:url value="/enterprise/search"/>" method="post">
               <input type="search" name="title" value="">
               <button type="submit" name="button">검색</button>
             </form>
             </div>
             <ul class="list">
-              <c:forEach items="${EnterprisePost}" var="EnterprisePostVO">
+              <c:forEach items="${EnterprisePost}" varStatus="status">
               <li>
- 				<a href="<c:url value="/enterprise/detail?id=${EnterprisePostVO.id}"/>" class="inner">
+ 				<a href="<c:url value="/enterprise/detail?id=${EnterprisePost[status.index].id}"/>" class="inner">
  				<div class="thumb">
- 					<img src="getImage?name=${EnterprisePostVO.image}" alt="썸네일이미지">
+ 					<img src="getImage?name=${EnterprisePost[status.index].image}" alt="썸네일이미지">
  				</div>
                 <div class="desc">
                  	<div class="title">
-                 	 <c:out value="${EnterprisePostVO.title}(${EnterprisePostVO.viewCnt})"/>
+                 	 <c:out value="${EnterprisePost[status.index].title} - ${enterprise[status.index].name}"/>
                  	</div>
                  	<div class="date">
-                     <c:out value="${EnterprisePostVO.description}"/>
+                     <c:out value="${EnterprisePost[status.index].description}"/>
                  	</div>
                  	<div class="date">
-                     <c:out value="${EnterprisePostVO.applyCnt}/${EnterprisePostVO.recuitCnt}"/>
+                     <c:out value="${EnterprisePost[status.index].applyCnt}/${EnterprisePost[status.index].recuitCnt}"/>
                  	</div>
                  </div>
     			</a>

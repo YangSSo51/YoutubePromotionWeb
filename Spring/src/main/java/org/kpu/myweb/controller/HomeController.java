@@ -41,14 +41,8 @@ public class HomeController {
 		return "error_403";
 	}
 	
-<<<<<<< HEAD
 	@RequestMapping(value = "/popup", method = RequestMethod.GET)
 	public String popup() {
 		return "popup";
-=======
-	@RequestMapping(value = "/api", method = RequestMethod.GET)
-	public String YoutubeAPI() {
-		return "youtube_test";
->>>>>>> 437182d79757cf2a6e5a20ce6602ce96e4652f9a
 	}
 }
