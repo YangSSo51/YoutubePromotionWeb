@@ -94,6 +94,7 @@ public class UserController {
 			boolean result = service.login(vo);
 			if(result == true) {
 				if(next.equals("update")) return "redirect:/youtuber/update?id="+vo.getId();
+				else if(next.equals("enter_update")) return "redirect:/enter/update?id="+vo.getId();
 				else return "redirect:/delete?id="+vo.getId();
 			}else {
 				model.addAttribute("result","실패");
