@@ -152,6 +152,7 @@ public class EnterprisePostController {
 		String[] detail = EnterprisePost.getDescription().split("\r\n");
 		model.addAttribute("detail",detail);
 		model.addAttribute("name", vo.getName());
+		logger.info("name : " + vo.getName());
 		model.addAttribute("Youtuber", youtuber);
 		logger.info(" /register URL GET method called. then forward detail.jsp.");
 		return "/enterprise/detail";

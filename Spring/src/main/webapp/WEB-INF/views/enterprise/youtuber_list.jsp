@@ -6,24 +6,23 @@
               <table class="list">
                 <tr>
                   <th style="width:30px;"></th>
-                  <th>ID(사업자번호,유튜브주소)</th>
-                  <th>권한</th>
-                  <th>삭제</th>
+                  <th>채널명</th>
+                  <th>프로필보러가기</th>
                 </tr>
                 <c:set var="i" value="0"/>
-                 <c:forEach items="${user}" var="status">
+                 <c:forEach items="${youtuber}" var="status">
                  <c:set var="i" value="${i+1}"/>
                 <tr>
                   <td style="width:30px;"><c:out value="${i}"/></td>
                   <td>
                     <div>
-	                	<c:out value="${user[i-1].username}"/>
+	                	<c:out value="${youtuber[i-1].name}"/>
                     </div>
                   </td>
                   <td>
-                    <c:out value="${auth[i-1]}"/>
+                    <c:out value="${youtuber[i-1].category}"/>
                   </td>                  
-                  <td><a href="<c:url value="/delete?id=${user[i-1].id}"/>"><button id="contact" type="button" name="button">삭제하기</button></a></td>
+                  <td><a href="<c:url value="/youtuber/profile?id=${user[i-1].id}"/>"><button id="contact" type="button" name="button">프로필보기</button></a></td>
                 </tr>                
                </c:forEach>
               </table>

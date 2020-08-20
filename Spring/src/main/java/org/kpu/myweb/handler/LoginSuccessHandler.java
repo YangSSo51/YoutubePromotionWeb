@@ -52,6 +52,7 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler{
 		// 세션 설정
 		try {
 			ID = userservice.readID(authentication.getName());
+
 			session.setAttribute("ID", ID);
 			session.setAttribute("username", authentication.getName());
 		} catch (Exception e) {

@@ -9,9 +9,11 @@ import javax.servlet.http.HttpSession;
 import org.kpu.myweb.domain.ApplyVO;
 import org.kpu.myweb.domain.EnterpriseVO;
 import org.kpu.myweb.domain.UserVO;
+import org.kpu.myweb.domain.YoutuberVO;
 import org.kpu.myweb.domain.EnterpriseVO;
 import org.kpu.myweb.service.EnterpriseService;
 import org.kpu.myweb.service.UserService;
+import org.kpu.myweb.service.YoutuberService;
 import org.kpu.myweb.youtube.YoutubeAPI2;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,6 +37,9 @@ public class EnterpriseController {
 	private EnterpriseService enterpriseService;
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private YoutuberService youtuberservice;
+	
 	
 	@RequestMapping(value = "/profile", method = RequestMethod.GET)
     public String readenterprise(HttpSession session, Model model) throws Exception {
@@ -70,21 +75,9 @@ public class EnterpriseController {
     /* 회원목록 확인 */
 	@RequestMapping(value = {"/list"}, method = RequestMethod.GET)
 	public String UserList(Model model) throws Exception {
-		List<UserVO> user = service.readUserList();
-		List<String> auth = new ArrayList<String>();
-		String temp;
-
-		for(int i=0; i<user.size(); i++) {
-			String username = user.get(i).getUsername();
-			temp = service.readAuthByUsername(username);
-			if(temp.equals("ROLE_ENTERPRISE")) temp="기업";
-			else if(temp.equals("ROLE_YOUTUBER")) temp="유튜버";
-			else temp="관리자";
-			auth.add(temp);
-		}
-		model.addAttribute("user", user);
-		model.addAttribute("auth", auth);
-		return "/admin/list";
+		List<YoutuberVO> youtuber = youtuberservice.readYoutuberList();
+		model.addAttribute("youtuber", youtuber);
+		return "enterprise/youtuber_list";
 	}
 	
 }
