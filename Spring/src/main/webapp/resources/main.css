@@ -63,6 +63,16 @@ section{
 	font-weight:bold;
 }
 
+.login-error{
+	color:red;
+	font-size:15px;
+	margin-bottom:10px
+}
+
+.text-signup{
+  text-align: center;
+  font-size: 12px;
+}
 /*form 디자인*/
 .login-form{
   max-width: 300px;

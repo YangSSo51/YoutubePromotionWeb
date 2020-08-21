@@ -23,7 +23,7 @@
                   <td>
                     <c:out value="${auth[i-1]}"/>
                   </td>                  
-                  <td><a href="<c:url value="/delete?id=${user[i-1].id}"/>"><button id="contact" type="button" name="button">삭제하기</button></a></td>
+                  <td><a href="<c:url value="/deleteUser?id=${user[i-1].id}"/>"><button id="contact" type="button" name="button">삭제하기</button></a></td>
                 </tr>                
                </c:forEach>
               </table>

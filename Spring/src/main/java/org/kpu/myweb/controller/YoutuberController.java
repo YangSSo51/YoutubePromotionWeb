@@ -59,10 +59,9 @@ public class YoutuberController {
     	UserVO user = userService.readUser(id);
     
     	String channelId = user.getUsername(); // 유튜버 채널ID
-    	List<String> profile = new ArrayList<String>();
     	YoutubeAPI2 api = new YoutubeAPI2();
-    	profile = api.getYoutubeProfile(channelId); // 0 : 채널명, 1 : 채널개설일, 2: 구독자수
-    	logger.info("api : " + profile);
+    	List<String> profile = api.getYoutubeProfile(channelId); // 0: 채널명, 1: 채널개설일, 2: 구독자수, 3: 썸네일
+    	logger.info("ID : " + id  + " api : " + profile);
     	// 구독자 수 (만 단위)
     	String subscriber = "";
     	int size = profile.get(2).length();
@@ -129,4 +128,5 @@ public class YoutuberController {
 		}
         return "redirect:/youtuber/profile";
     }
+    
 }

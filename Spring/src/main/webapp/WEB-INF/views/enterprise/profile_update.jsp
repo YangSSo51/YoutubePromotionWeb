@@ -2,38 +2,16 @@
 <%@ include file="../navbar.jsp"%>
 <% int ID = (Integer)session.getAttribute("ID"); %> 
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/sha256.js"></script>
 <script type="text/javascript" src="<c:url value="/resources/passwordEncrypt.js"/>"></script>
-<script type="text/javascript">
-	function checkPassword(){
-		var form = document.login-form;
-		var password1 = document.getElementById("password").value;
-		var password2 = document.getElementById("passwordCheck").value;
-		
-		if(!password1 && !password2){
-			// 비밀번호를 변경하지 않음
-			alert("비밀번호를 변경하지 않음.");
-			return true;
-		}
-		else if(password1 || password2){
-			// 비밀번호를 변경함
-			if(password1 == password2)
-				var encrypt = encrypt_data(password, passphrase, iv);
-	    		form.password.value=encrypt;  // 암호화 한 값으로 등록	   
-	    		alert(encrypt); 		
-				return true;
-			else{
-				alert("비밀번호가 일치하지 않습니다.");
-				return false;
-			}
-		}
-	}
-</script>
+<script type="text/javascript" src="<c:url value="/resources/checkPassword.js"/>"></script>
 
       <section>
             <h2 class="text-center">프로필 수정하기</h2>
-            <form class="login-form" action="<c:url value="/enterprise/update/"/>" method="post" onsubmit="return checkPassword()">
+            <form class="login-form"  name="loginForm" id="loginForm" action="<c:url value="/enter/update"/>" method="post" onsubmit="return checkPassword()">
               <input class="form-input" type="text" name="id" value="<%=ID%>" hidden>           
-              <input class="form-input" type="text" name="id" value="${enter.name}" hidden>              
+              <input class="form-input" type="text" name="name" value="${enterprise.name}" hidden>              
               <div class="form-text">
                 Password
               </div>
@@ -41,19 +19,19 @@
               <div class="form-text">
                 Password Check
               </div>
-              <input class="form-input" type="password" name="password" id="password" >
+              <input class="form-input" type="password" name="passwordCheck" id="passwordCheck" >
               <div class="form-text">
                 	이메일
               </div>
-              <input class="form-input" type="email" name="email" id="email" >
+              <input class="form-input" type="email" name="email" id="email" value="${enterprise.email}">
               <div class="form-text">
                 	주소
               </div>
-              <input class="form-input" type="text" name="address" id="address" >
+              <input class="form-input" type="text" name="address" id="address" value="${enterprise.address}">
               <div class="form-text">
                 	담당자
               </div>
-              <input class="form-input" type="text" name="manager" id="manager" >
+              <input class="form-input" type="text" name="manager" id="manager" value="${enterprise.manager}">
               <div class="form-text">
                 Category
               </div>

@@ -10,7 +10,7 @@
 <body>
 	     <section>
             <h2 class="text-center">비밀번호 확인</h2>
-            <form class="login-form" name="loginForm" action="<c:url value="/password?next=${next}"/>" method="post" onsubmit="return encrypt()">
+            <form class="login-form"  name="loginForm" id="loginForm" action="<c:url value="/password?next=${next}"/>" method="post" onsubmit="return encrypt()">
               <input class="form-input" type="hidden" name="id" value="<%=ID%>">
               <input class="form-input" type="hidden" id="username" name="username" value="<%=ID%>">
              

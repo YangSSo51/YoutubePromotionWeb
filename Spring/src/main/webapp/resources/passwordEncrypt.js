@@ -30,7 +30,7 @@
 			}
 		   else{
 	    	   var encrypt = encrypt_data(password, passphrase, iv);
-	    	   var form = document.loginForm;
+	    	   var form = document.getElementById("loginForm");
 	    	   form.password.value=encrypt;  // 암호화 한 값으로 등록
 	    	   alert(encrypt);
 	    	   

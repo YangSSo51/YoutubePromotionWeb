@@ -1,6 +1,6 @@
 
  	function checkPassword(){
-		var form = document.loginForm;
+		var form = document.getElementById("loginForm");
 		var password1 = document.getElementById("password").value;
 		var password2 = document.getElementById("passwordCheck").value;
 		

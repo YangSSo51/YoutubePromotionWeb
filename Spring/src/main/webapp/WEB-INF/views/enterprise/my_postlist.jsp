@@ -14,8 +14,9 @@
          <div class="my-list">
             <ul>
               <li class="mypage">마이페이지</li>
+              <li><a href="<c:url value="/enter/profile"/>">프로필</a></li>
               <li id="select"><a id="select" href="<c:url value="/apply/youtuber/list"/>">내 공고 리스트</a></li>
-              <li><a href="<c:url value="/youtuber/profile"/>">유튜버 목록</a></li>
+               <li><a href="<c:url value="/enter/list"/>">유튜버 목록</a></li>
             </ul>
           </div>
           <div class="right-container">

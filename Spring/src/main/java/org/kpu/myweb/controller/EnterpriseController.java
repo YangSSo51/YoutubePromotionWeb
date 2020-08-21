@@ -69,7 +69,7 @@ public class EnterpriseController {
 			user.setId(vo.getId());
 			userService.updateUser(user); 
 		}
-        return "redirect:/enterprise/profile";
+        return "redirect:/enter/profile";
     }
     
     /* 회원목록 확인 */

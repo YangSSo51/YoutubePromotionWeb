@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 import org.kpu.myweb.service.EnterpriseService;
 import org.kpu.myweb.service.UserService;
 import org.kpu.myweb.service.YoutuberService;
+import org.kpu.myweb.youtube.YoutubeAPI2;
 import org.kpu.myweb.domain.EnterprisePostVO;
 import org.kpu.myweb.domain.EnterpriseVO;
 import org.kpu.myweb.domain.UserVO;
@@ -74,6 +75,10 @@ public class UserController {
 		service.addUser(user); // username과 password 설정	
 		int youID = service.readID(user.getUsername()); // addUser 한 후, id받아와서 
 		vo.setId(youID); 
+		
+    	YoutubeAPI2 api = new YoutubeAPI2();
+    	List<String> profile = api.getYoutubeProfile(user.getUsername()); // 0: 채널명, 1: 채널개설일, 2: 구독자수, 3: 썸네일
+		vo.setImage(profile.get(3)); // 채널 썸네일 이미지에 설정
 		youtuberservice.addYoutuber(vo);
 		logger.info("user : " + user.getUsername() + user.getPassword() + user.getAuthorities());
 		return "/admin/youtuberRegister";
@@ -95,7 +100,7 @@ public class UserController {
 				else if(next.equals("enter_update")) return "redirect:/enter/update?id="+vo.getId();
 				else return "redirect:/delete?id="+vo.getId();
 			}else {
-				model.addAttribute("result","실패");
+				model.addAttribute("result","비밀번호가 맞지 않습니다.");
 			}
 			return "/enterprise/result";
 		}
@@ -120,9 +125,16 @@ public class UserController {
 		return "/admin/list";
 	}
 	
-    /* 회원 */
+	/* 프로필에서 본인이 회원탈퇴 */
 	@RequestMapping(value = {"/delete"}, method = RequestMethod.GET)
 	public String UserDelete(@RequestParam("id") int id) throws Exception {
+		service.deleteUser(id);
+		return "redirect:/logout";
+	}
+	
+    /* 관리자가 회원삭제 */
+	@RequestMapping(value = {"/deleteUser"}, method = RequestMethod.GET)
+	public String AdminUserDelete(@RequestParam("id") int id) throws Exception {
 		service.deleteUser(id);
 		return "redirect:/list";
 	}

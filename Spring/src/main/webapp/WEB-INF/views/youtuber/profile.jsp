@@ -7,7 +7,7 @@
 }
 </style>
         <section>
-         <sec:authorize access="hasRole('ROLE_ENTERPRISE')">
+         <sec:authorize access="hasRole('ROLE_YOUTUBER')">
          <div class="my-list">
             <ul>
               <li class="mypage">마이페이지</li>
@@ -24,8 +24,8 @@
             <h6>내정보</h6>
             <div class="box">
               <div class="image">
-                <img src="getImage?name=${youtuber.image}" alt="">
-                <h3 class="chanel">혀니_Hyeon</h3>
+                <img src="${youtuber.image}" alt=""> <!-- "getImage?name=${youtuber.image}" -->
+                <h3 class="chanel">${channelTitle}</h3>
               </div>
               <div class="content">
                 <table class="youtuber_table">
@@ -53,7 +53,7 @@
               </div>
             </div>
             
-            <sec:authorize access="hasRole('ROLE_ENTERPRISE')">
+            <sec:authorize access="hasRole('ROLE_YOUTUBER')">
 	            <div class="button_group">
 	              <a href="<c:url value="/password?next=delete"/>"><button class="button" type="button" name="button" id="out">회원탈퇴</button></a>
 	              <a href="<c:url value="/password?next=update"/>"><button class="button" type="button" name="button">정보수정</button></a>

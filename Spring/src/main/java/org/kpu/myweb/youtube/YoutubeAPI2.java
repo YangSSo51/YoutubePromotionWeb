@@ -26,12 +26,12 @@ public class YoutubeAPI2 {
 	  private static final HttpTransport HTTP_TRANSPORT = new NetHttpTransport();
 	  private static final JsonFactory JSON_FACTORY = new JacksonFactory();
 	  private static YouTube youtube;
-	  private static List<String> list = new ArrayList<String>();
 
 	  // Youtube Channel 정보
 	  public List<String> getYoutubeProfile(String channelId) {
 	    // Read the developer key from youtube.properties
 	    Properties properties = new Properties();
+	    List<String> list = new ArrayList<String>();
 	    try {
 	      InputStream in = YoutubeAPI.class.getResourceAsStream("/" + PROPERTIES_FILENAME);
 	      properties.load(in);
@@ -58,16 +58,16 @@ public class YoutubeAPI2 {
 	      List<Channel> channelList = channelResult.getItems();
 	      
 	      if(channelList != null) {
-	    	  System.out.println("size : " + channelList.size());
+	    	  System.out.println("size : " + channelList.size());	    	
 	    	  Channel channel = channelList.get(0);
-	    	  // Thumbnail thumbnail = channel.getSnippet().getThumbnails().getDefault();
+	    	  Thumbnail thumbnail = channel.getSnippet().getThumbnails().getMedium();
 	    	 
 		      System.out.println("\n================== Channel ==================\n");
 		      System.out.println("  - ID: " + channel);
 		      System.out.println("  - 채널명: " + channel.getSnippet().getTitle());
 		      System.out.println("  - 채널 개설일: " + channel.getSnippet().getPublishedAt());
-		      // System.out.println("  - 썸네일 : " + thumbnail.getUrl());
 		      System.out.println("  - 구독자 수: " + channel.getStatistics().getSubscriberCount());
+		      System.out.println("  - 썸네일 : " + thumbnail.getUrl());
 		      System.out.println("\n-------------------------------------------------------------\n");
 		      
 		      String publishedAt = channel.getSnippet().getPublishedAt().toString();
@@ -76,6 +76,7 @@ public class YoutubeAPI2 {
 		      list.add(channel.getSnippet().getTitle());
 		      list.add(publishedAt);
 		      list.add(channel.getStatistics().getSubscriberCount().toString());
+		      list.add(thumbnail.getUrl());
 	      }
 	    }
 	    catch (GoogleJsonResponseException e) {

@@ -9,7 +9,7 @@
 
       <section>
             <h2 class="text-center">프로필 수정하기</h2>
-            <form class="login-form" name="loginForm"action="<c:url value="/youtuber/update/"/>" method="post" enctype="multipart/form-data" onsubmit="return checkPassword()">
+            <form class="login-form" name="loginForm" id="loginForm" action="<c:url value="/youtuber/update/"/>" method="post" enctype="multipart/form-data" onsubmit="return checkPassword()">
               <div class="form-text">
                 	이미지를 선택하세요
               </div>

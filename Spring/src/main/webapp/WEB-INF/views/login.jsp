@@ -9,7 +9,7 @@
 <body>
 	     <section>
             <h2 class="text-center">Login</h2>
-            <form class="login-form" name="loginForm" onsubmit="return encrypt()" action="<c:url value="/login"/>" method="post">
+            <form class="login-form" name="loginForm" id="loginForm" onsubmit="return encrypt()" action="<c:url value="/login"/>" method="post">
               <div class="form-text">
                 	ID
               </div>
@@ -18,23 +18,21 @@
                 Password
               </div>
               <input class="form-input" type="password" id="password" name="password" placeholder="Type your password">
-             
+              <c:if test="${not empty msg}"> 
+				<div class="login-error">
+				아이디 또는 비밀번호가 일치하지않습니다.
+				</div>
+				<% session.removeAttribute("msg"); %>
+			  </c:if>
+			  
               <button class="button" name="loginBtn">LOGIN</button>
             </form>
+            <a href="https://forms.gle/os59FReKZqf9WEUn8"><h2 class="text-signup">아직 회원이 아니신가요?</h2></a>
+            
         </section>
         
-<c:if test="${not empty msg}"> 
-	<div style="color:red">
-	아이디 또는 비밀번호가 일치하지않습니다.
-	</div>
-	<% session.removeAttribute("msg"); %>
-</c:if>
+
 
 </body>
 <%@ include file="./footer.jsp"%>
-<!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-app.js"></script>
-
-<!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
 </html>

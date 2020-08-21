@@ -37,7 +37,7 @@
           	<a href="<c:url value="/youtuber/profile"/>">마이페이지</a>
           </sec:authorize>
           <sec:authorize access="hasRole('ROLE_ENTERPRISE')">
-          	<a href="<c:url value="/enterprise/mypost"/>">마이페이지</a>
+          	<a href="<c:url value="/enter/profile"/>">마이페이지</a>
           </sec:authorize>
           
           <a href="<c:url value="/youtuber/question"/>">고객센터</a>

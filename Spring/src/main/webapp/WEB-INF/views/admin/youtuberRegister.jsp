@@ -16,7 +16,7 @@
 <body>
 	     <section>
             <h2 class="text-center">유튜버 등록</h2>
-            <form class="login-form" name="loginForm" method="post" action="<c:url value="/register/youtuber" />" onsubmit="return encrypt()">
+            <form class="login-form" name="loginForm" id="loginForm" method="post" action="<c:url value="/register/youtuber" />" onsubmit="return encrypt()">
               <div class="form-text">
                 	유튜브 주소
               </div>

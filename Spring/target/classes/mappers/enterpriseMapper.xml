@@ -28,12 +28,12 @@
  	
      <update id="update">
 	 	update enterprise_auth set 
-	 	id=#{id}, name=#{name}, category=#{category},email=#{email}, address=#{address}, manager=#{manager}} 
-	 	where id = #{id}
+	 	name=#{name}, category=#{category},email=#{email}, address=#{address}, manager=#{manager} 
+	 	where id=#{id}
     </update>
  
     <delete id="delete">
-		delete from enterprise_auth where id = #{id}
+		delete from enterprise_auth where id=#{id}
     </delete>
 
 	
