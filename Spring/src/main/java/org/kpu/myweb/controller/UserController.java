@@ -87,17 +87,18 @@ public class UserController {
 		return "/user/password";
 	}
 	    
-	@RequestMapping(value = {"/password"}, method = RequestMethod.POST)
-	public String loginMemberPost( @ModelAttribute("User") UserVO vo,@RequestParam("next") String next,HttpSession session,Model model) throws Exception {
-		boolean result = service.login(vo);
-		if(result == true) {
-			if(next.equals("update")) return "redirect:/youtuber/update?id="+vo.getId();
-			else return "redirect:/delete?id="+vo.getId();
-		}else {
-			model.addAttribute("result","실패");
+		@RequestMapping(value = {"/password"}, method = RequestMethod.POST)
+		public String loginMemberPost( @ModelAttribute("User") UserVO vo,@RequestParam("next") String next,HttpSession session,Model model) throws Exception {
+			boolean result = service.login(vo);
+			if(result == true) {
+				if(next.equals("update")) return "redirect:/youtuber/update?id="+vo.getId();
+				else if(next.equals("enter_update")) return "redirect:/enter/update?id="+vo.getId();
+				else return "redirect:/delete?id="+vo.getId();
+			}else {
+				model.addAttribute("result","실패");
+			}
+			return "/enterprise/result";
 		}
-		return "/enterprise/result";
-	}
 		
     /* 회원목록 확인 */
 	@RequestMapping(value = {"/list"}, method = RequestMethod.GET)

@@ -88,8 +88,17 @@ public class EnterprisePostController {
 	@RequestMapping(value = {"/list"}, method = RequestMethod.GET)
 	public String EnterprisePostListGet(@ModelAttribute("EnterprisePost") EnterprisePostVO vo,Model model) throws Exception {
 		List<EnterprisePostVO> EnterprisePost = service.readEnterprisePostList();
+		List<EnterpriseVO> enterprise = new ArrayList<EnterpriseVO>();
+		EnterpriseVO temp;
+		
+		for(int i=0;i<EnterprisePost.size();i++) {
+			temp = enterservice.readUser(EnterprisePost.get(i).getEnterID());
+			enterprise.add(temp);
+
+		}
 		model.addAttribute("EnterprisePost",EnterprisePost);
 		model.addAttribute("size",EnterprisePost.size());
+		model.addAttribute("enterprise",enterprise);
 		logger.info(" /register URL GET method called. then forward list.jsp.");
 		return "/enterprise/list";
 	}
