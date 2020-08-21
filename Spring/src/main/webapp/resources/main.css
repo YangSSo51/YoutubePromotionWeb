@@ -480,7 +480,8 @@ div #out{
 	margin: 30px 20px;
 	padding: 30px 0;
 	text-align: center;
-	border: 1px solid #dbdbdb;
+	/*border: 1px solid #dbdbdb;*/
+	width: 100%;
 }
 
 .button-center{

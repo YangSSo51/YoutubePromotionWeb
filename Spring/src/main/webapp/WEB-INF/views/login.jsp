@@ -19,7 +19,7 @@
               </div>
               <input class="form-input" type="password" id="password" name="password" placeholder="Type your password">
              
-              <button class="button" name="loginBtn">LOGIN</button></a>
+              <button class="button" name="loginBtn">LOGIN</button>
             </form>
         </section>
         

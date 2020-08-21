@@ -14,7 +14,7 @@
                 <a href="#">CALL</a>
               </div>
               <div class="message">
-                <a href=""><button type="button" name="button">업체 푸시 메세지 발송</button></a>
+                <a href="<c:url value="/enterprise/list"/>"><button type="button" name="button">업체 푸시 메세지 발송</button></a>
               </div>
             </div>
           </div>
@@ -23,7 +23,7 @@
               <li>
                 <a href="<c:url value="/enterprise/search?category=네일"/>" class="inner">
                   <div class="thumb">
-                    <img src="<c:url value="/resources/images/youtuber.jpg"/>" alt="" width="250px">   
+                    <img src="<c:url value="/resources/images/nail.jpg"/>" alt="" width="250px">   
                   </div>
                   <div class="desc">
                       Nails
@@ -33,7 +33,7 @@
               <li>
                 <a href="<c:url value="/enterprise/search?category=헤어"/>" class="inner">
                   <div class="thumb">
-                    <img src="<c:url value="/resources/images/youtuber.jpg"/>" alt="" width="250px">   
+                    <img src="<c:url value="/resources/images/hair_styling.jpg"/>" alt="" width="250px">   
                   </div>
                   <div class="desc">
                       Hair
@@ -43,7 +43,7 @@
               <li>
                 <a href="<c:url value="/enterprise/search?category=바디"/>" class="inner">
                   <div class="thumb">
-                    <img src="<c:url value="/resources/images/youtuber.jpg"/>" alt="" width="250px">   
+                    <img src="<c:url value="/resources/images/body_treatment.jpg"/>" alt="" width="250px">   
                   </div>
                   <div class="desc">
                       Body
@@ -53,7 +53,7 @@
               <li>
                 <a href="<c:url value="/enterprise/search?category=헬스"/>" class="inner">
                   <div class="thumb">
-                    <img src="<c:url value="/resources/images/youtuber.jpg"/>" alt="" width="250px">   
+                    <img src="<c:url value="/resources/images/health.jpg"/>" alt="" width="250px">   
                   </div>
                   <div class="desc">
                       Health
@@ -73,7 +73,7 @@
               <li>
                 <a href="<c:url value="/enterprise/search?category=메이크업"/>" class="inner">
                   <div class="thumb">
-                    <img src="<c:url value="/resources/images/youtuber.jpg"/>" alt="" width="250px">   
+                    <img src="<c:url value="/resources/images/makeup.jpg"/>" alt="" width="250px">   
                   </div>
                   <div class="desc">
                       Makeup
@@ -81,6 +81,13 @@
                 </a>
               </li>
               </ul>
+          </div>
+          <div class="description">
+          	<img src="<c:url value="/resources/images/description.png"/>" alt="" width="100%">
+          </div>
+          <div class="button-center">
+          	<a href="https://forms.gle/os59FReKZqf9WEUn8"><button type="button" name="button">등록하기</button></a>
+            <a href="<c:url value="/login"/>"><button type="button" name="button">로그인하기</button></a>
           </div>
         </section>
 

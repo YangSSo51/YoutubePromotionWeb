@@ -38,6 +38,7 @@
 		
 		<security:intercept-url pattern="/admin/**" access="hasAuthority('ROLE_ADMIN')" />
 		<security:intercept-url pattern="/enterprise/post" access="hasAuthority('ROLE_ENTERPRISE')" />
+		<security:intercept-url pattern="/enterprise/detail" access="hasAnyAuthority('ROLE_YOUTUBER','ROLE_ENTERPRISE')" /> 
 		<security:intercept-url pattern="/youtuber/update" access="hasAuthority('ROLE_YOUTUBER')" />
 		<security:intercept-url pattern="/youtuber/profile" access="hasAnyAuthority('ROLE_YOUTUBER','ROLE_ENTERPRISE')" />
 		
