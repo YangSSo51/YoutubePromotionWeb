@@ -38,7 +38,7 @@
                   <td style="width:30px;"><c:out value="${i}"/></td>
                   <td>
                     <div class="long-text">
-                      	<a href="<c:url value="/youtuber/profile"/>">${Youtuber[status.index].name}</a>
+                      	<a href="<c:url value="/youtuber/profile?id=${Youtuber[status.index].id}"/>">${Youtuber[status.index].name}</a>
                     </div>
                   </td>
                   <td>

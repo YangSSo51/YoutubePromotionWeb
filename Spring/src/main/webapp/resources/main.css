@@ -368,7 +368,15 @@ div #out{
 	width: 70px;
 	height: 30px;
 }
-
+.category_search{
+	margin-top: 10px;
+}
+.category_search button{
+	background-color: inherit;
+	border: 1.5px solid #FF97B6;
+	color: #000;
+	width:60px;
+}
 /*detail*/
 .title{
 	font-size: 25px;
@@ -654,4 +662,16 @@ div #out{
 	overflow: hidden;
 	padding-left:20px;
 }
-
+/*apply*/
+.apply{
+	margin-bottom: 30px;
+}
+.apply_comment{
+	width:300px;
+	margin:10px auto;
+	background:#fff;
+	white-space: normal;
+}
+.apply_button #apply_btn{
+	width:100px;
+}

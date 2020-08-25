@@ -32,7 +32,6 @@
 	    	   var encrypt = encrypt_data(password, passphrase, iv);
 	    	   var form = document.getElementById("loginForm");
 	    	   form.password.value=encrypt;  // 암호화 한 값으로 등록
-	    	   alert(encrypt);
 	    	   
 			   var decrypt= decrypt_data(encrypt.toString(), passphrase, iv);
 			   // var text = decrypt.toString(CryptoJS.enc.Utf8);

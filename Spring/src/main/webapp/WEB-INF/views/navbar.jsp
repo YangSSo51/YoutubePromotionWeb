@@ -12,6 +12,7 @@
 	Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 	String username = authentication.getName();
 	Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
+	String name = (String)session.getAttribute("name");
 %>
 
 <html lang="ko">
@@ -34,7 +35,7 @@
           <a href="<c:url value="/enterprise/list"/>">비즈니스</a>
           
           <sec:authorize access="hasRole('ROLE_YOUTUBER')">
-          	<a href="<c:url value="/youtuber/profile"/>">마이페이지</a>
+          	<a href="<c:url value="/youtuber/myprofile"/>">마이페이지</a>
           </sec:authorize>
           <sec:authorize access="hasRole('ROLE_ENTERPRISE')">
           	<a href="<c:url value="/enter/profile"/>">마이페이지</a>
@@ -52,10 +53,9 @@
 			  	<sec:csrfInput/>
 	    		<input type="hidden" value="로그아웃" />
 			  </form>
+			안녕하세요 <%= name %>님			
 		  </sec:authorize>
-    	  <%= username %>
-		  <%= authorities %>
-		  
+    	  
         </nav>
         <div class="logo">
 		<img src="<c:url value="/resources/images/logo.png"/>" alt="" width="250px">        

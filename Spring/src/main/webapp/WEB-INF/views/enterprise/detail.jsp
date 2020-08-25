@@ -73,7 +73,7 @@
           		<!-- Modal -->
           		<sec:authorize access="hasRole('ROLE_ENTERPRISE')">
 				<div id="root">
-   					<button type="button" id="modal_open_btn">초대하기</button>
+   					<button type="button" id="modal_open_btn" onclick="modal1_close()">초대하기</button>
 				</div>
 				<div id="modal">
                 <div class="modal_layer">
@@ -90,7 +90,7 @@
 						<input name="enterID" type="hidden" class="form-control" value=${EnterprisePost.enterID}>
 						<input name="postID" type="hidden" class="form-control" value=${EnterprisePost.id}>
 	                  <div class="modal_button" style="width:300px;">
-	                    <button type="button" id="modal_close_btn">취소</button>
+	                    <button type="button" id="modal_close_btn" onclick="modal1_close()">취소</button>
 	                    <button type="submit" id="submit">초대하기</button>
 	                  </div>
 				</form>
@@ -103,7 +103,7 @@
 			  <!-- Modal -->
 			  <sec:authorize access="hasRole('ROLE_YOUTUBER')">	
 				<div id="root">
-   					<button type="button" id="open_btn">신청하기</button>
+   					<button type="button" id="open_btn" onclick="modal2_open()">신청하기</button>
 				</div>
 
 				<div id="modal2">
@@ -139,8 +139,8 @@
 						<div>
 						<input name="youtuberID" type="hidden" class="form-control" value=<%=ID%>>
 						<input name="postID" type="hidden" class="form-control" value=${EnterprisePost.id}>
-					  <div class="modal_button" style="width:300px;">
-	                    <button type="button" id="close_btn">취소</button>
+					  `<div class="modal_button" style="width:300px;">
+	                    <button type="button" id="close_btn" onclick="modal2_close()">취소</button>
 	                    <button type="submit" id="submit">초대하기</button>
 	                  </div>
 	                  </div>
@@ -155,6 +155,19 @@
         </section>
 		<script language="javascript">
 		// Modal 
+		function modal1_open(){
+			document.getElementById("modal").style.display="block";
+		}
+		function modal1_close(){
+			document.getElementById("modal").style.display="none";
+		}
+		function modal2_open(){
+			document.getElementById("modal2").style.display="block";
+		}
+		function modal2_close(){
+			document.getElementById("modal2").style.display="none";
+		}
+		<!--
 		document.getElementById("modal_open_btn").onclick = function() {
         	document.getElementById("modal").style.display="block";
     	}
@@ -164,11 +177,12 @@
     	}
 
 		document.getElementById("open_btn").onclick = function() {
-	        	document.getElementById("modal2").style.display="block";
+	        document.getElementById("modal2").style.display="block";
 	    }
     	document.getElementById("close_btn").onclick = function() {
-	        	document.getElementById("modal2").style.display="none";
+	        document.getElementById("modal2").style.display="none";
 	   }
+		-->
 </script>
 	
 

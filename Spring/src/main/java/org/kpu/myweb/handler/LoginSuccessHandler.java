@@ -9,7 +9,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.kpu.myweb.controller.EnterprisePostController;
+import org.kpu.myweb.service.EnterpriseService;
 import org.kpu.myweb.service.UserService;
+import org.kpu.myweb.service.YoutuberService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +27,10 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler{
 
 	@Autowired
 	private UserService userservice;
+	@Autowired
+	private EnterpriseService enterservice;
+	@Autowired
+	private YoutuberService youtuberservice;
 	
 	private String username;
 	private String defaultUrl;
@@ -53,6 +59,17 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler{
 		try {
 			ID = userservice.readID(authentication.getName());
 
+			String auth = authentication.getAuthorities().toString();
+			String name = "";
+			
+			if(auth.equals("[ROLE_ENTERPRISE]"))
+				name = enterservice.readUser(ID).getName();
+			else if(auth.equals("[ROLE_YOUTUBER]"))
+				name = youtuberservice.readYoutuber(ID).getName();
+			else if(auth.equals("[ROLE_ADMIN]"))
+				name = "관리자"; 
+			
+			session.setAttribute("name", name);
 			session.setAttribute("ID", ID);
 			session.setAttribute("username", authentication.getName());
 		} catch (Exception e) {

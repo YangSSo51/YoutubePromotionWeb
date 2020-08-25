@@ -29,7 +29,7 @@
                    <!-- date하나 더 추가됨(기간이라) -->
                     <table class="date_table">
                       <td><input class="form-input" type="date" name="date" id="date"></td>
-                      <td style="padding: 0 0 18px 20px">~<td>
+                      <td style="padding: 0 0 18px 20px"> ~ <td>
                       <td><input class="form-input" type="date" name="date" id="date"></td>
                     </table>
                   </td>

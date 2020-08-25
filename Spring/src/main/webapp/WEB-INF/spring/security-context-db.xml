@@ -36,11 +36,14 @@
 		<security:intercept-url pattern="/login" access="permitAll()" />
 		
 		
-		<security:intercept-url pattern="/admin/**" access="hasAuthority('ROLE_ADMIN')" />
+		<security:intercept-url pattern="/list" access="hasAuthority('ROLE_ADMIN')" />
+		<security:intercept-url pattern="/register/enterprise" access="hasAuthority('ROLE_ADMIN')" />
+		<security:intercept-url pattern="/register/youtuber" access="hasAuthority('ROLE_ADMIN')" />
 		<security:intercept-url pattern="/enterprise/post" access="hasAuthority('ROLE_ENTERPRISE')" />
-		<security:intercept-url pattern="/enterprise/detail" access="hasAnyAuthority('ROLE_YOUTUBER','ROLE_ENTERPRISE')" /> 
+		<security:intercept-url pattern="/enterprise/detail" access="hasAnyAuthority('ROLE_YOUTUBER','ROLE_ENTERPRISE','ROLE_ADMIN')" /> 
 		<security:intercept-url pattern="/youtuber/update" access="hasAuthority('ROLE_YOUTUBER')" />
 		<security:intercept-url pattern="/youtuber/profile" access="hasAnyAuthority('ROLE_YOUTUBER','ROLE_ENTERPRISE')" />
+		<security:intercept-url pattern="/youtuber/myprofile" access="hasAnyAuthority('ROLE_YOUTUBER')" />
 		
 		<security:form-login
 			always-use-default-target="true"

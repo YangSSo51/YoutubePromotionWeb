@@ -61,7 +61,7 @@ public class ApplyController {
 			model.addAttribute("result","신청이 완료되었습니다");
 			return "enterprise/result";
 		}else {
-			model.addAttribute("result","이미 진행중인 신청입니다");
+			model.addAttribute("result","이미 신청되었습니다.");
 		}
 		logger.info(" /register URL GET method called. then forward post.jsp.");
 		return "/enterprise/result";

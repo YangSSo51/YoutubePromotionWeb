@@ -15,26 +15,28 @@
             <span><h3>지원업체</h3></span>
             <hr>
             <div>
-            <div >
-            	<a href="<c:url value="/enterprise/search?category=헬스"/>">헬스</a>
-            	<a href="<c:url value="/enterprise/search?category=뷰티"/>">뷰티</a>
-            	<a href="<c:url value="/enterprise/search?category=메이크업"/>">메이크업</a>
-            	<a href="<c:url value="/enterprise/search?category=바디"/>">바디</a>
-            	<a href="<c:url value="/enterprise/search?category=네일"/>">네일</a>
-            	<a href="<c:url value="/enterprise/search?category=헤어"/>">헤어</a>
-
-            </div>
+           	<div class="category_search">
+            	<button type="button" onclick="<c:url value="/enterprise/search?category=헬스"/>">Health</button>
+            	<button type="button" onclick="<c:url value="/enterprise/search?category=뷰티"/>">Beauty</button>
+            	<button type="button" onclick="<c:url value="/enterprise/search?category=메이크업"/>">Makeup</button>
+            	<button type="button" onclick="<c:url value="/enterprise/search?category=네일"/>">Nail</button>
+            	<button type="button" onclick="<c:url value="/enterprise/search?category=바디"/>">Body</button>
+            	<button type="button" onclick="<c:url value="/enterprise/search?category=헤어"/>">Hair</button>          
+			</div>
             <form class="right_form" action="<c:url value="/enterprise/search"/>" method="post">
-              <input type="search" name="title" value="">
+              <input type="search" name="title" value="" placeholder="공고 제목을 입력해주세요" style="color:#666666"/>
               <button type="submit" name="button">검색</button>
             </form>
             </div>
+            
             <ul class="list">
               <c:forEach items="${EnterprisePost}" varStatus="status">
               <li>
  				<a href="<c:url value="/enterprise/detail?id=${EnterprisePost[status.index].id}"/>" class="inner">
  				<div class="thumb">
- 					<img src="getImage?name=${EnterprisePost[status.index].image}" alt="썸네일이미지">
+	
+ 				<img src="getImage?name=${EnterprisePost[status.index].image}" alt="썸네일이미지" onError="this.src='<c:url value="/resources/images/default-image.png"/>'">
+ 			
  				</div>
                 <div class="desc">
                  	<div class="title">

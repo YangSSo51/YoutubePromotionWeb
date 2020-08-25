@@ -7,6 +7,7 @@
                 <tr>
                   <th style="width:30px;"></th>
                   <th>채널명</th>
+                  <th>카테고리</th>
                   <th>프로필보러가기</th>
                 </tr>
                 <c:set var="i" value="0"/>
@@ -22,7 +23,7 @@
                   <td>
                     <c:out value="${youtuber[i-1].category}"/>
                   </td>                  
-                  <td><a href="<c:url value="/youtuber/profile?id=${user[i-1].id}"/>"><button id="contact" type="button" name="button">프로필보기</button></a></td>
+                  <td><a href="<c:url value="/youtuber/profile?id=${youtuber[i-1].id}"/>"><button id="contact" type="button" name="button">프로필보기</button></a></td>
                 </tr>                
                </c:forEach>
               </table>

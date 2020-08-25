@@ -52,9 +52,9 @@ public class YoutuberController {
 		return "youtuber/description";
 	}
 	
-	@RequestMapping(value = "/profile", method = RequestMethod.GET)
+	@RequestMapping(value = "/myprofile", method = RequestMethod.GET)
     public String readYoutuber(HttpSession session, Model model) throws Exception {
-		int id = (Integer) session.getAttribute("ID");
+		int id = (Integer)session.getAttribute("ID");
     	YoutuberVO youtuber = youtuberSerivce.readYoutuber(id);
     	UserVO user = userService.readUser(id);
     
@@ -78,6 +78,33 @@ public class YoutuberController {
         model.addAttribute("channelUrl", "https://www.youtube.com/channel/" + channelId);
         model.addAttribute("ID",id);
         return "youtuber/profile";
+    }
+	
+	@RequestMapping(value = "/profile", method = RequestMethod.GET)
+    public String readYoutuberForEnter(@RequestParam("id") int id, HttpSession session, Model model) throws Exception {
+    	YoutuberVO youtuber = youtuberSerivce.readYoutuber(id);
+    	UserVO user = userService.readUser(id);
+    
+    	String channelId = user.getUsername(); // 유튜버 채널ID
+    	YoutubeAPI2 api = new YoutubeAPI2();
+    	List<String> profile = api.getYoutubeProfile(channelId); // 0: 채널명, 1: 채널개설일, 2: 구독자수, 3: 썸네일
+    	logger.info("ID : " + id  + " api : " + profile);
+    	// 구독자 수 (만 단위)
+    	String subscriber = "";
+    	int size = profile.get(2).length();
+    	if(size > 5)
+    	subscriber = profile.get(2).substring(0, size-4) + "만 " 
+    			+ profile.get(2).substring(size-4, size) + "명";
+    	else
+    		subscriber = profile.get(2) + "명";
+    	
+    	model.addAttribute("channelTitle", profile.get(0));
+    	model.addAttribute("publishedDate", profile.get(1));
+    	model.addAttribute("subscriber", subscriber);
+        model.addAttribute("youtuber", youtuber);
+        model.addAttribute("channelUrl", "https://www.youtube.com/channel/" + channelId);
+        model.addAttribute("ID",id);
+        return "youtuber/profile_for_enter";
     }
 	
 	@RequestMapping(value = {"/delete"}, method = RequestMethod.GET)

@@ -7,17 +7,7 @@
 }
 </style>
         <section>
-         <sec:authorize access="hasRole('ROLE_YOUTUBER')">
-         <div class="my-list">
-            <ul>
-              <li class="mypage">마이페이지</li>
-              <li id="select"><a id="select" href="<c:url value="/youtuber/myprofile"/>">프로필</a></li>
-              <li><a href="<c:url value="/apply/youtuber/list"/>">지원현황</a></li>
-              <li><a href="<c:url value="/invite/youtuber/list"/>">초대현황</a></li>
-            </ul>
-          </div>
-         </sec:authorize>
-         
+              
           <div class="right-container">
             <h3>프로필</h3>
             <hr>
@@ -52,13 +42,7 @@
                 </table>
               </div>
             </div>
-            
-            <sec:authorize access="hasRole('ROLE_YOUTUBER')">
-	            <div class="button_group">
-	              <a href="<c:url value="/password?next=delete"/>"><button class="button" type="button" name="button" id="out">회원탈퇴</button></a>
-	              <a href="<c:url value="/password?next=update"/>"><button class="button" type="button" name="button">정보수정</button></a>
-	            </div>
-            </sec:authorize>
+                   
             </div>
         </section>
 	

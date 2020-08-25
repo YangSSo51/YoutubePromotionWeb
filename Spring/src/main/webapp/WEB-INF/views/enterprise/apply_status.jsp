@@ -19,7 +19,13 @@
 			alert("홍보 요청 거부");
 			location.href="./reject?id=" + id;
 		}
-
+		// Modal 
+		function modal_open(){
+			document.getElementById("modal").style.display="block";
+		}
+		function modal_close(){
+			document.getElementById("modal").style.display="none";
+		}
 	</script>
 	        <section>
             <h2 class="text-center">지원현황</h2>
@@ -28,7 +34,7 @@
                   <th style="width:30px;"></th>
                   <th>채널명</th>
                   <th>카테고리</th>
-                  <th>홍보요청</th>
+                  <th>신청내용</th>
                   <th>승인여부</th>
                 </tr>
                  <c:set var="i" value="0"/>
@@ -38,15 +44,52 @@
                   <td style="width:30px;"><c:out value="${i}"/></td>
                   <td>
                     <div class="long-text">
-                      	<a href="<c:url value="/youtuber/profile"/>">${Youtuber[status.index].name}</a>
+                      	<a href="<c:url value="/youtuber/profile?id=${Youtuber[status.index].id}"/>">${Youtuber[status.index].name}</a>
                     </div>
                   </td>
                   <td>
                     ${Youtuber[status.index].category}
                   </td>
                   <td>
-                  	${Apply[status.index].result}
+                  	<div class="apply_button">
+                  		<button type="button" id="apply_btn" onclick="modal_open()">확인</button>
+                  	</div>
+                  
+                  <div id="modal">
+	              <div class="modal_layer">
+	              <div class="middle_modal_content">
+                  <div class="modal_title">
+                   	신청내용
+                  </div>
+                  	<div class="apply">
+                 		<span class="form-text">카테고리</span>
+                 		<hr>
+                 		${Apply[status.index].category}
+                 	</div>
+                 	<div class="apply">
+                 		<span class="form-text">날짜</span>
+                 		<hr>
+                 		${Apply[status.index].date}
+                 	</div>
+                 	<div class="apply">
+                 		<span class="form-text">지역</span>
+                 		<hr>
+                 		${Apply[status.index].location}
+                 	</div>
+                 	<div class="apply">
+                 		<span class="form-text">신청글</span>
+                 		<hr>
+                 		<div class="apply_comment">
+                 			${Apply[status.index].comment}
+                 		</div>
+                 		
+                 	</div>
+                  <button type="button" class="close" onclick="modal_close()">닫기</button>
+                  </div>
+	              </div><!--modal layer-->
+	              </div><!--modal-->
                   </td>
+                  
                   <td>
              
 	              <button name="accept" id='accept' value="수락" onclick="accept_apply(${Apply[status.index].id});">수락</button>
@@ -75,5 +118,6 @@
                 </c:forEach>
               </table>
         </section>
+        
 <%@ include file="../footer.jsp"%>
 </html>
