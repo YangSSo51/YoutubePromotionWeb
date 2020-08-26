@@ -160,6 +160,7 @@
   .post-form textarea{
   	border: none;
   	border: 1px solid #c0c0c0;
+    width : 100%;
   }
   .post-form textarea:focus{
   	outline: none;
@@ -168,12 +169,12 @@
   	outline: none;
   }
 
-  .form-input[type="date"]{
-    width: 30%;
-  }
-
-  .date_table td{
-  	padding-left: 10px;
+ .post-form .form-input[type="date"]{
+    width: 232px;
+  	height:30px;
+    margin-bottom: 20px;
+  	border: none;
+  	border-bottom: 1px solid #c0c0c0;
   }
 
 
