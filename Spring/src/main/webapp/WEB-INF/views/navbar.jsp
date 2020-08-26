@@ -29,8 +29,8 @@
   <body>
     <div class="wrap">
       <header>
-        <a href="#" class="gnb_menu">gnb menu</a>
-        <nav>
+        <a href="#" class="gnb_menu" onclick="navFunction()">gnb menu</a>
+        <nav id="nav">
           <a href="<c:url value="/"/>">홈</a>
           <a href="<c:url value="/enterprise/list"/>">비즈니스</a>
           
@@ -58,8 +58,17 @@
     	  
         </nav>
         <div class="logo">
-		<img src="<c:url value="/resources/images/logo.png"/>" alt="" width="250px">        
+		<img src="<c:url value="/resources/images/logo.png"/>" alt="" width="250px" style="border-radius:0">        
 		</div>
       </header>
      </div>
+     <script>
+     function navFunction() {
+    	  var x = document.getElementById("nav");
+    	  if (x.style.display === "none") {
+    	    x.style.display = "block";
+    	  } else {
+    	    x.style.display = "none";
+    	  }    	}
+     </script>
  </body>

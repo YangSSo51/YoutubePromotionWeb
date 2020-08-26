@@ -1,6 +1,59 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ include file="navbar.jsp"%>
+
+<style>
+	header{
+		background-image:url('/myweb/resources/images/background2.png');
+		background-repeat : no-repeat;
+		background-size: auto 600px;
+		height:600px; 
+	}
+	nav a{
+		color:white !important;
+	}
+	.logo{
+		width:80px !important;
+		margin-top:20px !important;
+		margin-left:100px !important;
+		float:left !important;
+	}
+	.logo img{
+		width:120px !important;
+	}
+	.button-center{
+		margin-top:-90px;
+		z-index:3;
+	}
+	.button-center button{
+		background-color:#FF5FA2;
+	}
+	.button-center #login{
+		color:white;
+		background: rgba(255, 0, 0, 0);
+		border:1px solid white;
+	}
+	@media screen and (max-width: 414px), screen and (max-height: 414px) and (orientation: landscape) {
+		header{
+			background-image:url('/myweb/resources/images/background.png');
+			background-repeat : no-repeat;
+			background-size: auto 400px;
+			height:400px; 
+		}
+		nav a{
+			color:black !important;
+		}
+		.logo{
+			width:120px !important;
+			margin: 10px auto !important;
+			float:none !important;
+		}
+	}
+</style>
+          <div class="button-center">
+          	<a href="https://forms.gle/os59FReKZqf9WEUn8"><button type="button" name="button">등록하기</button></a>
+            <a href="<c:url value="/login"/>"><button type="button" name="button" id="login">로그인하기</button></a>
+          </div>
 <html>
 <body>
         <section>
@@ -83,11 +136,7 @@
               </ul>
           </div>
           <div class="description">
-          	<img src="<c:url value="/resources/images/description.png"/>" alt="" width="100%">
-          </div>
-          <div class="button-center">
-          	<a href="https://forms.gle/os59FReKZqf9WEUn8"><button type="button" name="button">등록하기</button></a>
-            <a href="<c:url value="/login"/>"><button type="button" name="button">로그인하기</button></a>
+          	<img src="<c:url value="/resources/images/description.png"/>" alt="" width="70%">
           </div>
         </section>
 

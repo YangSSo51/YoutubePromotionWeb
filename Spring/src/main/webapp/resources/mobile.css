@@ -575,4 +575,18 @@
 	width:80px;
 }
 
+.my-list{
+	float:none;
+	width:200px;
+	margin:0 auto;
+}
+
+.right-container{
+	margin-left:0;
+	margin-top:20px;
+}
+
+.list{
+	width:0px !important;
+}
 
