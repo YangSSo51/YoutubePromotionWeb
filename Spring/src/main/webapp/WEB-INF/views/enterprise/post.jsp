@@ -25,14 +25,9 @@
                     	  모집기간
                     </div>
                   </td>
-                  <td>
-                   <!-- date하나 더 추가됨(기간이라) -->
-                    <table class="date_table">
-                      <td><input class="form-input" type="date" name="date" id="date"></td>
-                      <td style="padding: 0 0 18px 20px"> ~ <td>
-                      <td><input class="form-input" type="date" name="date" id="date"></td>
-                    </table>
-                  </td>
+	 			  <td>
+	 			  	<input class="form-input" type="date" name="date" id="date">
+	 			  </td>
                 </tr>
                 <tr>
                   <td>
@@ -84,9 +79,8 @@
                      	 설명
                     </div>
                   </td>
-                  <td>
-                    <textarea name="description" rows="15" cols="90" id="web"></textarea>
-                    <textarea name="description" rows="10" cols="34" id="mobile"></textarea>
+                  <td>				
+	               	<textarea name="description"></textarea>             
                   </td>
                 </tr>
               </table>

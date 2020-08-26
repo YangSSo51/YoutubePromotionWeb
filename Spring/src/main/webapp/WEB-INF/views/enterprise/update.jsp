@@ -24,13 +24,8 @@
                     </div>
                   </td>
                   <td>
-                   <!-- date하나 더 추가됨(기간이라) -->
-                    <table class="date_table">
-                      <td><input class="form-input" type="date" name="date" id="date" value="${EnterprisePost.date} }"></td>
-                      <td style="padding: 0 0 18px 20px">~<td>
-                      <td><input class="form-input" type="date" name="date" id="date"></td>
-                    </table>
-                  </td>
+	 			  	<input class="form-input" type="date" name="date" id="date" value="${EnterprisePost.date}">
+	 			  </td>
                 </tr>
                 <tr>
                   <td>
@@ -84,8 +79,7 @@
                     </div>
                   </td>
                   <td>
-                    <textarea name="description" rows="15" cols="90" id="web"></textarea>
-                    <textarea name="description" rows="10" cols="34" id="mobile"></textarea>
+                  	<textarea name="description">${EnterprisePost.description}</textarea>    
                   </td>
                 </tr>
               </table>

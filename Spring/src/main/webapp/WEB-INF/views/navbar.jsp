@@ -9,10 +9,10 @@
 <%@ page import="java.util.Collection" %>
 
 <% 
-	Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-	String username = authentication.getName();
-	Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
-	String name = (String)session.getAttribute("name");
+   Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+   String username = authentication.getName();
+   Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
+   String name = (String)session.getAttribute("name");
 %>
 
 <html lang="ko">
@@ -21,9 +21,9 @@
     <meta name="viewport" content="width==device-width, initial-scale=1.0" http-equiv="content-type" content="text/html; charset=utf-8">
 
     <title>오아영</title>
-	<link rel="stylesheet" href="<c:url value="/resources/reset.css"/>">
-	<link rel="stylesheet" href="<c:url value="/resources/main.css"/>">
-	<link rel="stylesheet" href="<c:url value="/resources/mobile.css"/>">
+   <link rel="stylesheet" href="<c:url value="/resources/reset.css"/>">
+   <link rel="stylesheet" href="<c:url value="/resources/main.css"/>">
+   <link rel="stylesheet" href="<c:url value="/resources/mobile.css"/>">
 
   </head>
   <body>
@@ -35,31 +35,35 @@
           <a href="<c:url value="/enterprise/list"/>">비즈니스</a>
           
           <sec:authorize access="hasRole('ROLE_YOUTUBER')">
-          	<a href="<c:url value="/youtuber/myprofile"/>">마이페이지</a>
+             <a href="<c:url value="/youtuber/myprofile"/>">마이페이지</a>
           </sec:authorize>
           <sec:authorize access="hasRole('ROLE_ENTERPRISE')">
-          	<a href="<c:url value="/enter/profile"/>">마이페이지</a>
+             <a href="<c:url value="/enter/profile"/>">마이페이지</a>
           </sec:authorize>
           
           <a href="<c:url value="/youtuber/question"/>">고객센터</a>
           
            <sec:authorize access="isAnonymous()">
-			<a href="<c:url value="/login"/>">로그인</a>
-		  </sec:authorize>
-		  
-		  <sec:authorize access="isAuthenticated()">
-		  	<a href="#" onclick="document.getElementById('logout-form').submit();">로그아웃</a>
-			  <form id="logout-form" action="<c:url value="/logout"/>" method="POST">
-			  	<sec:csrfInput/>
-	    		<input type="hidden" value="로그아웃" />
-			  </form>
-			안녕하세요 <%= name %>님			
-		  </sec:authorize>
-    	  
+         <a href="<c:url value="/login"/>">로그인</a>
+        </sec:authorize>
+        
+        <sec:authorize access="isAuthenticated()">
+           <a href="#" onclick="document.getElementById('logout-form').submit();">로그아웃</a>
+           <form id="logout-form" action="<c:url value="/logout"/>" method="POST">
+              <sec:csrfInput/>
+             <input type="hidden" value="로그아웃" />
+           </form>
+        </sec:authorize>
+         
         </nav>
         <div class="logo">
+<<<<<<< HEAD
 		<img src="<c:url value="/resources/images/logo.png"/>" alt="" width="250px" style="border-radius:0">        
 		</div>
+=======
+      <img src="<c:url value="/resources/images/logo.png"/>" alt="" width="250px">        
+      </div>
+>>>>>>> c39219281a16efc2fc3ab081ea2c8c1ca32290e7
       </header>
      </div>
      <script>

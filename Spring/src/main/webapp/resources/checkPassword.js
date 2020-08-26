@@ -6,7 +6,6 @@
 		
 		if(!password1 && !password2){
 			// 비밀번호를 변경하지 않음
-			alert("비밀번호를 변경하지 않음.");
 			return true;
 		}
 		else if(password1 || password2){

@@ -35,7 +35,6 @@
 		<security:intercept-url pattern="/" access="permitAll()" />
 		<security:intercept-url pattern="/login" access="permitAll()" />
 		
-		
 		<security:intercept-url pattern="/list" access="hasAuthority('ROLE_ADMIN')" />
 		<security:intercept-url pattern="/register/enterprise" access="hasAuthority('ROLE_ADMIN')" />
 		<security:intercept-url pattern="/register/youtuber" access="hasAuthority('ROLE_ADMIN')" />
