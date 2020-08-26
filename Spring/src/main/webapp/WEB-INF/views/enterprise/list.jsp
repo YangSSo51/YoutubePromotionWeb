@@ -16,12 +16,12 @@
             <hr>
             <div>
            	<div class="category_search">
-            	<button type="button" onclick="<c:url value="/enterprise/search?category=헬스"/>">Health</button>
-            	<button type="button" onclick="<c:url value="/enterprise/search?category=뷰티"/>">Beauty</button>
-            	<button type="button" onclick="<c:url value="/enterprise/search?category=메이크업"/>">Makeup</button>
-            	<button type="button" onclick="<c:url value="/enterprise/search?category=네일"/>">Nail</button>
-            	<button type="button" onclick="<c:url value="/enterprise/search?category=바디"/>">Body</button>
-            	<button type="button" onclick="<c:url value="/enterprise/search?category=헤어"/>">Hair</button>          
+            	<a href="<c:url value="/enterprise/search?category=헬스"/>"><button type="button" >Health</button></a>
+            	<a href="<c:url value="/enterprise/search?category=뷰티"/>"><button type="button">Beauty</button></a>
+            	<a href="<c:url value="/enterprise/search?category=메이크업"/>"><button type="button">Makeup</button></a>
+            	<a href="<c:url value="/enterprise/search?category=네일"/>"><button type="button">Nail</button></a>
+            	<a href="<c:url value="/enterprise/search?category=바디"/>"><button type="button">Body</button></a>
+            	<a href="<c:url value="/enterprise/search?category=헤어"/>"><button type="button">Hair</button></a>          
 			</div>
             <form class="right_form" action="<c:url value="/enterprise/search"/>" method="post">
               <input type="search" name="title" value="" placeholder="공고 제목을 입력해주세요" style="color:#666666"/>
