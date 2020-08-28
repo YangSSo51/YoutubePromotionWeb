@@ -9,9 +9,6 @@
 <title>Insert title here</title>
 </head>
 <body style="margin:0;">
-		<img src="<c:url value="/resources/images/popup_img.jpg"/>" alt="">
-		<img style="margin-left:100px;"src="<c:url value="/resources/images/popup_img3.jpg"/>" alt="">      
-		<img src="<c:url value="/resources/images/popup_img2.jpg"/>" alt="">   
-
+		<img style="width:590px;" src="<c:url value="/resources/images/popup_img.png"/>" alt="">       
 </body>
 </html>

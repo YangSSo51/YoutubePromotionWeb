@@ -16,11 +16,11 @@
 <body>
 	     <section>
             <h2 class="text-center">유튜버 등록</h2>
-            <form class="login-form" name="loginForm" id="loginForm" method="post" action="<c:url value="/register/youtuber" />" onsubmit="return encrypt()">
+            <form class="login-form" name="loginForm" id="loginForm" method="post" action="<c:url value="/register/youtuber" />" onsubmit="return register()">
               <div class="form-text">
                 	유튜브 주소
               </div>
-              <input class="form-input" type="text" id="username" name="username" placeholder="000-00-00000">      
+              <input class="form-input" type="text" id="username" name="username" placeholder="ChannelId">      
               <div class="form-text">
                 	비밀번호
               </div>

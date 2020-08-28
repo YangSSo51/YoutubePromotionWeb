@@ -6,6 +6,11 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/sha256.js"></script>
 <script type="text/javascript" src="<c:url value="/resources/passwordEncrypt.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/resources/checkPassword.js"/>"></script>
+<script>
+	function sel(category){
+		document.querySelector('#category [value="' + category  + '"]').selected = true;
+	}
+</script>
 
       <section>
             <h2 class="text-center">프로필 수정하기</h2>
@@ -43,6 +48,9 @@
 						<option value="뷰티">뷰티</option>
                   		<option value="메이크업">메이크업</option>                  		
                   	</select>
+                  	<script>
+						sel("${enterprise.category}");
+                  	</script>  
               <a href="#"><button class="button" type="submit" name="button">수정하기</button></a>
             </form>
         </section>

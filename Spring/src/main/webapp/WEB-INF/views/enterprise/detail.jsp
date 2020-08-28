@@ -4,9 +4,24 @@
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 <% int ID = (Integer)session.getAttribute("ID"); %> 
 
+<script>
+function showButton(ID, postid){
+	if(ID == postid){
+		document.getElementById("button_group").style.display="block";
+		document.getElementById("invite").style.display="block";
+	}
+	else{
+		document.getElementById("button_group").style.display="none";
+		document.getElementById("invite").style.display="none";
+	}
+}
+</script>
+
+
 
 <%@ include file="../navbar.jsp"%>
       <section>
+	      <input type="hidden" id="ID" value=<%= ID %> >
           <span class="title">${EnterprisePost.title}</span><span class="enterprise">${name}</span>
           <hr class="#FF97B6">
           <table class="detail_table">
@@ -44,12 +59,12 @@
               </td>
               <td>
                 <div class="td-title">
-               	 위치
+               	 조회수
                 </div>
               </td>
               <td>
-                <div class="td-content" id="long-text">
-                	산기대
+                <div class="td-content">
+                ${EnterprisePost.viewCnt}
                 </div>
               </td>
             </tr>
@@ -63,18 +78,23 @@
               	</c:forEach>
             </div>
           </div>
-          <div class="button_group" style="margin: 0;">          
+          <div class="button_group" id="button_group" style="margin: 0;">          
             <sec:authorize access="hasRole('ROLE_ENTERPRISE')">
-	            <a href="/myweb/enterprise/update?id=${EnterprisePost.id}"><button class="button" type="button" name="button" >수정하기</button></a>
-	            <a href="/myweb/enterprise/delete?id=${EnterprisePost.id}"><button class="button" type="button" name="button" >삭제하기</button></a>
+		        <a href="/myweb/enterprise/update?id=${EnterprisePost.id}"><button class="button" type="button" name="button" >수정하기</button></a>
+		        <a href="/myweb/enterprise/delete?id=${EnterprisePost.id}"><button class="button" type="button" name="button" >삭제하기</button></a>
           	</sec:authorize>
           </div>
           
           		<!-- Modal -->
           		<sec:authorize access="hasRole('ROLE_ENTERPRISE')">
-				<div id="root">
-   					<button type="button" id="modal_open_btn" onclick="modal1_close()">초대하기</button>
+				<div id="invite" style="display: none;">
+   					<button type="button" id="modal_open_btn" onclick="modal1_open()">초대하기</button>
 				</div>
+				<script>
+			      var ID = document.getElementById("ID").value;
+		          showButton(ID, ${EnterprisePost.enterID});
+	        	</script>
+	        
 				<div id="modal">
                 <div class="modal_layer">
                 <div class="middle_modal_content">
@@ -103,7 +123,7 @@
 			  <!-- Modal -->
 			  <sec:authorize access="hasRole('ROLE_YOUTUBER')">	
 				<div id="root">
-   					<button type="button" id="open_btn" onclick="modal2_open()">신청하기</button>
+   					<button type="button" id="open_btn" onclick="modal2_open();">신청하기</button>
 				</div>
 
 				<div id="modal2">
@@ -167,22 +187,7 @@
 		function modal2_close(){
 			document.getElementById("modal2").style.display="none";
 		}
-		<!--
-		document.getElementById("modal_open_btn").onclick = function() {
-        	document.getElementById("modal").style.display="block";
-    	}
 
-    	document.getElementById("modal_close_btn").onclick = function() {
-        	document.getElementById("modal").style.display="none";
-    	}
-
-		document.getElementById("open_btn").onclick = function() {
-	        document.getElementById("modal2").style.display="block";
-	    }
-    	document.getElementById("close_btn").onclick = function() {
-	        document.getElementById("modal2").style.display="none";
-	   }
-		-->
 </script>
 	
 

@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../navbar.jsp"%>  
-
+<script>
+	function sel(category){
+		document.querySelector('#category [value="' + category  + '"]').selected = true;
+	}
+</script>
 <body>
       <section>
             <h2 class="text-center">공고 수정하기</h2>
@@ -62,14 +66,17 @@
                     </div>
                   </td>
                   <td>
-                  	<select name="category">
+                  	<select name="category" id="category">
                   		<option value="네일">네일</option>
                   		<option value="헤어">헤어</option>
                   		<option value="바디">바디</option>
                   		<option value="헬스">헬스</option>
 						<option value="뷰티">뷰티</option>
                   		<option value="메이크업">메이크업</option>                  		
-                  	</select>                  
+                  	</select>   
+                  	<script>
+						sel("${EnterprisePost.category}");
+                  	</script>               
                   	</td>
                 </tr>
                 <tr>

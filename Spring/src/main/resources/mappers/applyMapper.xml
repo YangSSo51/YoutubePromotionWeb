@@ -15,7 +15,7 @@
  		(#{category}, #{date}, #{location},#{comment},#{youtuberID},#{postID}, 0)
      </insert> 
  	
-     <select id="selectById" resultType="applyVO">
+     <select id="selectById" resultType="ApplyVO">
  		select * from apply where id= #{id}
      </select>
  	
@@ -34,11 +34,11 @@
 		delete from apply where id=#{id}
     </delete>
     
-     <select id="selectByPostId" resultType="applyVO">
+     <select id="selectByPostId" resultType="ApplyVO">
  		select * from apply where postID= #{postID}
      </select>
      
-     <select id="selectByYoutuberId" resultType="applyVO">
+     <select id="selectByYoutuberId" resultType="ApplyVO">
  		select * from apply where youtuberID= #{youtuberID}
      </select>
 </mapper>  

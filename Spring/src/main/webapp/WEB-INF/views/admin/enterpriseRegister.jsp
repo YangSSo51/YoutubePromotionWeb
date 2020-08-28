@@ -16,7 +16,7 @@
 <body>
 	     <section>
             <h2 class="text-center">기업 등록</h2>
-            <form class="login-form" name="loginForm" id="loginForm" method="post" action="<c:url value="/register/enterprise"/>"onsubmit="return encrypt()">
+            <form class="login-form" name="loginForm" id="loginForm" method="post" action="<c:url value="/register/enterprise"/>"onsubmit="return register()">
               <div class="form-text">
                 	사업자번호
               </div>

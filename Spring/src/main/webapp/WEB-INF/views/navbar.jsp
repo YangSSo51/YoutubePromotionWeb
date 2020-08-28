@@ -47,6 +47,10 @@
          <a href="<c:url value="/login"/>">로그인</a>
         </sec:authorize>
         
+         <sec:authorize access="hasRole('ROLE_ADMIN')">
+            <a href="<c:url value="/list"/>">관리자 페이지</a>
+        </sec:authorize>
+        
         <sec:authorize access="isAuthenticated()">
            <a href="#" onclick="document.getElementById('logout-form').submit();">로그아웃</a>
            <form id="logout-form" action="<c:url value="/logout"/>" method="POST">
@@ -57,13 +61,8 @@
          
         </nav>
         <div class="logo">
-<<<<<<< HEAD
 		<img src="<c:url value="/resources/images/logo.png"/>" alt="" width="250px" style="border-radius:0">        
 		</div>
-=======
-      <img src="<c:url value="/resources/images/logo.png"/>" alt="" width="250px">        
-      </div>
->>>>>>> c39219281a16efc2fc3ab081ea2c8c1ca32290e7
       </header>
      </div>
      <script>

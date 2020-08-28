@@ -33,9 +33,15 @@
 	    	   var form = document.getElementById("loginForm");
 	    	   form.password.value=encrypt;  // 암호화 한 값으로 등록
 	    	   
-			   var decrypt= decrypt_data(encrypt.toString(), passphrase, iv);
-			   // var text = decrypt.toString(CryptoJS.enc.Utf8);
-			   
+			   // var decrypt= decrypt_data(encrypt.toString(), passphrase, iv);
+
 	           return true;
 		   }
+	}
+	function register(){
+		var result = encrypt();
+		if(result == true)
+			alert("등록이 완료 되었습니다!");
+		else
+			alert("등록을 실패하였습니다.");
 	}
